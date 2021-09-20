@@ -1,12 +1,8 @@
 import React from 'react';
 import Form from '../form/form'
-class Splash extends React.Component {
-
-    constructor(props){
-        super(props)
-    }
-   
+class Splash extends React.Component {   
     render(){
+        
         return(
             <div>
                 anyWajers?!?!?!?!??!?!?!?!?!?!?!?!?!??!?!?

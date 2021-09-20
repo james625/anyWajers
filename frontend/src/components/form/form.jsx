@@ -17,12 +17,13 @@ class Form extends React.Component {
 
     input(field) {
         return e => this.setState({
-            [field]: e.currentUser.value
+            [field]: e.currentTarget.value
         })
     }
 
     handleSubmit(field){
         return e => {
+            e.preventDefault();
             if(field === 'signin'){
                 const user = {
                     email: this.state.email,
