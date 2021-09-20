@@ -1,11 +1,11 @@
-import GameApiUtil from '../util/game_api_util';
+import * as GameApiUtil from '../util/game_api_util';
 
 export const RECEIVE_ALL_GAMES = 'RECEIVE_ALL_GAMES'
 export const RECEIVE_GAME = "RECEIVE_GAME"
 
-const receiveAllGames = (allGames) => ({
+const receiveAllGames = (games) => ({
     type: RECEIVE_ALL_GAMES,
-    allGames
+    games
 })
 
 const receiveGame = (game) => ({
@@ -15,7 +15,7 @@ const receiveGame = (game) => ({
 
 export const fetchAllGames = () => (dispatch) => (
     GameApiUtil.getGames()
-        .then(allGames => dispatch(receiveAllGames(allGames)))
+        .then(games => dispatch(receiveAllGames(games)))
 )
 
 export const fetchGame = (gameId) => (dispatch) => (
