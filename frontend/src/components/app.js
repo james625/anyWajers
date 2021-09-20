@@ -1,13 +1,15 @@
 import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute, } from '../util/route_util';
+import { Switch, Route } from 'react-router-dom';
 
-import Splash from './splash/splash';
+import SplashContainer from './splash/splash_container';
 
 const App = () => (
     <div>
       <Switch>
-          <AuthRoute exact path="/" component={Splash} />
+          <Route exact path="/" component={SplashContainer} />
+          <AuthRoute exact path="/login" component={SplashContainer} />
+          <AuthRoute exact path="/signup" component={SplashContainer} />
       </Switch>
     </div>
   );

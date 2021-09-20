@@ -42,8 +42,8 @@ class Form extends React.Component {
                     username: this.state.username,
                     password: this.state.password,
                     password2: this.state.password2
-                }
-                this.props.signup(user)
+                };
+                this.props.signup(user);
                 this.setState({
                     email: "",                  
                     username: "",
@@ -55,7 +55,9 @@ class Form extends React.Component {
     }
 
     render(){
-        if(this.props.currentUser){
+
+
+        if(this.props.type === 'signin'){
             return(
                 <form onSubmit={this.handleSubmit('signin')}> 
                     <label>Email
@@ -68,7 +70,7 @@ class Form extends React.Component {
                     <button>Login</button>
                 </form>
             )
-        } else {
+        } else if(this.props.type === 'signup') {
             
             return(
                 <form onSubmit={this.handleSubmit('signup')}> 
@@ -90,6 +92,8 @@ class Form extends React.Component {
                     <button>Sign up</button>
                 </form>
             )
+        } else {
+            return null;
         }
 
     }
