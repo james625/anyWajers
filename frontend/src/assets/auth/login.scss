@@ -1,0 +1,100 @@
+.login-container {
+  width: 400px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -201px;
+  margin-top: -251px;
+  border: none;
+  background-color: rgb(27, 27, 27);
+  --angle: 0deg;
+  border: 2px solid white;
+  border-image: linear-gradient(
+      var(--angle),
+      rgb(0, 181, 194),
+      rgb(26, 68, 255),
+      rgb(163, 51, 255)
+    )
+    1;
+  animation: 3s rotate linear infinite;
+  text-align: center;
+}
+
+.login-container h1 {
+  margin-top: 40px;
+  color: white;
+  font-weight: 300;
+}
+
+.login-input-container {
+  margin-top: 70px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-input {
+  position: absolute;
+  border: none;
+  width: 75%;
+  height: 30px;
+  padding: 10px;
+  background-color: rgb(27, 27, 27);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border: 1px solid rgb(60, 60, 60);
+  outline: none !important;
+  border-image: none;
+}
+
+.login-input:focus {
+  border: 1px solid rgb(27, 27, 27);
+  --angle: 0deg;
+
+  border-image: linear-gradient(
+      var(--angle),
+      rgb(0, 181, 194),
+      rgb(26, 68, 255),
+      rgb(163, 51, 255)
+    )
+    1;
+
+  animation: 3s rotate linear infinite;
+}
+
+.login-input:focus + .placeholder-one,
+.login-input:not(:focus):valid .placeholder-one,
+.login-input:not(:placeholder-shown) + .placeholder-one {
+  top: -42px;
+  left: 50px;
+  font-size: 14px;
+  opacity: 1;
+  padding: 6px;
+  background-color: rgb(27, 27, 27);
+}
+
+.login-input:focus + .placeholder-two,
+.login-input:not(:focus):valid .placeholder-two,
+.login-input:not(:placeholder-shown) + .placeholder-two {
+  top: 27px;
+  left: 50px;
+  font-size: 14px;
+  opacity: 1;
+  padding: 6px;
+  background-color: rgb(27, 27, 27);
+}
+
+.login-redirect-text {
+  position: absolute;
+  top: 200px;
+  color: white;
+}
+
+sign-up {
+  cursor: pointer;
+}
