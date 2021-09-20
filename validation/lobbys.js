@@ -18,7 +18,7 @@ module.exports = function validateLobbyInput(data) {
 
     return {
         errors,
-        isValid: Object.keys(errors).legnth === 0
+        isValid: Object.keys(errors).length === 0
     };
 
 };
