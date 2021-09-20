@@ -10,7 +10,11 @@ const GameSchema = new Schema(
     description: {
         type: String,
         required: true,
-    }
+    },
+    lobbies: [{
+        type: Schema.Types.ObjectId,
+        ref: "Lobby"
+      }]
   },
   {
     timestamps: true,
