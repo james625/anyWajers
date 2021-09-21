@@ -4,7 +4,9 @@ import Messages from "./messages";
 
 const mSTP = state => {
     return {
-        messages: Object.values(state.entities.messages)
+        messages: Object.values(state.entities.messages),
+        currentUserId: state.session.user.id,
+        name: state.session.user.username,
     }
 }
 

@@ -6,11 +6,19 @@ const passport = require('passport');
 const Message = require('../../models/Message');
 const validateMessageInput = require('../../validation/messages');
 
+// router.get('/lobby/:lobby_id', (req, res) => {
+//     Message.find({lobby: req.params.lobby_id})
+//         .then(messages => res.json(messages))
+//         .catch(err => res.status(404).json({ nomessagesfound: 'No messages found' }));
+// });
+
+
 router.get('/lobby/:lobby_id', (req, res) => {
     Message.find({lobby: req.params.lobby_id})
         .then(messages => res.json(messages))
         .catch(err => res.status(404).json({ nomessagesfound: 'No messages found' }));
 });
+
 
 router.post('/lobby/:lobby_id', 
     // passport.authenticate('jwt', { session: false }), 
@@ -23,7 +31,7 @@ router.post('/lobby/:lobby_id',
 
     const newMessage = new Message({
         body: req.body.text,
-        author: req.body.user_id,
+        author: req.body.author,
         lobby: req.params.lobby_id
     });
 

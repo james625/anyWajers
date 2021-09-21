@@ -1,9 +1,6 @@
 import React from "react";
 import { io } from "socket.io-client";
-const socket = io();
-socket.on('message', message => {
-    console.log(message)
-})
+
 
 class Messages extends React.Component {
 
@@ -11,11 +8,24 @@ class Messages extends React.Component {
         super(props)
         this.state = { input: "" }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.socket = io();
+        this.socket.on("receive-message", message => {
+            console.log("HIT")
+          
+            this.props.fetchLobbyMessages("6148fa04c199d16514780f78")
+
+            this.setState({
+                input: ""
+            })
+        })
     }
 
     componentDidMount(){
         this.props.fetchLobbyMessages("6148fa04c199d16514780f78")
+
     }
+
+    
 
     handleChange(){
         return e => {
@@ -23,25 +33,38 @@ class Messages extends React.Component {
             this.setState({ input: e.currentTarget.value })
         }
     }
-
+    
     handleSubmit(e) {
         e.preventDefault();
-        // this.props.createLobbyMessage({
-        //     text: this.state.input,
-        //     author: "61489d0b69a4306374146cdf",
-        //     lobbyId: "6148fa04c199d16514780f78"
-        // })
-        const text = this.state.input
-        socket.emit("body", text) // emit message to server
+    
+        const text = {
+            text: this.state.input,
+            author: this.props.currentUserId,
+            lobbyId: "6148fa04c199d16514780f78"
+        }
+        this.props.createLobbyMessage(text)
+
+        this.socket.emit("body", text)
     }
 
     render(){
-        if (!this.props.messages) return null
+        if (this.props.messages.length === 0) {
+            return (
+            <form onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.input} onChange={this.handleChange()}>
+                </input>
+                <button>Submit</button>
+            </form>
+            )
+        }
+
         return (
             <div>
                 <ul>
                     {this.props.messages.map( message => {
-                        return <li key={message._id}>{message.body}</li>
+                        return <li key={message._id}>
+                            {message.body}
+                            </li>
                     })}
                 </ul>
                 <form>
