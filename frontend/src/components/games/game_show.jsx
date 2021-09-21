@@ -5,17 +5,14 @@ import { LobbyItemContainer } from '../lobbies/lobby_item_container'
 
 
 class GameShow extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
+  
   componentDidMount() {
     this.props.fetchGame(this.props.match.params.gameId)
   }
 
   render() {
     const { game } = this.props
-    if (game == undefined || game.data.name == undefined) {
+    if (game === undefined || game.data.name === undefined) {
       return null
     }
 
