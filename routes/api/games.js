@@ -25,9 +25,9 @@ router.get('/:id', async(req, res) => {
    
     try {
         const game = await Game.findById(req.params.id)
-        console.log(game);
-        const lobbies = await Promise.all(game.lobbies.map(lobbyId => Lobby.findById(lobbyId)));
-        res.json({game, lobbies});
+        // console.log(game);
+        game.lobbies = await Promise.all(game.lobbies.map(lobbyId => Lobby.findById(lobbyId)));
+        res.json(game);
     }        
     catch {
         res.status(404).json({ nogamefound: 'No game' })
