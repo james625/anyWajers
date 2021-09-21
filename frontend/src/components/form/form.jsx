@@ -24,12 +24,12 @@ class Form extends React.Component {
   handleSubmit(field) {
     return (e) => {
       e.preventDefault();
-      if (field === 'signin') {
+      if (field === 'login') {
         const user = {
           email: this.state.email,
           password: this.state.password,
         };
-        this.props.login(user);
+        this.props.login(user)
 
         this.setState({
           email: '',
@@ -42,7 +42,7 @@ class Form extends React.Component {
           password: this.state.password,
           password2: this.state.password2,
         };
-        this.props.signup(user);
+        this.props.signup(user)
         this.setState({
           email: '',
           username: '',
@@ -50,13 +50,14 @@ class Form extends React.Component {
           password2: '',
         });
       }
+      this.props.closeModal()
     };
   }
 
   render() {
-    if (this.props.type === 'signin') {
+    if (this.props.formType === 'login') {
       return (
-        <form onSubmit={this.handleSubmit('signin')}>
+        <form onSubmit={this.handleSubmit('login')}>
           <div className="login-container">
             <h1>Login to get started</h1>
             <div className="login-input-container">
@@ -68,7 +69,7 @@ class Form extends React.Component {
                 placeholder=" "
                 autoFocus
               />
-              <span class="placeholder-one">Email</span>
+              <span className="placeholder-one">Email</span>
               <input
                 type="text"
                 value={this.state.password}
@@ -76,7 +77,7 @@ class Form extends React.Component {
                 className="login-input two"
                 placeholder=" "
               />
-              <span class="placeholder-two">Password</span>
+              <span className="placeholder-two">Password</span>
               <p className="login-redirect-text">
                 Don't have an account? <sign-up>Sign up</sign-up>
               </p>
@@ -85,7 +86,7 @@ class Form extends React.Component {
           </div>
         </form>
       );
-    } else if (this.props.type === 'signup') {
+    } else if (this.props.formType === 'signup') {
       return (
         <form onSubmit={this.handleSubmit('signup')}>
           <div className="signup-container">
@@ -99,7 +100,7 @@ class Form extends React.Component {
                 placeholder=" "
                 autoFocus
               />
-              <span class="placeholder-one">Email</span>
+              <span className="placeholder-one">Email</span>
               <input
                 type="text"
                 value={this.state.username}
@@ -107,7 +108,7 @@ class Form extends React.Component {
                 className="signup-input two"
                 placeholder=" "
               />
-              <span class="placeholder-two">Username</span>
+              <span className="placeholder-two">Username</span>
               <input
                 type="password"
                 value={this.state.password}
@@ -115,7 +116,7 @@ class Form extends React.Component {
                 className="signup-input three"
                 placeholder=" "
               />
-              <span class="placeholder-three">Password</span>
+              <span className="placeholder-three">Password</span>
               <input
                 type="password"
                 value={this.state.password2}
@@ -123,7 +124,7 @@ class Form extends React.Component {
                 className="signup-input four"
                 placeholder=" "
               />
-              <span class="placeholder-four">Confirm Password</span>
+              <span className="placeholder-four">Confirm Password</span>
               <button className="auth-button">Sign up</button>
             </div>
           </div>
