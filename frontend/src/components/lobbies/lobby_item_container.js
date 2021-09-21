@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchLobby } from '../../actions/game_actions';
 
-import LobbyItem from './game_show';
+import LobbyItem from './lobby_item';
 
 const mSTP = (state, ownProps) => {
     return {

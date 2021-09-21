@@ -1,7 +1,9 @@
+// need this for closing the modal
 .modal-background  {
   height: 100%;
   width: 100%;
   position: absolute;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .login-container {

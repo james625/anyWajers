@@ -50,6 +50,7 @@ class Form extends React.Component {
           password2: '',
         });
       }
+      this.props.closeModal()
     };
   }
 

@@ -6,11 +6,9 @@ import '../assets/auth/login.scss';
 
 import NavBar from './nav_bar/nav_bar'
 import ModalContainer from './modal/modal_container';
-import SplashContainer from './splash/splash_container';
+// import SplashContainer from './splash/splash_container';
 import GamesIndexContainer from './games/games_index_container';
 import GameShowContainer from './games/game_show_container';
-
-// add nav bar 
 
 const App = () => (
   <div>

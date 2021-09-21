@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { LobbyItem } from '../lobbies/lobby_item'
+import { LobbyItemContainer } from '../lobbies/lobby_item_container'
+
 // import lobbies
 
 
@@ -26,7 +26,7 @@ class GameShow extends React.Component {
         <p>{game.data.description}</p>
         {/* <ul>
             {game.data.lobbies.map(lobby => (
-              <LobbyItem lobby={lobby} key={lobby.name}/>
+              <LobbyItemContainer lobby={lobby} key={lobby.name}/>
             ))}
         </ul> */}
       </div>
