@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const { reset } = require('nodemon');
+// const { reset } = require('nodemon');
 const passport = require('passport');
 const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
