@@ -35,15 +35,15 @@ router.get("/", (req, res) => {
 
 
 
-router.get("/:lobby_id", (req, res) => {
-    Lobby.findById(req.params.lobby_id)
-        .then(lobby =>{
-            Promise.all(lobby.players.map(id => User.findById(id)))
-            .then(players => res.json({players, lobby}))
-            // res.json(lobby)
-        })
-        .catch(err  => res.status(404).json({nolobbyfound: "No Lobby Found"}));
-})
+// router.get("/:lobby_id", (req, res) => {
+//     Lobby.findById(req.params.lobby_id)
+//         .then(lobby =>{
+//             Promise.all(lobby.players.map(id => User.findById(id)))
+//             .then(players => res.json({players, lobby}))
+//             // res.json(lobby)
+//         })
+//         .catch(err  => res.status(404).json({nolobbyfound: "No Lobby Found"}));
+// })
 
 router.get("/:lobby_id", async(req, res) => {
 
