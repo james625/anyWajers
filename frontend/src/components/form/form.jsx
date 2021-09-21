@@ -2,6 +2,7 @@ import React from 'react';
 
 class Form extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     this.state = {
       email: '',
@@ -24,7 +25,7 @@ class Form extends React.Component {
   handleSubmit(field) {
     return (e) => {
       e.preventDefault();
-      if (field === 'signin') {
+      if (field === 'login') {
         const user = {
           email: this.state.email,
           password: this.state.password,
@@ -35,6 +36,7 @@ class Form extends React.Component {
           email: '',
           password: '',
         });
+        this.props.processForm(user).then(this.props.closeModal)
       } else if (field === 'signup') {
         const user = {
           email: this.state.email,
@@ -49,14 +51,16 @@ class Form extends React.Component {
           password: '',
           password2: '',
         });
+        this.props.processForm(user).then(this.props.closeModal)
       }
     };
   }
 
   render() {
-    if (this.props.type === 'signin') {
+    if (this.props.formType === 'login') {
+      debugger
       return (
-        <form onSubmit={this.handleSubmit('signin')}>
+        <form onSubmit={this.handleSubmit('login')}>
           <div className="login-container">
             <h1>Login to get started</h1>
             <div className="login-input-container">
@@ -85,7 +89,8 @@ class Form extends React.Component {
           </div>
         </form>
       );
-    } else if (this.props.type === 'signup') {
+    } else if (this.props.formType === 'signup') {
+      debugger
       return (
         <form onSubmit={this.handleSubmit('signup')}>
           <div className="signup-container">
