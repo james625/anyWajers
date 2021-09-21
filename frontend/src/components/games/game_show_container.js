@@ -7,6 +7,7 @@ import GameShow from './game_show';
 const mSTP = (state, ownProps) => {
     return {
         game: state.entities.games[ownProps.match.params.gameId],
+        lobbies: state.entities.lobbies
     }
 }
 
