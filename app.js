@@ -21,9 +21,6 @@ app.get("/", (req, res) => res.send("Hello James"));
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
 
-
-
-
 app.use("/api/users", users);
 app.use("/api/games", games);
 app.use("/api/lobbys", lobbys);
@@ -37,8 +34,6 @@ io.on('connection', socket => {
     io.emit('receive-message', text) 
   })
 })
-
-
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`Server is running on port ${port}`));

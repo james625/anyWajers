@@ -25,8 +25,6 @@ class Messages extends React.Component {
 
     }
 
-    
-
     handleChange(){
         return e => {
             e.preventDefault();
