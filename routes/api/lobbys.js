@@ -7,6 +7,7 @@ const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
 const Game = require('../../models/Game')
 const validateLobbyInput = require('../../validation/lobbys')
+const Game = require('../../models/Game')
 
 
 router.get("/", (req, res) => {

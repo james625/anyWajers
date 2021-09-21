@@ -3,7 +3,7 @@ import { fetchAllGames } from '../../actions/game_actions';
 import GamesIndex from './games_index';
 
 const mSTP = state => {
-    console.log(state)
+    // console.log(state)
     return {
         games: Object.values(state.entities.games),
     }

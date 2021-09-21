@@ -33,7 +33,6 @@ router.get('/:id', async(req, res) => {
             return lobby;
              
         }))
-        // console.log(game);
         res.json(game);
     }        
     catch {

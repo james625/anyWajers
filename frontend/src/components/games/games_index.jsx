@@ -14,7 +14,7 @@ class GamesIndex extends React.Component {
                 <h2>Games</h2>
                 <ul>
                     {games.map(game => (
-                        <GameItem game={game} key={game.name}/>
+                        <GameItem game={game} key={game._id}/>
                     ))}
                 </ul>
             </div>

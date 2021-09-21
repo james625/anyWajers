@@ -1,6 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 
+// fix logout username/ email 
+
 class AuthButtons extends React.Component {
   constructor(props) {
     super(props)
@@ -16,12 +18,15 @@ class AuthButtons extends React.Component {
   }
 
   render() {
+
     const signedIn = () => {
       return (
         <div>
           <button onClick={this.onClick}>
             LOGOUT
           </button>
+          <h2>{this.props.currentUser.email}</h2>
+          <h2>{this.props.currentUser.username}</h2>
         </div>
       )
     }
@@ -41,7 +46,7 @@ class AuthButtons extends React.Component {
       )
     }
 
-    return this.props.currentUser ? signedIn() : noUser()
+    return (this.props.currentUser != undefined) && (this.props.currentUser.id != undefined) ? signedIn() : noUser()
   }
 }
 
