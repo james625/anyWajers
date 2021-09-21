@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 import '../assets/auth/signup.scss';
 import '../assets/auth/login.scss';
