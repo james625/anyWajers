@@ -11,10 +11,8 @@ class GameShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.game && prevProps.game) {
-      if (prevProps.game.data !== this.props.game.data) {
-        this.props.fetchGame(this.props.match.params.gameId)
-      }
+    if (prevProps.lobbies !== this.props.lobbies) {
+      this.props.fetchGame(this.props.match.params.gameId)
     }
   }
 
