@@ -68,7 +68,7 @@ class Form extends React.Component {
                 placeholder=" "
                 autoFocus
               />
-              <span class="placeholder-one">Email</span>
+              <span className="placeholder-one">Email</span>
               <input
                 type="text"
                 value={this.state.password}
@@ -76,7 +76,7 @@ class Form extends React.Component {
                 className="login-input two"
                 placeholder=" "
               />
-              <span class="placeholder-two">Password</span>
+              <span className="placeholder-two">Password</span>
               <p className="login-redirect-text">
                 Don't have an account? <sign-up>Sign up</sign-up>
               </p>
@@ -99,7 +99,7 @@ class Form extends React.Component {
                 placeholder=" "
                 autoFocus
               />
-              <span class="placeholder-one">Email</span>
+              <span className="placeholder-one">Email</span>
               <input
                 type="text"
                 value={this.state.username}
@@ -107,7 +107,7 @@ class Form extends React.Component {
                 className="signup-input two"
                 placeholder=" "
               />
-              <span class="placeholder-two">Username</span>
+              <span className="placeholder-two">Username</span>
               <input
                 type="password"
                 value={this.state.password}
@@ -115,7 +115,7 @@ class Form extends React.Component {
                 className="signup-input three"
                 placeholder=" "
               />
-              <span class="placeholder-three">Password</span>
+              <span className="placeholder-three">Password</span>
               <input
                 type="password"
                 value={this.state.password2}
@@ -123,7 +123,7 @@ class Form extends React.Component {
                 className="signup-input four"
                 placeholder=" "
               />
-              <span class="placeholder-four">Confirm Password</span>
+              <span className="placeholder-four">Confirm Password</span>
               <button className="auth-button">Sign up</button>
             </div>
           </div>
