@@ -1,6 +1,6 @@
 import { REMOVE_LOBBY, RECEIVE_LOBBY, RECEIVE_ALL_LOBBIES } from "../actions/lobby_actions";
 
-const lobbysReducer =(state = [], action) => {
+const lobbysReducer =(state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign( {} , state );
 
