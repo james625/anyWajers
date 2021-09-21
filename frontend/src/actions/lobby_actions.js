@@ -1,4 +1,4 @@
-import lobbyApiUtil from '../util/lobby_api_util'
+import * as lobbyApiUtil from '../util/lobby_api_util'
 
 export const RECEIVE_ALL_LOBBIES = "RECEIVE_ALL_LOBBIES"
 export const RECEIVE_LOBBY = "RECEIVE_LOBBY"
