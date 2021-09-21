@@ -24,12 +24,12 @@ class Form extends React.Component {
   handleSubmit(field) {
     return (e) => {
       e.preventDefault();
-      if (field === 'signin') {
+      if (field === 'login') {
         const user = {
           email: this.state.email,
           password: this.state.password,
         };
-        this.props.login(user);
+        this.props.login(user)
 
         this.setState({
           email: '',
@@ -42,7 +42,7 @@ class Form extends React.Component {
           password: this.state.password,
           password2: this.state.password2,
         };
-        this.props.signup(user);
+        this.props.signup(user)
         this.setState({
           email: '',
           username: '',
@@ -50,13 +50,14 @@ class Form extends React.Component {
           password2: '',
         });
       }
+      this.props.closeModal()
     };
   }
 
   render() {
-    if (this.props.type === 'signin') {
+    if (this.props.formType === 'login') {
       return (
-        <form onSubmit={this.handleSubmit('signin')}>
+        <form onSubmit={this.handleSubmit('login')}>
           <div className="login-container">
             <h1>Login to get started</h1>
             <div className="login-input-container">
@@ -85,7 +86,7 @@ class Form extends React.Component {
           </div>
         </form>
       );
-    } else if (this.props.type === 'signup') {
+    } else if (this.props.formType === 'signup') {
       return (
         <form onSubmit={this.handleSubmit('signup')}>
           <div className="signup-container">
