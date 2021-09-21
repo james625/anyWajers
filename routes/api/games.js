@@ -25,7 +25,7 @@ router.get('/:id', async(req, res) => {
    
     try {
         const game = await Game.findById(req.params.id)
-        console.log(game);
+        // console.log(game);
         game.lobbies = await Promise.all(game.lobbies.map(lobbyId => Lobby.findById(lobbyId)));
         res.json(game);
     }        
