@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchLobby } from '../../actions/game_actions';
+import { fetchLobby } from '../../actions/lobby_actions';
 
 import LobbyItem from './lobby_item';
 
