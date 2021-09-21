@@ -10,7 +10,7 @@ const receiveAllLobbies = lobbies => ({
 })
 
 const receiveLobby = lobby => ({
-    type: RECEIVE_ALL_LOBBIES,
+    type: RECEIVE_ALL_LOBBY,
     lobby
 })
 
