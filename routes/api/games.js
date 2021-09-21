@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Game = require('../../models/Game');
 const Lobby = require('../../models/Lobby');
+const User = require('../../models/User');
 
 router.get('/', (req, res) => {
   Game.find()
@@ -23,7 +24,14 @@ router.get('/:id', async (req, res) => {
   try {
     const game = await Game.findById(req.params.id);
     game.lobbies = await Promise.all(
-      game.lobbies.map((lobbyId) => Lobby.findById(lobbyId))
+      game.lobbies.map(async (lobbyId) => {
+        const lobby = await Lobby.findById(lobbyId);
+        const banana = await Promise.all(
+          lobby.players.map((id) => User.findById(id))
+        );
+        console.log(banana);
+        return lobby;
+      })
     );
     res.json(game);
   } catch {
