@@ -6,13 +6,11 @@ const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
 
 router.get('/', (req, res) => {
-    Game.find()
-        .sort({ date: -1 })
-        .then(games => res.json(games))
-        .catch(err => res.status(404).json({ nogamesfound: 'No games found' }));
-});     
-
-
+  Game.find()
+    .sort({ date: -1 })
+    .then((games) => res.json(games))
+    .catch((err) => res.status(404).json({ nogamesfound: 'No games found' }));
+});
 
 // router.get('/:id', (req, res) => {
 //     Game.findById(req.params.id)
