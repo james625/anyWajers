@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from '../form/form'
+
 class Splash extends React.Component {   
     constructor(props){
         super(props)
@@ -26,7 +27,7 @@ class Splash extends React.Component {
         return(
             <div>
                 anyWajers?!?!?!?!??!?!?!?!?!?!?!?!?!??!?!?
-                <button onClick={this.handleClick('signin')}>Login</button>
+                {/* <button onClick={this.handleClick('signin')}>Login</button>
                 <button onClick={this.handleClick('signup')}>Sign up</button>
                 <button onClick={this.handleClick('logout')}>Logout </button>
                 <Form 
@@ -34,7 +35,7 @@ class Splash extends React.Component {
                     signup={this.props.signup}
                     currentUser={this.props.currentUser}
                     type={this.state.type}
-                />
+                /> */}
                 
             </div>
         )

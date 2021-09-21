@@ -1,5 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { LobbyItemContainer } from '../lobbies/lobby_item_container'
+
+// import lobbies
+
 
 class GameShow extends React.Component {
   constructor(props) {
@@ -21,6 +24,11 @@ class GameShow extends React.Component {
         <h1>{game.data.name}</h1>
         <br />
         <p>{game.data.description}</p>
+        {/* <ul>
+            {game.data.lobbies.map(lobby => (
+              <LobbyItemContainer lobby={lobby} key={lobby.name}/>
+            ))}
+        </ul> */}
       </div>
     )
   }
