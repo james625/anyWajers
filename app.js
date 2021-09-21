@@ -10,7 +10,15 @@ const passport = require('passport');
 const http = require("http");
 const server = http.createServer(app);
 const socketio = require('socket.io');
-const io = socketio(server)
+const io = socketio(server);
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 mongoose
   .connect(db, { useNewUrlParser: true })
