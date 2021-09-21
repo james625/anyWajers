@@ -1,24 +1,19 @@
+.god-container {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 50%;
+  margin-left: -370px;
+  margin-top: -250px;
+}
+
 .login-container {
   width: 400px;
   height: 500px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -201px;
-  margin-top: -251px;
-  border: none;
   background-color: rgb(27, 27, 27);
-  --angle: 0deg;
-  border: 2px solid white;
-  border-image: linear-gradient(
-      var(--angle),
-      rgb(0, 181, 194),
-      rgb(26, 68, 255),
-      rgb(163, 51, 255)
-    )
-    1;
-  animation: 3s rotate linear infinite;
   text-align: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .login-container h1 {
@@ -97,4 +92,23 @@
 
 sign-up {
   cursor: pointer;
+}
+
+.splash-art {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  margin-right: -60px;
+  background-image: url('../images/splash_blocks.svg');
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.splash-art-dark {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  background-image: url('../images/splash_blocks_dark.svg');
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
