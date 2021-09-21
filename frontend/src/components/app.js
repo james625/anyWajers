@@ -18,8 +18,8 @@ const App = () => (
     <NavBar />
     <Switch>
       <Route exact path="/" component={SplashContainer} />
-      <AuthRoute exact path="/login" component={SplashContainer} />
-      <AuthRoute exact path="/signup" component={SplashContainer} />
+      {/* <AuthRoute exact path="/login" component={SplashContainer} />
+      <AuthRoute exact path="/signup" component={SplashContainer} /> */}
       <Route exact path="/games" component={GamesIndexContainer} />
       <Route exact path="/games/:gameId" component={GameShowContainer} />
     </Switch>

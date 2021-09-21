@@ -2,7 +2,6 @@ import React from 'react';
 
 class Form extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     this.state = {
       email: '',
@@ -30,13 +29,12 @@ class Form extends React.Component {
           email: this.state.email,
           password: this.state.password,
         };
-        this.props.login(user);
+        this.props.login(user)
 
         this.setState({
           email: '',
           password: '',
         });
-        this.props.processForm(user).then(this.props.closeModal)
       } else if (field === 'signup') {
         const user = {
           email: this.state.email,
@@ -44,21 +42,19 @@ class Form extends React.Component {
           password: this.state.password,
           password2: this.state.password2,
         };
-        this.props.signup(user);
+        this.props.signup(user)
         this.setState({
           email: '',
           username: '',
           password: '',
           password2: '',
         });
-        this.props.processForm(user).then(this.props.closeModal)
       }
     };
   }
 
   render() {
     if (this.props.formType === 'login') {
-      debugger
       return (
         <form onSubmit={this.handleSubmit('login')}>
           <div className="login-container">
@@ -90,7 +86,6 @@ class Form extends React.Component {
         </form>
       );
     } else if (this.props.formType === 'signup') {
-      debugger
       return (
         <form onSubmit={this.handleSubmit('signup')}>
           <div className="signup-container">
