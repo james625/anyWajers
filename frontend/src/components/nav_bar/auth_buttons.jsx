@@ -1,48 +1,42 @@
-import React from 'react'
-import { withRouter } from 'react-router'
+import React from 'react';
+import { withRouter } from 'react-router';
 
 class AuthButtons extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       open: false,
-    }
-    this.onClick = this.onClick.bind(this)
+    };
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick(e) {
-    e.preventDefault()
-    this.props.logout()
+    e.preventDefault();
+    this.props.logout();
   }
 
   render() {
     const signedIn = () => {
       return (
         <div>
-          <button onClick={this.onClick}>
-            LOGOUT
-          </button>
+          <button onClick={this.onClick}>Logout</button>
         </div>
-      )
-    }
+      );
+    };
 
     const noUser = () => {
       return (
         <div>
-          <div>
-            <button onClick={() => this.props.openModal('login')}>
-              Login
-            </button>
-            <button onClick={() => this.props.openModal('signup')}>
-              Sign up
-            </button>
-          </div>
+          <button onClick={() => this.props.openModal('login')}>Login</button>
+          <button onClick={() => this.props.openModal('signup')}>
+            Sign up
+          </button>
         </div>
-      )
-    }
+      );
+    };
 
-    return this.props.currentUser ? signedIn() : noUser()
+    return this.props.currentUser ? signedIn() : noUser();
   }
 }
 
-export default withRouter(AuthButtons)
+export default withRouter(AuthButtons);

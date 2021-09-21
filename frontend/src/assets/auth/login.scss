@@ -1,13 +1,15 @@
-// need this for closing the modal
 .modal-background {
   height: 100%;
   width: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
 }
 
-.login-container {
-  width: 400px;
+.god-container {
+  width: 740px;
   height: 500px;
   position: absolute;
   display: flex;
@@ -15,6 +17,7 @@
   top: 50%;
   margin-left: -370px;
   margin-top: -250px;
+  z-index: 4;
 }
 
 .login-container {
@@ -109,6 +112,7 @@ sign-up {
   height: 500px;
   position: relative;
   margin-right: -60px;
+  background-color: rgb(27, 27, 27);
   background-image: url('../images/splash_blocks.svg');
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -118,6 +122,7 @@ sign-up {
   position: absolute;
   width: 400px;
   height: 500px;
+
   background-image: url('../images/splash_blocks_dark.svg');
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
