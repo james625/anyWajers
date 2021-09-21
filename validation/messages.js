@@ -7,7 +7,7 @@ module.exports = function validateMessageInput(data) {
   data.text = validText(data.text) ? data.text : '';
 
   if (!Validator.isLength(data.text, { min: 1, max: 140 })) {
-    errors.text = 'Tweet must be between 1 and 140 characters';
+    errors.text = 'Message must be between 1 and 140 characters';
   }
 
   if (Validator.isEmpty(data.text)) {
@@ -18,4 +18,5 @@ module.exports = function validateMessageInput(data) {
     errors,
     isValid: Object.keys(errors).length === 0
   };
+  
 };

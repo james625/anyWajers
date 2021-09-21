@@ -12,7 +12,9 @@ router.get('/lobby/:lobby_id', (req, res) => {
         .catch(err => res.status(404).json({ nomessagesfound: 'No messages found' }));
 });
 
-router.post('/lobby/:lobby_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/lobby/:lobby_id', 
+    // passport.authenticate('jwt', { session: false }), 
+    (req, res) => {
     const { errors, isValid } = validateMessageInput(req.body);
 
     if (!isValid) {
