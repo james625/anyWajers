@@ -3,8 +3,9 @@ import { AuthRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 import '../assets/auth/signup.scss';
 import '../assets/auth/login.scss';
+import '../assets/splash/splash.scss';
 
-import NavBar from './nav_bar/nav_bar'
+import NavBar from './nav_bar/nav_bar';
 import ModalContainer from './modal/modal_container';
 // import SplashContainer from './splash/splash_container';
 import GamesIndexContainer from './games/games_index_container';
