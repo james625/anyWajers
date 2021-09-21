@@ -8,6 +8,8 @@ import SplashContainer from './splash/splash_container';
 import GamesIndexContainer from './games/games_index_container';
 import GameShowContainer from './games/game_show_container';
 
+// add nav bar 
+
 const App = () => (
   <div>
     <Switch>
