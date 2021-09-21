@@ -6,6 +6,7 @@ const passport = require('passport');
 const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
 const validateLobbyInput = require('../../validation/lobbys')
+const Game = require('../../models/Game')
 
 
 router.get("/", (req, res) => {
@@ -59,7 +60,7 @@ router.get("/:lobby_id", async(req, res) => {
 })
 
 
-router.post("/", passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post("/", passport.authenticate('jwt', { session: false }), async(req, res) => {
       const { errors, isValid } = validateLobbyInput(req.body);
   
       if (!isValid) {
@@ -75,10 +76,16 @@ router.post("/", passport.authenticate('jwt', { session: false }), (req, res) =>
         playerCount: req.body.playerCount,
         players: [req.body.owner]
     })
-    newLobby.populate('owner')
 
+    const game = await Game.findById(req.body.game);
+    console.log(game.lobbies);
+    
     newLobby.save()
-        .then(lobby => res.json(lobby))
+    .then(lobby =>{
+            game.lobbies.push(newLobby);
+            game.save()
+            res.json(lobby)
+        })
         .catch(err => res.json(err));
 })
 
