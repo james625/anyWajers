@@ -28,8 +28,8 @@ class Modal extends React.Component {
     }
 
     return (
-      <div onClick={this.props.closeModal}>
-        <div className='modal' onClick={this.stopProp}>
+      <div className='modal-background' onClick={this.props.closeModal}>
+        <div onClick={this.stopProp}>
           {modal}
         </div>
       </div>
