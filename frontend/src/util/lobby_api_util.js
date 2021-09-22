@@ -13,5 +13,13 @@ export const createLobby = lobby => {
 }
 
 export const deleteLobby = lobby_id => {
-    return axios.post(`api/lobbys/${lobby_id}`);
+    return axios.delete(`api/lobbys/${lobby_id}`);
+}
+
+export const editLobby = lobby => {
+    return axios.put(`api/lobbys/${lobby.id}`, lobby)
+}
+
+export const addPlayer = lobby => {
+    return axios.put(`api/lobbys/${lobby.id}/add`, lobby )
 }

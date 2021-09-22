@@ -59,21 +59,21 @@ class GamesIndex extends React.Component {
             </ul>
           </div>
           <div className="game-box-container">
-            <img className="game-box-item" src={amongus}></img>
-            <img className="game-box-item" src={apexlegends}></img>
-            <img className="game-box-item" src={csgo}></img>
-            <img className="game-box-item" src={warzone}></img>
-            <img className="game-box-item" src={dbd}></img>
-            <img className="game-box-item" src={fortnite}></img>
+            <img className="game-box-item" src={amongus} alt=""></img>
+            <img className="game-box-item" src={apexlegends} alt=""></img>
+            <img className="game-box-item" src={csgo} alt=""></img>
+            <img className="game-box-item" src={warzone} alt=""></img>
+            <img className="game-box-item" src={dbd} alt=""></img>
+            <img className="game-box-item" src={fortnite} alt=""></img>
             <img className="game-box-item" src={league}></img>
-            <img className="game-box-item" src={minecraft}></img>
-            <img className="game-box-item" src={overwatch}></img>
-            <img className="game-box-item" src={pubg}></img>
-            <img className="game-box-item" src={siege}></img>
-            <img className="game-box-item" src={roblox}></img>
-            <img className="game-box-item" src={rocketleague}></img>
-            <img className="game-box-item" src={sea}></img>
-            <img className="game-box-item" src={valorant}></img>
+            <img className="game-box-item" src={minecraft} alt=""></img>
+            <img className="game-box-item" src={overwatch} alt=""></img>
+            <img className="game-box-item" src={pubg} alt=""></img>
+            <img className="game-box-item" src={siege} alt=""></img>
+            <img className="game-box-item" src={roblox} alt=""></img>
+            <img className="game-box-item" src={rocketleague} alt=""></img>
+            <img className="game-box-item" src={sea} alt=""></img>
+            <img className="game-box-item" src={valorant} alt=""></img>
           </div>
         </div>
       </div>
