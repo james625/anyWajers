@@ -9,10 +9,11 @@ const receiveAllLobbies = lobbies => ({
     lobbies
 })
 
-const receiveLobby = lobby => ({
+const receiveLobby = lobby => {
+    return{
     type: RECEIVE_LOBBY,
     lobby
-})
+}}
 
 const removeLobby = lobby => ({
     type: REMOVE_LOBBY,
@@ -38,4 +39,14 @@ export const createLobby = (lobby) => dispatch => (
 export const deleteLobby = lobby_id => dispatch => (
     lobbyApiUtil.deleteLobby(lobby_id)
         .then(lobby => dispatch(removeLobby(lobby)))
+)
+
+export const addPlayer = lobby => dispatch => (
+    lobbyApiUtil.addPlayer(lobby)
+        .then(lobby => dispatch(receiveLobby(lobby)))
+)
+
+export const editLobby = lobby => dispatch => (
+    lobbyApiUtil.editLobby(lobby)
+        .then(lobby => dispatch(receiveLobby(lobby)))
 )

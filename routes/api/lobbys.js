@@ -23,6 +23,7 @@ router.get("/:lobby_id", async(req, res) => {
                                                                     path: 'players',
                                                                     model: 'User'
                                                                 })
+        console.log(lobby);
         res.json(lobby)
     }
     catch {
@@ -61,17 +62,40 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         .catch(err => res.json(err));
 })
 
-router.put("/:lobbyId", async(req, res) => {
+router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(req, res) => {
+    const { errors, isValid } = validateLobbyInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({errors});
+    }
+    
+    await Lobby.updateOne({_id: req.params.lobbyId}, req.body);
+    
     const lobby = await Lobby.findById(req.params.lobbyId);
-    if(lobby.players.length >= lobby.playerCount) res.json({full: "Lobby is full!"})
-    lobby.players.push(req.body.playerId)
-    lobby.save()
     res.json(lobby)
 })
 
-router.delete("/:lobby_id", passport.authenticate('jwt', { session: false }), (req, res) => {
-    Lobby.deleteOne({"_id": req.params.lobby_id})
-    .then(lobby => res.json(lobby))
+router.put("/:lobbyId/add", async (req, res) => {
+    const lobby = await Lobby.findById(req.params.lobbyId);
+    console.log(req.body)
+    const user = await User.findById(req.body.playerId)
+    console.log(user);
+    if(!user) return res.json({nouser: "User does not exist!"})
+
+    if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
+
+    lobby.players.push(req.body.playerId)
+
+    lobby.save()
+
+    res.json(lobby)
+})
+
+router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
+    Lobby.deleteOne({"_id": req.params.lobbyId})
+    .then(lobby => {
+        console.log(lobby);
+        res.json(lobby)
+    })
 })
 
 module.exports = router;
