@@ -4,53 +4,26 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
-const Game = require('../../models/Game')
 const validateLobbyInput = require('../../validation/lobbys')
 
 
 router.get("/", (req, res) => {
-    Lobby.find()
+    Lobby.find().populate({
+                            path: 'players',
+                            model: 'User' 
+    })
         .then(lobbys => res.json(lobbys))
         .catch(errs => res.status(404).json({nonefound: 'No lobbys found'}))
 })
 
-
-// router.get("/", async(req, res) => {
-//     try {
-//         const lobbies = await Lobby.find()
-//         lobbies.map(async(lobby) => {
-//             const players = await Promise.all(lobby.players.map(id => User.findById(id)))
-//             // console.log(lobby.players);
-//             // lobby.players = players
-//             // console.log(players);
-//             return players
-//         }); 
-//         // console.log(lobbies);
-//         res.json(lobbies)
-//     } 
-//     catch {
-//         res.status(404).json({nolobbyfound: "No Lobby Found"});
-//     }
-// })
-
-
-
-// router.get("/:lobby_id", (req, res) => {
-//     Lobby.findById(req.params.lobby_id)
-//         .then(lobby =>{
-//             Promise.all(lobby.players.map(id => User.findById(id)))
-//             .then(players => res.json({players, lobby}))
-//             // res.json(lobby)
-//         })
-//         .catch(err  => res.status(404).json({nolobbyfound: "No Lobby Found"}));
-// })
-
 router.get("/:lobby_id", async(req, res) => {
 
     try { 
-        const lobby = await Lobby.findById(req.params.lobby_id)
-        const players = await Promise.all(lobby.players.map(id => User.findById(id)))
-        res.json({lobby, players})
+        const lobby = await Lobby.findById(req.params.lobby_id).populate({
+                                                                    path: 'players',
+                                                                    model: 'User'
+                                                                })
+        res.json(lobby)
     }
     catch {
         res.status(404).json({nolobbyfound: "No Lobby Found"})
