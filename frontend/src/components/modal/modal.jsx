@@ -2,6 +2,7 @@ import React from 'react';
 import LoginContainer from '../form/login_container';
 import SignupContainer from '../form/signup_container';
 import LobbyCreateContainer from '../lobbies/lobby_create_container';
+import LobbyEditContainer from '../lobbies/lobby_edit_container'
 
 class Modal extends React.Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class Modal extends React.Component {
     if (!this.props.modal) {
       return null
     }
-    console.log(this.props.modal)
     let modal = null
     switch (this.props.modal) {
       case 'signup':
@@ -34,6 +34,9 @@ class Modal extends React.Component {
         break
       case 'create':
         modal = <LobbyCreateContainer />
+        break
+      case 'edit':
+        modal = <LobbyEditContainer />
         break
       default:
         return null
