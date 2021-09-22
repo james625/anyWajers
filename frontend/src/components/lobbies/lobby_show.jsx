@@ -1,4 +1,5 @@
 import React from 'react'
+import MessageContainer from "../messages/messages_container"
 
 class LobbyShow extends React.Component {
   constructor(props) {
@@ -57,6 +58,8 @@ class LobbyShow extends React.Component {
             </li>
           ))}
         </ul>
+
+        <MessageContainer />
       </div>
     )
   }

@@ -34,9 +34,12 @@ class GameShow extends React.Component {
         </button>
 
         <ul>
-          {game.data.lobbies.map((lobby) => (
-            <LobbyItemContainer lobby={lobby} key={lobby.name} />
-          ))}
+          {game.data.lobbies.map((lobby) => {
+            debugger
+            if(lobby.players.length < lobby.playerCount){
+              return <LobbyItemContainer lobby={lobby} key={lobby.name} />
+            } 
+          })}
         </ul>
       </div>
     )

@@ -52,14 +52,19 @@ class Messages extends React.Component {
             </form>
             )
         }
-
         return (
             <div>
-                <ul>
+                <ul className="messages-ul">
                     {this.props.messages.map( message => {
+                        debugger
                         return <li key={message._id}>
-                            {message.body}
-                            </li>
+                                    <div> 
+                                        {message.author.username}
+                                    </div>
+                                    <div> 
+                                        {message.body}
+                                    </div>
+                                </li>
                     })}
                 </ul>
                 <form>
