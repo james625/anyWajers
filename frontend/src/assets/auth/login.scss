@@ -122,8 +122,29 @@ sign-up {
   position: absolute;
   width: 400px;
   height: 500px;
-
   background-image: url('../images/splash_blocks_dark.svg');
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+.errors-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.errors {
+  text-align: start;
+  margin: 0;
+  transition: 0.2s;
+  padding: 10px;
+  width: auto;
+  color: white;
+  font-size: 20px;
+  font-weight: lighter;
+  background-color: rgba(39, 39, 39, 0.7);
+  border-bottom-left-radius: 10px;
 }

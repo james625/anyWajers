@@ -21,9 +21,12 @@ class AuthButtons extends React.Component {
     const signedIn = () => {
       return (
         <div>
-          <button onClick={this.onClick}>Logout</button>
-          <h2>{this.props.currentUser.email}</h2>
-          <h2>{this.props.currentUser.username}</h2>
+          <button className="nav-auth-button" onClick={this.onClick}>
+            Logout
+          </button>
+          <button className="username">
+            {this.props.currentUser.username}
+          </button>
         </div>
       );
     };
@@ -31,8 +34,16 @@ class AuthButtons extends React.Component {
     const noUser = () => {
       return (
         <div>
-          <button onClick={() => this.props.openModal('login')}>Login</button>
-          <button onClick={() => this.props.openModal('signup')}>
+          <button
+            className="nav-auth-button"
+            onClick={() => this.props.openModal('login')}
+          >
+            Login
+          </button>
+          <button
+            className="nav-auth-button"
+            onClick={() => this.props.openModal('signup')}
+          >
             Sign up
           </button>
         </div>

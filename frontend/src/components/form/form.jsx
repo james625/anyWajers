@@ -66,12 +66,17 @@ class Form extends React.Component {
         <form onSubmit={this.handleSubmit('login')}>
           <div className="god-container">
             <div className="splash-art"></div>
-            <div className="splash-art-dark"></div>
+            <div className="splash-art-dark">
+              <div className="errors-container">
+                {this.props.errors.map((error) => {
+                  return <p className="errors">{error}</p>;
+                })}
+              </div>
+              ;
+            </div>
             <div className="login-container">
               <h1>Login to get started</h1>
-              {this.props.errors.map( error => {
-                return <li>{error}</li>
-              })}
+
               <div className="login-input-container">
                 <input
                   type="text"
@@ -80,7 +85,7 @@ class Form extends React.Component {
                   className="login-input one"
                   placeholder=" "
                   autoFocus
-                /> 
+                />
                 <span className="placeholder-one">Email</span>
                 <input
                   type="password"
@@ -107,9 +112,11 @@ class Form extends React.Component {
             <div className="splash-art-dark"></div>
             <div className="signup-container">
               <h1>Become a Wajer!</h1>
-              {this.props.errors.map( error => {
-                return <li>{error}</li>
-              })}
+              <div className="errors-container">
+                {this.props.errors.map((error) => {
+                  return <p className="errors">{error}</p>;
+                })}
+              </div>
               <div className="signup-input-container">
                 <input
                   type="text"
@@ -118,7 +125,7 @@ class Form extends React.Component {
                   className="signup-input one"
                   placeholder=" "
                   autoFocus
-                /> 
+                />
                 <span className="placeholder-one">Email</span>
                 <input
                   type="text"

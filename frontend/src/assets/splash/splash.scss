@@ -40,7 +40,19 @@ video {
   gap: 20px;
 }
 
-.header-content-container button {
+.username {
+  transition: 0.2s;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 10px 20px;
+  margin-right: 30px;
+  background-color: transparent;
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-auth-button {
   transition: 0.2s;
   color: white;
   font-size: 18px;
@@ -53,7 +65,7 @@ video {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header-content-container button:hover {
+.nav-auth-button:hover {
   transition: 0.2s;
   transform: scale(1.1);
   color: white;
