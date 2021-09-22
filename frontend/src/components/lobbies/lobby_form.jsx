@@ -33,15 +33,6 @@ class LobbyForm extends React.Component {
       players: this.state.players,
     }
     this.props.createLobby(lobby).then(console.log(this.state))
-    // this.navToLobby();
-    // this.setState({
-    //   game: this.props.currentGameId,
-    //   name: '',
-    //   owner: this.props.currentUser.id,
-    //   description: '',
-    //   playerCount: 0,
-    //   players: [],
-    // })
     this.props.closeModal()
   }
 
