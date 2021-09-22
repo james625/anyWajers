@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 class LobbyItem extends React.Component {
   constructor(props) {
@@ -19,6 +18,7 @@ class LobbyItem extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
     this.handleJoin = this.handleJoin.bind(this)
+    this.navToLobby = this.navToLobby.bind(this)
   }
 
   handleClick(e){
@@ -31,11 +31,16 @@ class LobbyItem extends React.Component {
   handleDeleteClick(e){
     e.preventDefault();
     this.props.deleteLobby(this.lobby._id)
-  
+  }
+
+  navToLobby() {
+    const url = `/lobby/${this.lobby._id}`
+    this.props.history.push(url);
   }
 
   handleJoin(){
     this.props.addPlayer({id: this.props.lobby._id, playerId: this.props.currentUserId})
+    this.navToLobby()
   }
 
   handleSubmit(e) {

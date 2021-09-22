@@ -4,7 +4,8 @@ import { fetchLobby } from '../../actions/lobby_actions';
 import LobbyShow from './lobby_show';
 
 const mSTP = (state, ownProps) => {
-    // console.log(state.entities.lobbies[ownProps.match.params.lobbyId])
+    console.log(ownProps)
+    // console.log(state.entities)
     return {
         lobby: state.entities.lobbies[ownProps.match.params.lobbyId]
     }
