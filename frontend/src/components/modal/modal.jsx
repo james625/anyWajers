@@ -16,7 +16,6 @@ class Modal extends React.Component {
     if (!this.props.modal) {
       return null
     }
-    console.log(this.props.modal)
     let modal = null
     switch (this.props.modal) {
       case 'signup':

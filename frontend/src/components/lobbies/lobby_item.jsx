@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class LobbyItem extends React.Component {
   constructor(props) {
@@ -7,12 +8,13 @@ class LobbyItem extends React.Component {
   }
 
   render() {
+    console.log(this.lobby._id)
     return (
       <li>
         <div>
           <h4>{this.lobby.name}</h4>
           <p>{this.lobby.description}</p>
-          <button>Join</button>
+          <button><Link to={`/lobby/${this.lobby._id}`}>Join</Link></button>
         </div>
       </li>
     )
