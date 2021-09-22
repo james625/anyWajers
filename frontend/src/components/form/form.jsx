@@ -15,10 +15,13 @@ class Form extends React.Component {
   }
 
   input(field) {
-    return (e) =>
+    return (e) => {
       this.setState({
         [field]: e.currentTarget.value,
       });
+      this.props.clearErrors();
+
+    }
   }
 
   handleSubmit(field) {
@@ -30,7 +33,7 @@ class Form extends React.Component {
           password: this.state.password,
         };
         this.props.login(user);
-
+        // this.props.closeModal();
         this.setState({
           email: '',
           password: '',
@@ -43,6 +46,7 @@ class Form extends React.Component {
           password2: this.state.password2,
         };
         this.props.signup(user);
+        // this.props.closeModal();
         this.setState({
           email: '',
           username: '',
@@ -50,7 +54,7 @@ class Form extends React.Component {
           password2: '',
         });
       }
-      if (!this.props.errors) {
+      if (this.props.errors.length === 0) {
         this.props.closeModal();
       }
     };

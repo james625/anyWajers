@@ -76,9 +76,9 @@ router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(
 
 router.put("/:lobbyId/add", async (req, res) => {
     const lobby = await Lobby.findById(req.params.lobbyId);
-    console.log(req.body)
+
     const user = await User.findById(req.body.playerId)
-    console.log(user);
+
     if(!user) return res.json({nouser: "User does not exist!"})
 
     if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
