@@ -1,25 +1,27 @@
 import React from 'react'
 
-class LobbyForm extends React.Component {
+class LobbyEdit extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      game: this.props.currentGameId,
-      name: '',
-      owner: this.props.currentUser.id,
-      description: '',
-      playerCount: 0,
+      game: this.props.lobby.data.game,
+      name: this.props.lobby.data.name,
+      owner: this.props.lobby.data.owner,
+      description: this.props.lobby.data.description,
+      playerCount: this.props.lobby.data.playerCount,
       players: [],
     }
-
+    this.lobby = this.props.lobby.data
+    this.handleClick = this.handleClick.bind(this);
+    this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.navToLobby = this.navToLobby.bind(this);
   }
 
-  navToLobby() {
-    const url = `/game/${this.props.currentGameId}/${this.state.lobby._id}`
-    this.props.history.push(url);
+  handleClick(e){
+    e.preventDefault();
+    this.setState({
+      show: true
+    })
   }
 
   handleSubmit(e) {
@@ -30,9 +32,18 @@ class LobbyForm extends React.Component {
       owner: this.state.owner,
       description: this.state.description,
       playerCount: this.state.playerCount,
-      players: this.state.players,
+      id: this.lobby._id
     }
-    this.props.createLobby(lobby).then(console.log(this.state))
+
+    this.props.editLobby(lobby)
+    this.setState({
+      game: this.props.currentGameId,
+      name: '',
+      owner: this.props.currentUserId,
+      description: '',
+      playerCount: 0,
+      show: false
+    })
     this.props.closeModal()
   }
 
@@ -41,14 +52,17 @@ class LobbyForm extends React.Component {
   }
 
   render() {
+    console.log(this.lobby)
+    console.log(this.state)
     return (
-      <div className="login-container">
+      <div>
         <form>
           <div>
             <p>Name</p>
             <input
               type="text"
               value={this.state.name}
+              placeholder={this.lobby.name}
               onChange={this.update('name')}
             />
             <p>Description</p>
@@ -59,7 +73,7 @@ class LobbyForm extends React.Component {
             />
             <p>Number of Players</p>
             <select
-              // value={this.state.playerCount}
+              value={this.state.playerCount}
               onChange={this.update('playerCount')}
             >
               <option value="">number</option>
@@ -76,4 +90,4 @@ class LobbyForm extends React.Component {
   }
 }
 
-export default LobbyForm
+export default LobbyEdit
