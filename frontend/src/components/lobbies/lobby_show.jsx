@@ -28,7 +28,7 @@ class LobbyShow extends React.Component {
           {lobby.data.players.map((player) => (
             <li>
                 <p>{player.username}</p>
-                <p>{player.rating}</p>
+                {/* <p>{player.rating}</p> */}
             </li>
 
           ))}

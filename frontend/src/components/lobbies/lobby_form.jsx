@@ -14,8 +14,13 @@ class LobbyForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.navToLobby = this.navToLobby.bind(this);
   }
 
+  navToLobby() {
+    const url = `/lobby/${this.state.lobby._id}`
+    this.props.history.push(url);
+  }
 
   handleSubmit(e) {
     e.preventDefault()
@@ -27,16 +32,16 @@ class LobbyForm extends React.Component {
       playerCount: this.state.playerCount,
       players: this.state.players,
     }
-
-    this.props.createLobby(lobby)
-    this.setState({
-      game: this.props.currentGameId,
-      name: '',
-      owner: this.props.currentUser.id,
-      description: '',
-      playerCount: 0,
-      players: [],
-    })
+    this.props.createLobby(lobby).then(console.log(this.state))
+    // this.navToLobby();
+    // this.setState({
+    //   game: this.props.currentGameId,
+    //   name: '',
+    //   owner: this.props.currentUser.id,
+    //   description: '',
+    //   playerCount: 0,
+    //   players: [],
+    // })
     this.props.closeModal()
   }
 
