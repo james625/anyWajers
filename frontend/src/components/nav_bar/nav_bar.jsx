@@ -15,14 +15,14 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="header-content-container">
-        <Link to="/">
-          <h1>any Wajers?</h1>
-        </Link>
         <input
           className="search-bar"
           type="text"
           placeholder="Find your game ..."
         ></input>
+        <Link to="/">
+          <div className="home-button"></div>
+        </Link>
         <AuthButtonContainer />
       </div>
     );
