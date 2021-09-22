@@ -39,8 +39,8 @@ class AuthButtons extends React.Component {
       );
     };
 
-    return this.props.currentUser != undefined &&
-      this.props.currentUser.id != undefined
+    return this.props.currentUser !== undefined &&
+      this.props.currentUser.id !== undefined
       ? signedIn()
       : noUser();
   }

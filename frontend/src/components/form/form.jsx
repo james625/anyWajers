@@ -57,7 +57,7 @@ class Form extends React.Component {
   render() {
     if (this.props.formType === 'login') {
       return (
-        <form onSubmit={this.handleSubmit('signin')}>
+        <form onSubmit={this.handleSubmit('login')}>
           <div className="god-container">
             <div className="splash-art"></div>
             <div className="splash-art-dark"></div>
