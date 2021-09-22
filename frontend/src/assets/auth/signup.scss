@@ -23,6 +23,7 @@
   margin-top: 40px;
   color: white;
   font-weight: 300;
+  font-size: 30px;
 }
 
 .signup-input-container {
@@ -42,7 +43,6 @@
   padding: 10px;
   background-color: rgb(27, 27, 27);
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 16px;
   border: 1px solid rgb(60, 60, 60);
@@ -68,7 +68,7 @@
 .signup-input:focus + .placeholder-one,
 .signup-input:not(:focus):valid .placeholder-one,
 .signup-input:not(:placeholder-shown) + .placeholder-one {
-  top: -42px;
+  top: -39px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -80,7 +80,7 @@
   position: absolute;
   pointer-events: none;
   left: 50px;
-  top: -10px;
+  top: -8px;
   transition: 0.2s;
   color: rgb(104, 104, 104);
 }
@@ -88,7 +88,7 @@
 .signup-input:focus + .placeholder-two,
 .signup-input:not(:focus):valid .placeholder-two,
 .signup-input:not(:placeholder-shown) + .placeholder-two {
-  top: 27px;
+  top: 30px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -100,7 +100,7 @@
   position: absolute;
   pointer-events: none;
   left: 50px;
-  top: 57px;
+  top: 60px;
   transition: 0.2s;
   color: rgb(104, 104, 104);
 }
@@ -108,7 +108,7 @@
 .signup-input:focus + .placeholder-three,
 .signup-input:not(:focus):valid .placeholder-three,
 .signup-input:not(:placeholder-shown) + .placeholder-three {
-  top: 97px;
+  top: 100px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -120,7 +120,7 @@
   position: absolute;
   pointer-events: none;
   left: 50px;
-  top: 127px;
+  top: 130px;
   transition: 0.2s;
   color: rgb(104, 104, 104);
 }
@@ -128,7 +128,7 @@
 .signup-input:focus + .placeholder-four,
 .signup-input:not(:focus):valid .placeholder-four,
 .signup-input:not(:placeholder-shown) + .placeholder-four {
-  top: 167px;
+  top: 170px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -140,21 +140,32 @@
   position: absolute;
   pointer-events: none;
   left: 50px;
-  top: 197px;
+  top: 200px;
   transition: 0.2s;
   color: rgb(104, 104, 104);
 }
 
+.one {
+  background-color: transparent;
+  backdrop-filter: brightness(1) blur(5px);
+}
+
 .two {
   top: 43px;
+  background-color: transparent;
+  backdrop-filter: brightness(1) blur(5px);
 }
 
 .three {
   top: 113px;
+  background-color: transparent;
+  backdrop-filter: brightness(1) blur(5px);
 }
 
 .four {
   top: 183px;
+  background-color: transparent;
+  backdrop-filter: brightness(1) blur(5px);
 }
 
 .auth-button {
@@ -169,9 +180,11 @@
   background-color: rgb(27, 27, 27);
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 300;
+  font-size: 20px;
   top: 253px;
+  background-color: transparent;
+  backdrop-filter: brightness(1) blur(5px);
 }
 
 .auth-button:hover {

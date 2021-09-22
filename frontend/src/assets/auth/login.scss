@@ -33,6 +33,7 @@
   margin-top: 40px;
   color: white;
   font-weight: 300;
+  font-size: 30px;
 }
 
 .login-input-container {
@@ -52,7 +53,6 @@
   padding: 10px;
   background-color: rgb(27, 27, 27);
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
   font-size: 16px;
   border: 1px solid rgb(60, 60, 60);
@@ -78,7 +78,7 @@
 .login-input:focus + .placeholder-one,
 .login-input:not(:focus):valid .placeholder-one,
 .login-input:not(:placeholder-shown) + .placeholder-one {
-  top: -42px;
+  top: -40px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -89,7 +89,7 @@
 .login-input:focus + .placeholder-two,
 .login-input:not(:focus):valid .placeholder-two,
 .login-input:not(:placeholder-shown) + .placeholder-two {
-  top: 27px;
+  top: 29px;
   left: 50px;
   font-size: 14px;
   opacity: 1;
@@ -99,7 +99,7 @@
 
 .login-redirect-text {
   position: absolute;
-  top: 200px;
+  top: 220px;
   color: white;
 }
 
@@ -145,6 +145,14 @@ sign-up {
   color: white;
   font-size: 20px;
   font-weight: lighter;
-  background-color: rgba(39, 39, 39, 0.7);
+  align-items: center;
+  display: flex;
+  height: 20px;
+  background-color: rgba(202, 24, 24, 0.3);
+  backdrop-filter: brightness(1) blur(5px);
+  border: 1px solid rgb(75, 16, 16);
+}
+
+.errors:last-child {
   border-bottom-left-radius: 10px;
 }
