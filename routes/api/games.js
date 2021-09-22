@@ -23,7 +23,6 @@ router.get('/:id', async(req, res) => {
                                                                         model: 'User'
                                                                     }
                                                                 })
-        // console.log(game);
         res.json(game);
     }        
     catch {

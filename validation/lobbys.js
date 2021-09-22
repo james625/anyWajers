@@ -6,7 +6,7 @@ module.exports = function validateLobbyInput(data) {
     let errors = {};
 
     data.name = validText(data.name) ? data.name : "";
-    data.playerCount = validText(data.playerCount) ? data.playerCount : "";
+    // data.playerCount = validText(data.playerCount) ? data.playerCount : "";
 
     if(!Validator.isLength(data.name, {min: 1, max: 100})){
         errors.name = 'Lobby name must be between 1 and 100 characters'

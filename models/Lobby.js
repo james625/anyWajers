@@ -25,7 +25,6 @@ const LobbySchema = new Schema({
     },
     players:[{
         type: Schema.Types.ObjectId,
-        required: true,
         ref: "Users"
     }],
     date: {
