@@ -1,18 +1,24 @@
 import { connect } from 'react-redux';
-import { fetchLobby } from '../../actions/lobby_actions';
-
+import { fetchLobby, deleteLobby } from '../../actions/lobby_actions';
+import { openModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router';
 import LobbyShow from './lobby_show';
 
 const mSTP = (state, ownProps) => {
-    console.log(ownProps)
-    // console.log(state.entities)
+    // console.log(state)
+    // console.log(Object.values(state.entities.lobbies))
     return {
-        lobby: state.entities.lobbies[ownProps.match.params.lobbyId]
+        lobby: Object.values(state.entities.lobbies)[0],
+        currentUser: state.session.user.id,
+        history: ownProps.history,
+        gameId: ownProps.match.params.gameId
     }
 }
 
 const mDTP = dispatch => ({
     fetchLobby: lobbyId => dispatch(fetchLobby(lobbyId)),
+    openModal: modal => dispatch(openModal(modal)),
+    deleteLobby: lobbyId => dispatch(deleteLobby(lobbyId))
 })
 
-export default connect(mSTP, mDTP)(LobbyShow)
+export default withRouter(connect(mSTP, mDTP)(LobbyShow))

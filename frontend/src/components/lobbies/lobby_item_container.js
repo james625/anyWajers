@@ -18,7 +18,6 @@ const mDTP = dispatch => ({
     fetchLobby: lobby_id => dispatch(fetchLobby(lobby_id)),
     editLobby: lobby => dispatch(editLobby(lobby)),
     addPlayer: lobby => dispatch(addPlayer(lobby)),
-    deleteLobby: lobbyId => dispatch(deleteLobby(lobbyId))
 })
 
 export default withRouter(connect(mSTP, mDTP)(LobbyItem))

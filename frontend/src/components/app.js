@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path="/" component={GamesIndexContainer} />
       {/* <Route exact path="/games" component={GamesIndexContainer} /> */}
       <Route exact path="/games/:gameId" component={GameShowContainer} />
-      <Route exact path="/lobby/:lobbyId" component={LobbyShowContainer} />
+      <Route exact path="/games/:gameId/:lobbyId" component={LobbyShowContainer} />
       <Route exact path="/messages" component={MessagesContainer} />
     </Switch>
   </div>
