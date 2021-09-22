@@ -1,22 +1,24 @@
-// import { connect } from 'react-redux';
-// import { deleteLobby } from '../../util/lobby_api_util';
-// // import { updateLobby, deleteLobby } from '../../actions/lobby_actions';
-// import LobbyForm from './lobby_form';
+import { connect } from 'react-redux';
+import { fetchLobby, editLobby } from '../../actions/lobby_actions';
+import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router';
 
-// const mapStateToProps = (state) => {
-//   return {
-//     currentUser: state.session.user,
-//     newLobby: state.lobby.new,
-//     currentGameId: state.entities.game.data._id,
-//     formType: 'edit'
-//   };
-// };
+import LobbyEdit from './lobby_edit';
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     updateLobby: lobby => dispatch(updateLobby(lobby)),
-//     deleteLobby: lobbyId => dispatch(deleteLobby(lobbyId))
-//   };
-// };
+const mSTP = (state, ownProps) => {
+    // console.log(ownProps.match.params.lobby_id)
+    // console.log(Object.values(state.entities.lobbies)[0])
+    return {
+        currentUserId: state.session.user.id,
+        lobby: Object.values(state.entities.lobbies)[0],
+        history: ownProps.history
+    }
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(LobbyForm);
+const mDTP = dispatch => ({
+    fetchLobby: lobby_id => dispatch(fetchLobby(lobby_id)),
+    editLobby: lobby => dispatch(editLobby(lobby)),
+    closeModal: () => dispatch(closeModal())
+})
+
+export default withRouter(connect(mSTP, mDTP)(LobbyEdit))
