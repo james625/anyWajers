@@ -31,18 +31,18 @@ class GamesIndex extends React.Component {
           <div className="splash-content">
             <div className="splash-stairs">
               <h2 className="splash-one">
-                Find <your>your</your> game
+                Find <mark>your</mark> game
               </h2>
               <h2 className="splash-two">
-                Create <your>your</your> lobby
+                Create <mark>your</mark> lobby
               </h2>
               <h2 className="splash-three">
-                Build <your>your</your> team
+                Build <mark>your</mark> team
               </h2>
             </div>
             <div className="splash-image"></div>
             <video
-              width="1915"
+              width="1912"
               src={background_video}
               autoPlay
               muted

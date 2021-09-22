@@ -1,6 +1,8 @@
 import React from 'react';
-import { AuthRoute } from '../util/route_util';
+// import { AuthRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
+import '../assets/reset.scss';
+import '../assets/browser.scss';
 import '../assets/auth/signup.scss';
 import '../assets/auth/login.scss';
 import '../assets/splash/splash.scss';
