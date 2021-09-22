@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Modal from './modal';
 import {closeModal} from '../../actions/modal_actions';
+import { clearErrors } from '../../actions/session_actions';
 
 const mSTP = (state) => (
     {
@@ -11,7 +12,8 @@ const mSTP = (state) => (
 
 const mDTP = (dispatch) => (
     {
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearErrors())
     }
 )
 
