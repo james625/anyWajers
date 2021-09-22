@@ -23,7 +23,6 @@ router.get("/:lobby_id", async(req, res) => {
                                                                     path: 'players',
                                                                     model: 'User'
                                                                 })
-        console.log(lobby);
         res.json(lobby)
     }
     catch {
@@ -51,7 +50,6 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
     })
 
     const game = await Game.findById(req.body.game);
-    console.log(game.lobbies);
     
     newLobby.save()
     .then(lobby =>{
@@ -80,6 +78,9 @@ router.put("/:lobbyId/add", async (req, res) => {
     const user = await User.findById(req.body.playerId)
 
     if(!user) return res.json({nouser: "User does not exist!"})
+    console.log(lobby.players.includes(user._id));
+
+    if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
 
     if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
 
@@ -93,7 +94,6 @@ router.put("/:lobbyId/add", async (req, res) => {
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
     Lobby.deleteOne({"_id": req.params.lobbyId})
     .then(lobby => {
-        console.log(lobby);
         res.json(lobby)
     })
 })

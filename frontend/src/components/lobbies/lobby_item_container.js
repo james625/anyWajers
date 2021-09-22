@@ -4,8 +4,6 @@ import { addPlayer, fetchLobby, editLobby, deleteLobby } from '../../actions/lob
 import LobbyItem from './lobby_item';
 
 const mSTP = (state, ownProps) => {
-    // console.log(ownProps.match.params.lobby_id)
-    // console.log(ownProps.lobby)
     return {
         currentUserId: state.session.user.id,
         lobby: ownProps.lobby,

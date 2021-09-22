@@ -16,14 +16,13 @@ class Modal extends React.Component {
   handleCloseModal(e) {
     e.preventDefault();
     this.props.closeModal();
-    this.props.clearErrors();
+    // this.props.clearErrors();
   }
 
   render() {
     if (!this.props.modal) {
       return null
     }
-    console.log(this.props.modal)
     let modal = null
     switch (this.props.modal) {
       case 'signup':

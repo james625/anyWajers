@@ -23,7 +23,6 @@ class GameShow extends React.Component {
       return null
     }
 
-    // console.log(game.data.lobbies)
     return (
       <div>
         <h1>{game.data.name}</h1>
