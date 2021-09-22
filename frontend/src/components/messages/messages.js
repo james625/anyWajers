@@ -11,9 +11,7 @@ class Messages extends React.Component {
         this.socket = io();
         this.socket.on("receive-message", message => {
             console.log("HIT")
-          
             this.props.fetchLobbyMessages("6148fa04c199d16514780f78")
-
             this.setState({
                 input: ""
             })
