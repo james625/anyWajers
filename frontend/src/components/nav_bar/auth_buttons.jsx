@@ -19,18 +19,20 @@ class AuthButtons extends React.Component {
 
   navToUser(e) {
     e.preventDefault();
-    this.props.history.push(`/users/${this.props.currentUser.id}`)
+    this.props.history.push(`/users/${this.props.currentUser.id}`);
   }
 
   render() {
     const signedIn = () => {
       return (
         <div>
+          <button className="username" onClick={this.navToUser}>
+            {this.props.user
+              ? this.props.user.data.username
+              : this.props.currentUser.username}
+          </button>
           <button className="nav-auth-button" onClick={this.onClick}>
             Logout
-          </button>
-          <button className="username" onClick={this.navToUser}>
-            {this.props.user ? this.props.user.data.username : this.props.currentUser.username}
           </button>
           {/* <Link to={`/users/${this.props.currentUser.id}`}>profile</Link> */}
         </div>
@@ -45,12 +47,6 @@ class AuthButtons extends React.Component {
             onClick={() => this.props.openModal('login')}
           >
             Login
-          </button>
-          <button
-            className="nav-auth-button"
-            onClick={() => this.props.openModal('signup')}
-          >
-            Sign up
           </button>
         </div>
       );

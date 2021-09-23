@@ -51,16 +51,18 @@ class LobbyItem extends React.Component {
             <p className="lobby-description">{this.lobby.description}</p>
             <div className="game-show-user-list-container">
               <ul className="game-show-user-list">
-                <p className="test-user">any wajers</p>
-                <p className="test-user">any wajers</p>
-                <p className="test-user">any wajers</p>
-                <p className="test-user">any wajers</p>
-                <p className="test-user">any wajers</p>
-                {/* {this.lobby.data.players.map((player) => {
-                  <li key={player._id} className="game-show-player">
-                    {player.username}
-                  </li>;
-                })} */}
+                {this.lobby.players.map((player) => {
+                  return (
+                    <li
+                      key={player._id}
+                      className="game-show-list-dropdown-item"
+                    >
+                      <p className="game-show-list-dropdown-username">
+                        {player.username}
+                      </p>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <button className="lobby-join-button" onClick={this.handleJoin}>

@@ -12,18 +12,18 @@
 
 video {
   position: absolute;
-  top: -190px;
+  top: 0px;
   z-index: 0;
 }
 
 .header-content-container {
-  background-color: rgb(27, 27, 27);
+  background-color: transparent;
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: right;
@@ -31,15 +31,16 @@ video {
 }
 
 .username {
+  cursor: pointer;
   transition: 0.2s;
   color: white;
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 300;
   padding: 10px 20px;
-  margin-right: 30px;
   background-color: transparent;
   border: none;
+  margin-right: 10px;
 }
 
 .nav-auth-button {
@@ -53,6 +54,11 @@ video {
   margin-right: 10px;
   background-color: transparent;
   border: none;
+}
+
+.username:hover {
+  transition: 0.2s;
+  background-color: rgb(163, 51, 255);
 }
 
 .nav-auth-button:hover {
@@ -123,7 +129,7 @@ video {
 
 .splash-one {
   height: 30px;
-  top: 612px;
+  top: 672px;
   margin-left: 30px;
   position: absolute;
   text-align: center;
@@ -131,7 +137,7 @@ video {
 
 .splash-two {
   height: 30px;
-  top: 612px;
+  top: 672px;
   margin-left: 352px;
   position: absolute;
   text-align: center;
@@ -139,7 +145,7 @@ video {
 
 .splash-three {
   height: 30px;
-  top: 612px;
+  top: 672px;
   margin-left: 672px;
   position: absolute;
 }
@@ -189,18 +195,21 @@ mark {
 
 .splash-image {
   position: relative;
-  height: 700px;
+  height: 760px;
   width: 1920px;
   z-index: 1;
-  background-image: url('../images/gradient-background.png');
+  background-image: url('../images/background-test.png');
 }
 
 .index-content-container {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   overflow: auto;
-  z-index: 1;
+  overflow-x: hidden;
+  z-index: 2;
 }
 
 .index-content {

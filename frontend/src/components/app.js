@@ -1,5 +1,4 @@
 import React from 'react';
-// import { AuthRoute } from '../util/route_util';
 import { Switch, Route } from 'react-router-dom';
 import '../assets/reset.scss';
 import '../assets/browser.scss';
@@ -9,9 +8,9 @@ import '../assets/splash/splash.scss';
 import '../assets/game_show/game_show.scss';
 import '../assets/game_show/lobby_modal.scss';
 import '../assets/footer/footer.scss';
+import '../assets/messages/messages.scss';
 
 import NavBar from './nav_bar/nav_bar';
-import Footer from './footer/footer'
 import ModalContainer from './modal/modal_container';
 import GamesIndexContainer from './games/games_index_container';
 import GameShowContainer from './games/game_show_container';
@@ -19,7 +18,6 @@ import MessagesContainer from './messages/messages_container';
 import LobbyShowContainer from './lobbies/lobby_show_container';
 import UserContainer from './user/user_container';
 import { ProtectedRoute } from '../util/route_util';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
@@ -40,7 +38,6 @@ const App = () => (
       <Route exact path="/messages" component={MessagesContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserContainer} />
     </Switch>
-    <Footer />
   </div>
 );
 

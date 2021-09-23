@@ -16,6 +16,7 @@ import roblox from './game_images/roblox.png';
 import rocketleague from './game_images/rocketleague.png';
 import sea from './game_images/sea.png';
 import valorant from './game_images/valorant.png';
+import Footer from '../footer/footer';
 
 class GamesIndex extends React.Component {
   componentDidMount() {
@@ -59,22 +60,39 @@ class GamesIndex extends React.Component {
           </div>
           <div className="game-box-container">
             <img className="game-box-item" src={amongus} alt="Among Us"></img>
-            <img className="game-box-item" src={apexlegends} alt="Apex Legends"></img>
+            <img
+              className="game-box-item"
+              src={apexlegends}
+              alt="Apex Legends"
+            ></img>
             <img className="game-box-item" src={csgo} alt="CSGo"></img>
             <img className="game-box-item" src={warzone} alt="Warzone"></img>
             <img className="game-box-item" src={dbd} alt="DBD"></img>
             <img className="game-box-item" src={fortnite} alt="Fortnite"></img>
             <img className="game-box-item" src={league} alt="League"></img>
-            <img className="game-box-item" src={minecraft} alt="Minecraft"></img>
-            <img className="game-box-item" src={overwatch} alt="Overwatch"></img>
+            <img
+              className="game-box-item"
+              src={minecraft}
+              alt="Minecraft"
+            ></img>
+            <img
+              className="game-box-item"
+              src={overwatch}
+              alt="Overwatch"
+            ></img>
             <img className="game-box-item" src={pubg} alt="Pubg"></img>
             <img className="game-box-item" src={siege} alt="Siege"></img>
             <img className="game-box-item" src={roblox} alt="Roblox"></img>
-            <img className="game-box-item" src={rocketleague} alt="RocketLeague"></img>
+            <img
+              className="game-box-item"
+              src={rocketleague}
+              alt="RocketLeague"
+            ></img>
             <img className="game-box-item" src={sea} alt="Sea"></img>
             <img className="game-box-item" src={valorant} alt="Valorant"></img>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
