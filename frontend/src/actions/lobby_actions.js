@@ -46,6 +46,11 @@ export const addPlayer = lobby => dispatch => (
         .then(lobby => dispatch(receiveLobby(lobby)))
 )
 
+export const removePlayer = lobby => dispatch => (
+    lobbyApiUtil.removePlayer(lobby)
+        .then(lobby => dispatch(receiveLobby(lobby)))
+)
+
 export const editLobby = lobby => dispatch => (
     lobbyApiUtil.editLobby(lobby)
         .then(lobby => dispatch(receiveLobby(lobby)))

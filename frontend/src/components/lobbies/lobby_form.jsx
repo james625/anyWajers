@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {io} from 'socket.io-client';
 
 class LobbyForm extends React.Component {
   constructor(props) {
@@ -12,17 +13,23 @@ class LobbyForm extends React.Component {
       playerCount: 0,
       players: [],
     }
-
+    this.socket = io();
     this.handleSubmit = this.handleSubmit.bind(this)
     this.navToLobby = this.navToLobby.bind(this);
   }
 
-  navToLobby() {
-    const url = `/game/${this.props.currentGameId}/${this.state.lobby._id}`
+  // componentDidUpdate(prevProps){
+  //     if(prevProps.lobby !== this.props.lobby){
+  //         this.navToLobby(this.props.lobby.data._id)
+  //     }
+  // }
+
+  navToLobby(lobbyId) {
+    const url = `/games/${this.props.currentGameId}/${lobbyId}`
     this.props.history.push(url);
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
     let lobby = {
       game: this.state.game,
@@ -32,8 +39,10 @@ class LobbyForm extends React.Component {
       playerCount: this.state.playerCount,
       players: this.state.players,
     }
-    this.props.createLobby(lobby).then(console.log(this.state))
+    const lob = await this.props.createLobby(lobby)
+    this.socket.emit('lobby-created', "lobby has been made")
     this.props.closeModal()
+    this.navToLobby(lob.lobby.data._id)
   }
 
   update(field) {

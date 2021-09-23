@@ -10,7 +10,8 @@ const passport = require('passport');
 const http = require("http");
 const server = http.createServer(app);
 const socketio = require('socket.io');
-const io = socketio(server);
+const io = socketio(server, { cors: { origin: '*' } });
+
 const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
@@ -38,6 +39,18 @@ require('./config/passport')(passport);
 
 
 io.on('connection', socket => {
+  socket.on('lobby', user => {
+    io.emit('receive-user', user)
+  })
+
+  socket.on('delete-lobby', lobby => {
+    io.emit('receive-lobby', lobby)
+  })
+
+  socket.on('lobby-created', lobby => {
+    io.emit('receive-lobby', lobby)
+  })
+
   socket.on("body", text => {
     io.emit('receive-message', text) 
   })

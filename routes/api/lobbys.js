@@ -78,7 +78,6 @@ router.put("/:lobbyId/add", async (req, res) => {
     const user = await User.findById(req.body.playerId)
 
     if(!user) return res.json({nouser: "User does not exist!"})
-    console.log(lobby.players.includes(user._id));
 
     if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
 
@@ -88,6 +87,19 @@ router.put("/:lobbyId/add", async (req, res) => {
 
     lobby.save()
 
+    res.json(lobby)
+})
+
+router.put("/:lobbyId/remove", async(req, res) => {
+    const lobby = await Lobby.findById(req.params.lobbyId);
+    const user = await User.findById(req.body.playerId)
+
+    const index = lobby.players.indexOf(user._id)
+    if(index === -1) return res.json({notfound: "User does not exist in lobby"})
+
+    lobby.players.splice(index, 1)
+    
+    lobby.save();
     res.json(lobby)
 })
 

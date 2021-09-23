@@ -10,7 +10,7 @@ class Messages extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.socket = io();
         this.socket.on("receive-message", message => {
-            this.props.fetchLobbyMessages("6148fa04c199d16514780f78")
+            this.props.fetchLobbyMessages(this.props.lobbyId)
             this.setState({
                 input: ""
             })
@@ -18,7 +18,7 @@ class Messages extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchLobbyMessages("6148fa04c199d16514780f78")
+        this.props.fetchLobbyMessages(this.props.lobbyId)
 
     }
 
@@ -35,7 +35,7 @@ class Messages extends React.Component {
         const text = {
             text: this.state.input,
             author: this.props.currentUserId,
-            lobbyId: "6148fa04c199d16514780f78"
+            lobbyId: this.props.lobbyId
         }
         this.props.createLobbyMessage(text)
 
@@ -56,7 +56,6 @@ class Messages extends React.Component {
             <div>
                 <ul className="messages-ul">
                     {this.props.messages.map( message => {
-                        debugger
                         return <li key={message._id}>
                                     <div> 
                                         {message.author.username}

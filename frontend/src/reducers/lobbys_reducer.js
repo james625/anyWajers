@@ -8,7 +8,8 @@ const lobbysReducer =(state = {}, action) => {
         case RECEIVE_ALL_LOBBIES:
             return action.lobbies;
         case RECEIVE_LOBBY:
-            nextState[action.lobby.id] = action.lobby;
+            
+            nextState[action.lobby.data._id] = action.lobby;
             return nextState;
         case REMOVE_LOBBY:
             delete nextState[action.lobby.id]

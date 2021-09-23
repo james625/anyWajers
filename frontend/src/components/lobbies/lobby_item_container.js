@@ -7,6 +7,7 @@ import LobbyItem from './lobby_item';
 const mSTP = (state, ownProps) => {
     return {
         currentUserId: state.session.user.id,
+        username: state.session.user.username,
         lobby: ownProps.lobby,
         history: ownProps.history
     }
