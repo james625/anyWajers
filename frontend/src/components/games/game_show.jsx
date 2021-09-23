@@ -2,23 +2,27 @@ import React from 'react';
 import LobbyItemContainer from '../lobbies/lobby_item_container';
 import { withRouter } from 'react-router';
 import { io } from 'socket.io-client';
+import animation_scripts from '../../assets/animation_scripts/game_item_list_dropdown';
 // import LobbyCreateContainer from '../lobbies/lobby_create_container'
 
 // link to lobby create container
 
 class GameShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.socket = io();
 
-  constructor(props){
-    super(props)
-    this.socket = io()
-  
-    this.socket.on('receive-lobby', lobby => {
-      this.props.fetchGame(this.props.match.params.gameId)
-    })
+    this.socket.on('receive-lobby', (lobby) => {
+      this.props.fetchGame(this.props.match.params.gameId);
+    });
   }
 
   componentDidMount() {
     this.props.fetchGame(this.props.match.params.gameId);
+    const script = document.createElement('script');
+    script.src = { animation_scripts };
+    script.async = true;
+    document.body.appendChild(script);
   }
 
   componentDidUpdate(prevProps) {
@@ -39,9 +43,9 @@ class GameShow extends React.Component {
         <div className="game-show-art"></div>
         <div className="game-show-content">
           <div className="game-show-banner">
-            <h1>{game.data.name}</h1>
+            <h1 className="game-show-title">{game.data.name}</h1>
+            <p className="game-show-description">{game.data.description}</p>
           </div>
-          <p>{game.data.description}</p>
 
           <div className="game-show-list-container">
             <ul className="game-show-list">
@@ -53,12 +57,12 @@ class GameShow extends React.Component {
               </button>
               {game.data.lobbies.map((lobby) => {
                 if (lobby.players.length === 0) {
-                  this.props.deleteLobby(lobby.id)
+                  this.props.deleteLobby(lobby.id);
                 }
-                if(lobby.players.length < lobby.playerCount){
-                  return <LobbyItemContainer lobby={lobby} key={lobby._id} />
+                if (lobby.players.length < lobby.playerCount) {
+                  return <LobbyItemContainer lobby={lobby} key={lobby._id} />;
                 }
-                })}
+              })}
             </ul>
           </div>
         </div>
@@ -68,5 +72,3 @@ class GameShow extends React.Component {
 }
 
 export default withRouter(GameShow);
-
-

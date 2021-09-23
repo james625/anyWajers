@@ -6,6 +6,13 @@
   background-color: rgb(27, 27, 27);
 }
 
+.game-show-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 60px;
+  color: white;
+  font-weight: 300;
+}
+
 .game-show-art {
   position: absolute;
   width: 50%;
@@ -27,18 +34,21 @@
 
 .game-show-banner {
   position: relative;
-  width: 50%;
-  height: 100px;
+  width: 60%;
+  height: auto;
   left: 0;
   display: flex;
-  color: white;
-  font-size: 26px;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(128, 128, 128);
+  font-size: 16px;
   margin-left: 100px;
+  margin-bottom: 20px;
 }
 
 .game-show-list-container {
+  position: relative;
   margin-left: 100px;
-  margin-top: 20px;
   border-top: 2px solid white;
   width: 600px;
   display: flex;
@@ -48,14 +58,15 @@
 }
 
 .game-show-list {
-  padding: 0;
   gap: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .game-show-list-item {
+  cursor: pointer;
   width: 500px;
   height: 60px;
   padding: 20px;
@@ -66,38 +77,53 @@
   align-items: center;
   justify-content: space-between;
   transition: 0.2s;
-  background-color: rgb(163, 51, 255);
+  background-color: rgb(27, 27, 27);
+  border: 2px solid white;
 }
+
+// .game-show-list-item:active {
+//   --angle: 0deg;
+
+//   border-image: linear-gradient(
+//       var(--angle),
+//       rgb(0, 181, 194),
+//       rgb(26, 68, 255),
+//       rgb(163, 51, 255)
+//     )
+//     1;
+
+//   animation: 3s rotate linear infinite;
+// }
 
 .lobby-description {
   font-size: 16px;
 }
 
-.lobby-join-button {
-  cursor: pointer;
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
-  font-size: 16px;
-  border: none;
-  padding: 36px 8px;
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: 0.2s;
-  background-color: rgb(89, 28, 142);
-}
+// .lobby-join-button {
+//   cursor: pointer;
+//   position: absolute;
+//   bottom: 0px;
+//   right: 0px;
+//   font-size: 16px;
+//   border: none;
+//   height: 100%;
+//   color: white;
+//   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//   transition: 0.2s;
+//   background-color: rgb(61, 61, 61);
+// }
 
-.lobby-join-button:hover {
-  transition: 0.2s;
-  background-color: rgb(27, 27, 27);
-}
+// .lobby-join-button:hover {
+//   transition: 0.2s;
+//   background-color: rgb(27, 27, 27);
+// }
 
 .lobby-create {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 540px;
+  width: 340px;
   height: 40px;
   padding: 30px;
   font-size: 24px;
@@ -113,4 +139,11 @@
 .lobby-create:hover {
   transition: 0.2s;
   background-color: rgb(89, 28, 142);
+}
+
+.game-show-list-dropdown {
+  position: relative;
+  height: 200px;
+  width: 540px;
+  background-color: rgb(39, 39, 39);
 }
