@@ -3,9 +3,6 @@ import LobbyItemContainer from '../lobbies/lobby_item_container';
 import { withRouter } from 'react-router';
 import { io } from 'socket.io-client';
 import animation_scripts from '../../assets/animation_scripts/game_item_list_dropdown';
-// import LobbyCreateContainer from '../lobbies/lobby_create_container'
-
-// link to lobby create container
 
 class GameShow extends React.Component {
   constructor(props) {
