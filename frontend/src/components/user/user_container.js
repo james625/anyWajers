@@ -6,10 +6,13 @@ import User from "./user"
 
 // fix route, util and validation
 
-const mSTP = (state, ownProps) => ({
-    currentUser: state.session.user,
-    history: ownProps.history
-});
+const mSTP = (state) => {
+    return {
+        currentUser: state.session.user,
+        user: Object.values(state.entities.users)[0]
+    }
+};
+
 
 const mDTP = (dispatch) => ({
     fetchUser: userId => dispatch(fetchUser(userId)),

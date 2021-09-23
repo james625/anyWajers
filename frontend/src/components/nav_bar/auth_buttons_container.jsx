@@ -5,7 +5,8 @@ import AuthButtons from "./auth_buttons"
 
 
 const mSTP = (state) => ({
-    currentUser: state.session.user
+    currentUser: state.session.user,
+    user: Object.values(state.entities.users)[0]
 });
 
 const mDTP = (dispatch) => ({

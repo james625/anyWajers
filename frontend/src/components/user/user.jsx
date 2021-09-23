@@ -4,10 +4,10 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.bio = '';
-    this.props.currentUser.bio === undefined ? this.bio = '' : this.bio = this.props.currentUser.bio
+    this.props.user ? this.bio = this.props.user.data.bio : this.bio = ''
     this.state = {
-      email: this.props.currentUser.email,
-      username: this.props.currentUser.username,
+      email: (this.props.user ? this.props.user.data.email : this.props.currentUser.email),
+      username: (this.props.user ? this.props.user.data.username : this.props.currentUser.username),
       bio: this.bio,
       edit: false
     };
@@ -17,9 +17,9 @@ class User extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  // componentDidUpdate(oldState) {
-  //   oldState === 
-  // }
+  componentDidMount(){
+    this.props.fetchUser(this.props.currentUser.id)
+  }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value })
@@ -53,7 +53,6 @@ class User extends React.Component {
   }
 
   render() {
-
     const edit = () => {
       return (
         <div>
@@ -76,14 +75,14 @@ class User extends React.Component {
     const show = () => {
       return (
         <div>
-          <h2>{this.state.email}</h2>
-          <p>{this.state.username}</p>
-          <p>{this.state.bio}</p>
+          <h2>{this.props.user.data.email}</h2>
+          <p>{this.props.user.data.username}</p>
+          <p>{this.props.user.data.bio}</p>
           <button onClick={this.onClick}>Edit</button>
         </div>
       )
     }
-
+    if (!this.props.user) return null
     return (this.state.edit ? edit() : show())
   }
 }

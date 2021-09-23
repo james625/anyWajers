@@ -8,6 +8,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateUserInput = require('../../validation/users');
+const { route } = require("./lobbys");
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -102,17 +103,25 @@ router.get('/find', (req, res) => {
 }) 
 
 router.put("/:userId", passport.authenticate('jwt', { session: false }), async(req, res) => {
+  // passport.authenticate('jwt', { session: false }), 
+  async(req, res) => {
     const { errors, isValid } = validateUserInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
     }
     // console.log('1')
-    await User.updateOne({_id: req.params.userId}, req.body);
+    // await User.updateOne({_id: req.params.userId}, req.body);
     // console.log('2')
-    const user = await User.findById(req.params.userId);
+    // const user = await User.findById(req.params.userId);
     // console.log('3')
-    user.save()
-    res.json(user)
+    const user = await User.findOneAndUpdate({_id: req.params.userId}, req.body)
+    const newUser = await User.findById(req.params.userId);
+    newUser.save()
+    res.json(newUser)
+})
+
+router.get('/:userId', (req,res) => {
+  User.findById(req.params.userId).then(user => res.json(user))
 })
 
 router.delete("/:userId", passport.authenticate('jwt', { session: false }), (req, res) => {
