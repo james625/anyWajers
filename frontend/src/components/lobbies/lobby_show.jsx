@@ -9,6 +9,10 @@ class LobbyShow extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
     this.navToGame = this.navToGame.bind(this)
     this.handleLeave = this.handleLeave.bind(this)
+  }
+  
+  componentDidMount() {
+    this.props.fetchLobby(this.props.match.params.lobbyId)
     this.socket = io();
     this.socket.on('receive-user', user => {
       this.props.fetchLobby(this.props.match.params.lobbyId)
@@ -18,22 +22,21 @@ class LobbyShow extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.props.fetchLobby(this.props.match.params.lobbyId)
-  }
-
-  //   componentDidUpdate(prevProps) {
-  //     if (prevProps.lobby !== this.props.lobby) {
-  //       this.props.fetchLobby(this.props.match.params.lobbyId)
-  //     }
-  //   }
+  // componentDidUpdate(prevProps){
+  //   if(prevProps.lobby !== this.props. )
+  // }
 
   componentWillUnmount(){
     const lobby ={
-      id: this.props.lobby.data._id,
+      id: this.props.match.params.lobbyId,
       playerId: this.props.currentUser
     }
+    if(this.props.currentUser === this.props.lobby.data.owner){
+      this.props.deleteLobby(this.props.match.params.lobbyId)
+    }
     this.props.removePlayer(lobby)
+
+    this.socket.disconnect()
   }
 
   navToGame() {
@@ -45,7 +48,7 @@ class LobbyShow extends React.Component {
   handleLeave(e){
     e.preventDefault()
     if(this.props.currentUser === this.props.lobby.data.owner){
-      this.props.deleteLobby(this.props.lobby.data._id)
+      this.props.deleteLobby(this.props.match.params.lobbyId)
       this.socket.emit('delete-lobby', "lobby-deleted")
       this.navToGame();
     }else {

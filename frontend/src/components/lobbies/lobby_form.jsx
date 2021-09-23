@@ -10,14 +10,17 @@ class LobbyForm extends React.Component {
       name: '',
       owner: this.props.currentUser.id,
       description: '',
-      playerCount: 0,
+      playerCount: 2,
       players: [],
     }
-    this.socket = io();
+   
     this.handleSubmit = this.handleSubmit.bind(this)
     this.navToLobby = this.navToLobby.bind(this);
   }
 
+  componentDidMount(){
+     this.socket = io();
+  }
   // componentDidUpdate(prevProps){
   //     if(prevProps.lobby !== this.props.lobby){
   //         this.navToLobby(this.props.lobby.data._id)
@@ -31,18 +34,26 @@ class LobbyForm extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault()
-    let lobby = {
-      game: this.state.game,
-      name: this.state.name,
-      owner: this.state.owner,
-      description: this.state.description,
-      playerCount: this.state.playerCount,
-      players: this.state.players,
+
+    try{
+      let lobby = {
+        game: this.state.game,
+        name: this.state.name,
+        owner: this.state.owner,
+        description: this.state.description,
+        playerCount: this.state.playerCount,
+        players: this.state.players,
+      }
+      const lob = await this.props.createLobby(lobby)
+      this.socket.emit('lobby-created', "lobby has been made")
+      this.socket.disconnect()
+      this.props.closeModal()
+      this.navToLobby(lob.lobby.data._id)
+   
+    } catch (error){
+        console.log(error);
     }
-    const lob = await this.props.createLobby(lobby)
-    this.socket.emit('lobby-created', "lobby has been made")
-    this.props.closeModal()
-    this.navToLobby(lob.lobby.data._id)
+
   }
 
   update(field) {

@@ -8,17 +8,17 @@ class Messages extends React.Component {
         super(props)
         this.state = { input: "" }
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+    
+    componentDidMount(){
         this.socket = io();
+        this.props.fetchLobbyMessages(this.props.lobbyId)
         this.socket.on("receive-message", message => {
             this.props.fetchLobbyMessages(this.props.lobbyId)
             this.setState({
                 input: ""
             })
         })
-    }
-
-    componentDidMount(){
-        this.props.fetchLobbyMessages(this.props.lobbyId)
 
     }
 
@@ -28,6 +28,11 @@ class Messages extends React.Component {
             this.setState({ input: e.currentTarget.value })
         }
     }
+
+    componentWillUnmount(){
+        this.socket.disconnect()      
+    }
+
     
     handleSubmit(e) {
         e.preventDefault();
