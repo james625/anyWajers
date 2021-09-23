@@ -8,7 +8,6 @@ const validateLobbyInput = require('../../validation/lobbys')
 
 
 router.get("/", (req, res) => {
-    console.log("inside get / route");
 
     Lobby.find().populate({
                             path: 'players',
@@ -19,7 +18,6 @@ router.get("/", (req, res) => {
 })
 
 router.get("/:lobby_id", async(req, res) => {
-    console.log("inside single lobby route");
 
     try { 
         const lobby = await Lobby.findById(req.params.lobby_id).populate({
@@ -36,7 +34,6 @@ router.get("/:lobby_id", async(req, res) => {
 
 
 router.post("/", passport.authenticate('jwt', { session: false }), async(req, res) => {
-    console.log("inside lobby post route");
 
       const { errors, isValid } = validateLobbyInput(req.body);
   
@@ -44,7 +41,7 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         return res.status(400).json({errors});
       }
 
-    
+    //  if(req.body.game === "0") return res.json(req.body)
     const newLobby = new Lobby({
         game: req.body.game,
         name: req.body.name,        
@@ -53,7 +50,6 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         playerCount: req.body.playerCount,
         players: [req.body.owner]
     })
-    console.log(req.body.game)
     Game.findById(req.body.game).then(game => {
         newLobby.save()
         .then(lobby =>{
@@ -61,13 +57,12 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
                 game.save()
                 res.json(lobby)
             })
-            .catch(err => res.json(err));
+            .catch(err => res.json(err.respose.data));
     })
     
 })
 
 router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(req, res) => {
-    console.log("inside lobby edit route");
 
     const { errors, isValid } = validateLobbyInput(req.body);
     if (!isValid) {
@@ -80,13 +75,11 @@ router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(
         const lobby = await Lobby.findById(req.params.lobbyId);
         res.json(lobby)
     } catch {
-        console.log("in catch for edit route");
         res.json({error: "could not update"})
     }
 })
 
 router.put("/:lobbyId/add", async (req, res) => {
-    console.log("inside lobby player route");
     try {
 
         const lobby = await Lobby.findById(req.params.lobbyId);
@@ -105,12 +98,10 @@ router.put("/:lobbyId/add", async (req, res) => {
     
         res.json(lobby)
     } catch {
-        console.log("in add player catch");
     }
 })
 
 router.put("/:lobbyId/remove", async(req, res) => {
-    console.log("inside lobby remove player route");
     try {
         const lobby = await Lobby.findById(req.params.lobbyId);
         const user = await User.findById(req.body.playerId)
@@ -122,22 +113,16 @@ router.put("/:lobbyId/remove", async(req, res) => {
         lobby.update();
         res.json(lobby)
     } catch {
-        console.log("in catch for remove");
     }
 })
 
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), async (req, res) => {
-    console.log("inside delete route");
     if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
-        console.log("inside delete if statement", req.params.lobbyId);
-        // const lobby = await Lobby.findById(req.params.lobbyId)
-        // console.log(lobby);
-        const lobby =await Lobby.findOneAndDelete({_id: req.params.lobbyId})
-        console.log(lobby);
-        // .then(lobby => {
-        //     console.log("DELETED:", lobby);
-        //     res.json(lobby)
-        // }).catch(err => console.log("could not delete"))
+        try {
+            const lobby = await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
+        } catch(error) {
+            res.json(error.response.data);
+        }
     }
 })
 

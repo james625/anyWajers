@@ -43,7 +43,7 @@ router.post("/register", (req, res) => {
                 });
               });
             })
-            .catch(err => console.log(err));
+            .catch(err => res.json(err));
         });
       }); 
     }
@@ -101,11 +101,6 @@ router.put("/:userId",
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    // console.log('1')
-    // await User.updateOne({_id: req.params.userId}, req.body);
-    // console.log('2')
-    // const user = await User.findById(req.params.userId);
-    // console.log('3')
     const user = await User.findOneAndUpdate({_id: req.params.userId}, req.body)
     const newUser = await User.findById(req.params.userId);
     newUser.save()
@@ -119,7 +114,6 @@ router.get('/:userId', (req,res) => {
 router.delete("/:userId", passport.authenticate('jwt', { session: false }), (req, res) => {
     User.deleteOne({"_id": req.params.userId})
     .then(user => {
-        console.log(user);
         res.json(user)
     })
 })

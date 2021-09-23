@@ -14,9 +14,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', async(req, res) => {
-   console.log("in get single game");
     try {
         if(mongoose.Types.ObjectId.isValid(req.params.id)){
+
             const game = await Game.findById(req.params.id).populate({
                                                                         path: 'lobbies',
                                                                         model: 'Lobby',
