@@ -23,7 +23,6 @@ router.get("/:lobby_id", async(req, res) => {
                                                                     path: 'players',
                                                                     model: 'User'
                                                                 })
-        console.log(lobby);
         res.json(lobby)
     }
     catch {
@@ -51,7 +50,6 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
     })
 
     const game = await Game.findById(req.body.game);
-    console.log(game.lobbies);
     
     newLobby.save()
     .then(lobby =>{
@@ -76,10 +74,12 @@ router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(
 
 router.put("/:lobbyId/add", async (req, res) => {
     const lobby = await Lobby.findById(req.params.lobbyId);
-    console.log(req.body)
+
     const user = await User.findById(req.body.playerId)
-    console.log(user);
+
     if(!user) return res.json({nouser: "User does not exist!"})
+
+    if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
 
     if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
 
@@ -90,10 +90,22 @@ router.put("/:lobbyId/add", async (req, res) => {
     res.json(lobby)
 })
 
+router.put("/:lobbyId/remove", async(req, res) => {
+    const lobby = await Lobby.findById(req.params.lobbyId);
+    const user = await User.findById(req.body.playerId)
+
+    const index = lobby.players.indexOf(user._id)
+    if(index === -1) return res.json({notfound: "User does not exist in lobby"})
+
+    lobby.players.splice(index, 1)
+    
+    lobby.save();
+    res.json(lobby)
+})
+
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
     Lobby.deleteOne({"_id": req.params.lobbyId})
     .then(lobby => {
-        console.log(lobby);
         res.json(lobby)
     })
 })

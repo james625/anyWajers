@@ -5,10 +5,9 @@ import { withRouter } from 'react-router';
 import LobbyItem from './lobby_item';
 
 const mSTP = (state, ownProps) => {
-    // console.log(ownProps.match.params.lobby_id)
-    // console.log(ownProps.lobby)
     return {
         currentUserId: state.session.user.id,
+        username: state.session.user.username,
         lobby: ownProps.lobby,
         history: ownProps.history
     }
