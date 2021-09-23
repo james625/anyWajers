@@ -9,6 +9,7 @@ import '../assets/splash/splash.scss';
 import '../assets/game_show/game_show.scss';
 import '../assets/game_show/lobby_modal.scss';
 import '../assets/footer/footer.scss';
+import '../assets/user/user.scss';
 
 import NavBar from './nav_bar/nav_bar';
 import Footer from './footer/footer'
@@ -22,8 +23,9 @@ import { ProtectedRoute } from '../util/route_util';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab);
+library.add(fab, faUserAstronaut);
 
 const App = () => (
   <div>
