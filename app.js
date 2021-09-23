@@ -46,13 +46,17 @@ io.on('connection', socket => {
   socket.on('delete-lobby', lobby => {
     io.emit('receive-lobby', lobby)
   })
+})
 
-  socket.on('lobby-created', lobby => {
-    io.emit('receive-lobby', lobby)
-  })
-
+io.on("connection", socket => {
   socket.on("body", text => {
     io.emit('receive-message', text) 
+  })
+})
+
+io.on("connection", socket => {
+  socket.on('lobby-created', lobby => {
+    io.emit('receive-lobby', lobby)
   })
 })
 

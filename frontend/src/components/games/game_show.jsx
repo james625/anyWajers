@@ -56,9 +56,6 @@ class GameShow extends React.Component {
                 Create Lobby
               </button>
               {game.data.lobbies.map((lobby) => {
-                if (lobby.players.length === 0) {
-                  this.props.deleteLobby(lobby.id);
-                }
                 if (lobby.players.length < lobby.playerCount) {
                   return <LobbyItemContainer lobby={lobby} key={lobby._id} />;
                 }
