@@ -5,10 +5,13 @@ class User extends React.Component {
     super(props);
     this.bio = '';
     this.props.user ? this.bio = this.props.user.data.bio : this.bio = ''
+    this.favGame = '';
+    this.props.user ? this.favGame = this.props.user.data.favGame : this.favGame = ''
     this.state = {
       email: (this.props.user ? this.props.user.data.email : this.props.currentUser.email),
       username: (this.props.user ? this.props.user.data.username : this.props.currentUser.username),
       bio: this.bio,
+      favGame: this.favGame,
       edit: false
     };
     this.update = this.update.bind(this);
@@ -38,7 +41,8 @@ class User extends React.Component {
       email: this.state.email,
       username: this.state.username,
       bio: this.state.bio,
-      id: this.props.currentUser.id
+      favGame: this.state.favGame,
+      id: this.props.currentUser.id,
     }
     this.props.editUser(user)
     this.setState({
@@ -49,6 +53,7 @@ class User extends React.Component {
   handleDelete(e) {
     e.preventDefault()
     this.props.deleteUser(this.props.currentUser.id)
+    this.props.logout()
     this.props.history.push('/')
   }
 
@@ -58,14 +63,24 @@ class User extends React.Component {
         <div>
           <h2>{this.state.email}</h2>
           <form action="">
+            Username
             <input type='text' 
             value={this.state.username}
             onChange={this.update('username')} />
+            <br />
+            Bio
             <input type='text'  
             value={this.state.bio}
             onChange={this.update('bio')}/>
+            <br />
+            Favorite Games
+            <input type='text'  
+            value={this.state.favGame}
+            onChange={this.update('favGame')}/>
+            <br />
             <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </form>
+          <br />
           <button onClick={this.handleDelete}>Delete</button>
           
         </div>
@@ -78,6 +93,7 @@ class User extends React.Component {
           <h2>{this.props.user.data.email}</h2>
           <p>{this.props.user.data.username}</p>
           <p>{this.props.user.data.bio}</p>
+          <p>{this.props.user.data.favGame}</p>
           <button onClick={this.onClick}>Edit</button>
         </div>
       )
