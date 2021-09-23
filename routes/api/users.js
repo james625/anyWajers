@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateUserInput = require('../../validation/users');
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -66,7 +67,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, email: user.email, username: user.username };
+        const payload = { id: user.id, email: user.email, username: user.username, bio: user.bio };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
@@ -88,6 +89,30 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     username: req.user.username,
     email: req.user.email
   });
+})
+
+// newly added 
+
+router.put("/:userId", passport.authenticate('jwt', { session: false }), async(req, res) => {
+    const { errors, isValid } = validateUserInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({errors});
+    }
+    console.log('1')
+    await User.updateOne({_id: req.params.userId}, req.body);
+    console.log('2')
+    const user = await User.findById(req.params.userId);
+    console.log('3')
+    user.save()
+    res.json(user)
+})
+
+router.delete("/:userId", passport.authenticate('jwt', { session: false }), (req, res) => {
+    User.deleteOne({"_id": req.params.userId})
+    .then(user => {
+        console.log(user);
+        res.json(user)
+    })
 })
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));

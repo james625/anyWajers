@@ -12,16 +12,8 @@ class LobbyEdit extends React.Component {
       players: [],
     }
     this.lobby = this.props.lobby.data
-    this.handleClick = this.handleClick.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleClick(e){
-    e.preventDefault();
-    this.setState({
-      show: true
-    })
   }
 
   handleSubmit(e) {
@@ -42,7 +34,6 @@ class LobbyEdit extends React.Component {
       owner: this.props.currentUserId,
       description: '',
       playerCount: 0,
-      show: false
     })
     this.props.closeModal()
   }
