@@ -13,6 +13,8 @@ class Form extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.input = this.input.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
   componentDidUpdate(prevProps){
     if (prevProps.currentUser !== this.props.currentUser) {
@@ -28,6 +30,19 @@ class Form extends React.Component {
     }
   }
   
+  handleSignup(e){
+    e.preventDefault();
+    this.props.closeModal();
+    this.props.openModal('signup');
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.login({
+      email: "james@gmail.com",
+      password: "password"
+    })
+  }
 
   handleSubmit(field) {
     return (e) => {
@@ -96,9 +111,10 @@ class Form extends React.Component {
                 />
                 <span className="placeholder-two">Password</span>
                 <p className="login-redirect-text">
-                  Don't have an account? <sign-up>Sign up</sign-up>
+                  Don't have an account? <sign-up onClick={this.handleSignup}>Sign up</sign-up>
                 </p>
                 <button className="auth-button">Login</button>
+                <p className="auth-button" onClick={this.handleDemo}>Demo</p>
               </div>
             </div>
           </div>
