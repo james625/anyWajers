@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { io } from "socket.io-client";
 
 class LobbyItem extends React.Component {
   constructor(props) {
-    super(props);
-    this.lobby = this.props.lobby;
-    this.handleJoin = this.handleJoin.bind(this);
-    this.navToLobby = this.navToLobby.bind(this);
+    super(props)
+    this.lobby = this.props.lobby
+    this.handleJoin = this.handleJoin.bind(this)
+    this.navToLobby = this.navToLobby.bind(this)
+    this.socket = io();
+
   }
 
   navToLobby() {
@@ -13,12 +16,10 @@ class LobbyItem extends React.Component {
     this.props.history.push(url);
   }
 
-  handleJoin() {
-    this.props.addPlayer({
-      id: this.props.lobby._id,
-      playerId: this.props.currentUserId,
-    });
-    this.navToLobby();
+  handleJoin(){
+    this.props.addPlayer({id: this.props.lobby._id, playerId: this.props.currentUserId})
+    this.socket.emit('lobby', this.props.username)
+    this.navToLobby()
   }
 
   render() {

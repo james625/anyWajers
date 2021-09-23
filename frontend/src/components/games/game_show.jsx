@@ -1,11 +1,22 @@
 import React from 'react';
 import LobbyItemContainer from '../lobbies/lobby_item_container';
 import { withRouter } from 'react-router';
+import { io } from 'socket.io-client';
 // import LobbyCreateContainer from '../lobbies/lobby_create_container'
 
 // link to lobby create container
 
 class GameShow extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.socket = io()
+  
+    this.socket.on('receive-lobby', lobby => {
+      this.props.fetchGame(this.props.match.params.gameId)
+    })
+  }
+
   componentDidMount() {
     this.props.fetchGame(this.props.match.params.gameId);
   }
@@ -23,7 +34,6 @@ class GameShow extends React.Component {
       return null;
     }
 
-    // console.log(game.data.lobbies)
     return (
       <div className="game-show-container">
         <div className="game-show-art"></div>
@@ -41,9 +51,14 @@ class GameShow extends React.Component {
               >
                 Create Lobby
               </button>
-              {game.data.lobbies.map((lobby) => (
-                <LobbyItemContainer lobby={lobby} key={lobby.name} />
-              ))}
+              {game.data.lobbies.map((lobby) => {
+                if (lobby.players.length === 0) {
+                  this.props.deleteLobby(lobby.id)
+                }
+                if(lobby.players.length < lobby.playerCount){
+                  return <LobbyItemContainer lobby={lobby} key={lobby._id} />
+                }
+                })}
             </ul>
           </div>
         </div>
@@ -53,3 +68,5 @@ class GameShow extends React.Component {
 }
 
 export default withRouter(GameShow);
+
+

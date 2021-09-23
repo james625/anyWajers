@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchLobby, deleteLobby } from '../../actions/lobby_actions';
+import { fetchLobby, deleteLobby, removePlayer } from '../../actions/lobby_actions';
 import { openModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router';
 import LobbyShow from './lobby_show';
@@ -16,7 +16,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
     fetchLobby: lobbyId => dispatch(fetchLobby(lobbyId)),
     openModal: modal => dispatch(openModal(modal)),
-    deleteLobby: lobbyId => dispatch(deleteLobby(lobbyId))
+    deleteLobby: lobbyId => dispatch(deleteLobby(lobbyId)),
+    removePlayer: lobby => dispatch(removePlayer(lobby))
 })
 
 export default withRouter(connect(mSTP, mDTP)(LobbyShow))
