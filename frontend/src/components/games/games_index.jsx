@@ -42,7 +42,7 @@ class GamesIndex extends React.Component {
             </div>
             <div className="splash-image"></div>
             <video
-              width="1912"
+              width="1917"
               src={background_video}
               autoPlay
               muted
