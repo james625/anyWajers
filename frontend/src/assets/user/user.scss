@@ -4,7 +4,7 @@
     letter-spacing: normal;
     margin-bottom: 10%;
     margin-top: 10%;
-    display: flex;
+    // display: flex;
     align-items: center;
     // justify-content: center;
     flex-wrap: wrap;
@@ -15,8 +15,6 @@
 .user-form {
     height: fit-content;
     background-color: cadetblue;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: light;
     letter-spacing: normal;
     margin-bottom: 100px;
@@ -44,10 +42,11 @@
 }
 
 .user-info {
-    margin-left: 40px;
-    border-left: 2px solid white;
-    padding-left: 40px;
+    // margin-left: 40px;
+    border-top: 2px solid white;
+    // padding-left: 40px;
     height: 184px;
+    width: fit-content;
     display: flex;
     align-items: flex-end;
     // background-color: burlywood;

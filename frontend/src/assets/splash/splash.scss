@@ -55,9 +55,13 @@ video {
   border: none;
 }
 
-.nav-auth-button:hover {
+.nav-auth-button:hover, .username:hover {
   transition: 0.2s;
   background-color: rgb(163, 51, 255);
+}
+
+.username:hover {
+  cursor: pointer;
 }
 
 .home-button {
