@@ -10,11 +10,11 @@ class GameShow extends React.Component {
 
   constructor(props){
     super(props)
-    this.socket = io()
+    // this.socket = io()
   
-    this.socket.on('receive-lobby', lobby => {
-      this.props.fetchGame(this.props.match.params.gameId)
-    })
+    // this.socket.on('receive-lobby', lobby => {
+    //   this.props.fetchGame(this.props.match.params.gameId)
+    // })
   }
 
   componentDidMount() {
@@ -26,6 +26,10 @@ class GameShow extends React.Component {
       this.props.fetchGame(this.props.match.params.gameId);
     }
   }
+  
+  // componentWillUnmount(){
+  //   this.socket.off('connection')
+  // }
 
   render() {
     const { game } = this.props;

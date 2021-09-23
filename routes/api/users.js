@@ -98,13 +98,14 @@ router.put("/:userId", passport.authenticate('jwt', { session: false }), async(r
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    console.log('1')
-    await User.updateOne({_id: req.params.userId}, req.body);
-    console.log('2')
-    const user = await User.findById(req.params.userId);
-    console.log('3')
-    user.save()
-    res.json(user)
+    try {
+      await User.updateOne({_id: req.params.userId}, req.body);
+      const user = await User.findById(req.params.userId);
+      user.save()
+      res.json(user)
+    } catch {
+      console.log('in user update catch');
+    }
 })
 
 router.delete("/:userId", passport.authenticate('jwt', { session: false }), (req, res) => {

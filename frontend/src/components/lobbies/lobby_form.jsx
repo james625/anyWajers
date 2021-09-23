@@ -13,7 +13,7 @@ class LobbyForm extends React.Component {
       playerCount: 0,
       players: [],
     }
-    this.socket = io();
+    // this.socket = io();
     this.handleSubmit = this.handleSubmit.bind(this)
     this.navToLobby = this.navToLobby.bind(this);
   }
@@ -31,18 +31,26 @@ class LobbyForm extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault()
-    let lobby = {
-      game: this.state.game,
-      name: this.state.name,
-      owner: this.state.owner,
-      description: this.state.description,
-      playerCount: this.state.playerCount,
-      players: this.state.players,
+
+    debugger
+    try{
+      let lobby = {
+        game: this.state.game,
+        name: this.state.name,
+        owner: this.state.owner,
+        description: this.state.description,
+        playerCount: this.state.playerCount,
+        players: this.state.players,
+      }
+      const lob = await this.props.createLobby(lobby)
+      // this.socket.emit('lobby-created', "lobby has been made")
+      this.props.closeModal()
+      this.navToLobby(lob.lobby.data._id)
+   
+    } catch {
+        console.log("error in submit");
     }
-    const lob = await this.props.createLobby(lobby)
-    this.socket.emit('lobby-created', "lobby has been made")
-    this.props.closeModal()
-    this.navToLobby(lob.lobby.data._id)
+
   }
 
   update(field) {

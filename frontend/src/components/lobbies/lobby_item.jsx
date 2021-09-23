@@ -7,7 +7,7 @@ class LobbyItem extends React.Component {
     this.lobby = this.props.lobby
     this.handleJoin = this.handleJoin.bind(this)
     this.navToLobby = this.navToLobby.bind(this)
-    this.socket = io();
+    // this.socket = io();
 
   }
 
@@ -18,7 +18,7 @@ class LobbyItem extends React.Component {
 
   handleJoin(){
     this.props.addPlayer({id: this.props.lobby._id, playerId: this.props.currentUserId})
-    this.socket.emit('lobby', this.props.username)
+    // this.socket.emit('lobby', this.props.username)
     this.navToLobby()
   }
 

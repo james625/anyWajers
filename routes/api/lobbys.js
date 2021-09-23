@@ -53,16 +53,17 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         playerCount: req.body.playerCount,
         players: [req.body.owner]
     })
-
-    const game = await Game.findById(req.body.game);
+    console.log(req.body.game)
+    Game.findById(req.body.game).then(game => {
+        newLobby.save()
+        .then(lobby =>{
+                game.lobbies.push(newLobby);
+                game.save()
+                res.json(lobby)
+            })
+            .catch(err => res.json(err));
+    })
     
-    newLobby.save()
-    .then(lobby =>{
-            game.lobbies.push(newLobby);
-            game.save()
-            res.json(lobby)
-        })
-        .catch(err => res.json(err));
 })
 
 router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(req, res) => {
@@ -72,56 +73,71 @@ router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    
-    await Lobby.updateOne({_id: req.params.lobbyId}, req.body);
-    
-    const lobby = await Lobby.findById(req.params.lobbyId);
-    res.json(lobby)
+    try{
+
+        await Lobby.updateOne({_id: req.params.lobbyId}, req.body);
+        
+        const lobby = await Lobby.findById(req.params.lobbyId);
+        res.json(lobby)
+    } catch {
+        console.log("in catch for edit route");
+        res.json({error: "could not update"})
+    }
 })
 
 router.put("/:lobbyId/add", async (req, res) => {
     console.log("inside lobby player route");
+    try {
 
-    const lobby = await Lobby.findById(req.params.lobbyId);
-
-    const user = await User.findById(req.body.playerId)
-
-    if(!user) return res.json({nouser: "User does not exist!"})
-
-    if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
-
-    if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
-
-    lobby.players.push(req.body.playerId)
-
-    lobby.save()
-
-    res.json(lobby)
+        const lobby = await Lobby.findById(req.params.lobbyId);
+    
+        const user = await User.findById(req.body.playerId)
+    
+        if(!user) return res.json({nouser: "User does not exist!"})
+    
+        if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
+    
+        if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
+    
+        lobby.players.push(req.body.playerId)
+    
+        lobby.save()
+    
+        res.json(lobby)
+    } catch {
+        console.log("in add player catch");
+    }
 })
 
 router.put("/:lobbyId/remove", async(req, res) => {
     console.log("inside lobby remove player route");
-
-    const lobby = await Lobby.findById(req.params.lobbyId);
-    const user = await User.findById(req.body.playerId)
-
-    const index = lobby.players.indexOf(user._id)
-    if(index === -1) return res.json({notfound: "User does not exist in lobby"})
-
-    lobby.players.splice(index, 1)
+    try {
+        const lobby = await Lobby.findById(req.params.lobbyId);
+        const user = await User.findById(req.body.playerId)
+        if(lobby === null) return res.json({noPlayers: "no players array"})
+        if(lobby.players.indexOf(user._id) === -1) return res.json({notfound: "User does not exist in lobby"})
     
-    lobby.save();
-    res.json(lobby)
+        lobby.players.splice(lobby.players.indexOf(user._id), 1)
+        
+        lobby.update();
+        res.json(lobby)
+    } catch {
+        console.log("in catch for remove");
+    }
 })
 
-router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), async (req, res) => {
     console.log("inside delete route");
     if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
-        console.log("inside if statement");
-        Lobby.deleteOne({"_id": req.params.lobbyId})
-        .then(lobby => {
-            res.json(lobby)
-        })
+        console.log("inside delete if statement", req.params.lobbyId);
+        // const lobby = await Lobby.findById(req.params.lobbyId)
+        // console.log(lobby);
+        const lobby =await Lobby.findOneAndDelete({_id: req.params.lobbyId})
+        console.log(lobby);
+        // .then(lobby => {
+        //     console.log("DELETED:", lobby);
+        //     res.json(lobby)
+        // }).catch(err => console.log("could not delete"))
     }
 })
 
