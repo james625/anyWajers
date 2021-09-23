@@ -21,7 +21,7 @@ export const fetchUser = (userId) => dispatch => (
 
 export const editUser = (user) => dispatch => (
     UserApiUtil.editUser(user)
-    .then(user => dispatch(receiveCurrentUser(user)))
+    .then(user => dispatch(receiveUser(user)))
 )
 
 export const deleteUser = (userId) => dispatch => (

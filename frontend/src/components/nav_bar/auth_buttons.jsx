@@ -25,7 +25,7 @@ class AuthButtons extends React.Component {
             Logout
           </button>
           <button className="username">
-            {this.props.currentUser.username}
+            {this.props.user ? this.props.user.data.username : this.props.currentUser.username}
           </button>
           <Link to={`/users/${this.props.currentUser.id}`}>profile</Link>
         </div>
