@@ -2,33 +2,32 @@ import React from 'react';
 import LobbyItemContainer from '../lobbies/lobby_item_container';
 import { withRouter } from 'react-router';
 import { io } from 'socket.io-client';
-import animation_scripts from '../../assets/animation_scripts/game_item_list_dropdown';
 // import LobbyCreateContainer from '../lobbies/lobby_create_container'
 
 // link to lobby create container
 
 class GameShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.socket = io();
+  // constructor(props){
+  //   super(props)
 
+  // }
+
+  componentDidMount() {
+    this.socket = io();
     this.socket.on('receive-lobby', (lobby) => {
       this.props.fetchGame(this.props.match.params.gameId);
     });
-  }
-
-  componentDidMount() {
     this.props.fetchGame(this.props.match.params.gameId);
-    const script = document.createElement('script');
-    script.src = { animation_scripts };
-    script.async = true;
-    document.body.appendChild(script);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.lobbies !== this.props.lobbies) {
       this.props.fetchGame(this.props.match.params.gameId);
     }
+  }
+
+  componentWillUnmount() {
+    this.socket.disconnect();
   }
 
   render() {

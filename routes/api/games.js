@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const router = express.Router();
 
 const Game = require('../../models/Game');
@@ -13,17 +14,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', async(req, res) => {
-   
     try {
-        const game = await Game.findById(req.params.id).populate({
-                                                                    path: 'lobbies',
-                                                                    model: 'Lobby',
-                                                                    populate: {
-                                                                        path: 'players',
-                                                                        model: 'User'
-                                                                    }
-                                                                })
-        res.json(game);
+        if(mongoose.Types.ObjectId.isValid(req.params.id)){
+
+            const game = await Game.findById(req.params.id).populate({
+                                                                        path: 'lobbies',
+                                                                        model: 'Lobby',
+                                                                        populate: {
+                                                                            path: 'players',
+                                                                            model: 'User'
+                                                                        }
+                                                                    })
+            return res.json(game);
+        }
     }        
     catch {
         res.status(404).json({ nogamefound: 'No game' })

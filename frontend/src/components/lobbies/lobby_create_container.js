@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     lobby: Object.values(state.entities.lobbies)[0],
     currentUser: state.session.user,
-    currentGameId: Object.keys(state.entities.games)[0],
-    currentGame: Object.values(state.entities.games)[0],
+    currentGameId: Object.keys(state.entities.games)[Object.keys(state.entities.games).length-1],
+    currentGame: Object.keys(state.entities.games)[Object.keys(state.entities.games).length-1],
   };
 };
 

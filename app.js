@@ -10,7 +10,7 @@ const passport = require('passport');
 const http = require("http");
 const server = http.createServer(app);
 const socketio = require('socket.io');
-const io = socketio(server, { cors: { origin: '*' } });
+const io = socketio(server, { cors: { origin: '*' }});
 
 const path = require('path');
 
@@ -59,7 +59,6 @@ io.on("connection", socket => {
     io.emit('receive-lobby', lobby)
   })
 })
-
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`Server is running on port ${port}`));
 

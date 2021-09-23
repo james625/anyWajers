@@ -15,7 +15,7 @@ const receiveLobby = lobby => {
     lobby
 }}
 
-const removeLobby = lobby => ({
+export const removeLobby = lobby => ({
     type: REMOVE_LOBBY,
     lobby
 })
