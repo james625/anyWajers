@@ -1,8 +1,13 @@
-.game-show-container {
+.game-show-god-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0%;
+}
+
+.game-show-container {
+  position: relative;
+  width: 100%;
+  height: auto;
   background-color: rgb(27, 27, 27);
 }
 
@@ -15,21 +20,22 @@
 
 .game-show-art {
   position: absolute;
+  z-index: 2;
   width: 50%;
   height: 100%;
-  left: 0%;
+  left: 0;
   background-color: rgb(27, 27, 27);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1280' height='1380' preserveAspectRatio='none' viewBox='0 0 1280 1380'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1059%26quot%3b)' fill='none'%3e%3cpath d='M586.3991547590617 466.8173530074045L326.73301152280226 345.73304185276396 205.6487003681617 605.3991850890234 465.3148436044212 726.4834962436639z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1035.300052582421 610.2647653446289L908.9361348407436 474.75605388232134 773.4274233784361 601.1199716239987 899.7913411201133 736.6286830863062z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M370.1426484514966 1336.2927027967244L406.8498010962338 1104.5328621866065 175.089128048611596 1067.8257095418694 138.38280784137874 1299.5855501519873z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M323.01464218557237 829.9858833517956L370.49263662402757 1020.4097182080725 560.9164714803046 972.9317237696173 513.4384770418493 782.5078889133404z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M266.3760470073316 939.3665395160062L136.43784214912705 813.8866736658563 10.95797629897703 943.8248785240608 140.89618115718156 1069.3047443742107z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M131.80296694296158 617.6562827013151L296.27110135590806 835.9128687955853 514.5276874501782 671.4447343826389 350.0595530372317 453.18814828836867z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M648.1500150412418 979.5366770682275L464.9070598600192 973.1376920693574 458.5080748611491 1156.38064725058 641.7510300423717 1162.77963224945z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M594.3723304864151 143.19625948158296L517.5442157174737 281.7978474722271 656.1458037081178 358.62596224116857 732.9739184770592 220.02437425052443z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1059'%3e%3crect width='1280' height='1380' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
   margin-left: 50%;
 }
 
 .game-show-content {
-  position: absolute;
+  z-index: 3;
+  position: relative;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  overflow: scroll;
 }
 
 .game-show-banner {
@@ -55,6 +61,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.lobby-create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 340px;
+  height: 40px;
+  padding: 30px;
+  font-size: 24px;
+  position: relative;
+  font-weight: bolder;
+  border: none;
+  color: white;
+  transition: 0.2s;
+  background-color: rgb(163, 51, 255);
+  margin-top: 20px;
+}
+
+.lobby-create:hover {
+  transition: 0.2s;
+  background-color: rgb(89, 28, 142);
 }
 
 .game-show-list {
@@ -96,57 +125,14 @@
   animation: 3s rotate linear infinite;
 }
 
-.lobby-description {
-  font-size: 16px;
-}
-
-// .lobby-join-button {
-//   cursor: pointer;
-//   position: absolute;
-//   bottom: 0px;
-//   right: 0px;
-//   font-size: 16px;
-//   border: none;
-//   height: 100%;
-//   color: white;
-//   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-//   transition: 0.2s;
-//   background-color: rgb(61, 61, 61);
-// }
-
-// .lobby-join-button:hover {
-//   transition: 0.2s;
-//   background-color: rgb(27, 27, 27);
-// }
-
-.lobby-create {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 340px;
-  height: 40px;
-  padding: 30px;
-  font-size: 24px;
-  position: relative;
-  font-weight: bolder;
-  border: none;
-  color: white;
-  transition: 0.2s;
-  background-color: rgb(163, 51, 255);
-  margin-top: 20px;
-}
-
-.lobby-create:hover {
-  transition: 0.2s;
-  background-color: rgb(89, 28, 142);
-}
-
 .game-show-list-dropdown {
   position: relative;
   height: auto;
   width: 540px;
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(27, 27, 27);
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
   margin-bottom: 40px;
 }
 
@@ -156,44 +142,41 @@
   justify-content: left;
 }
 
-.test-user {
+.lobby-description {
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+  color: rgb(128, 128, 128);
+}
+
+.game-show-list-dropdown-item {
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 12px;
-}
-
-.test-user:hover {
-  background-color: rgb(163, 51, 255);
+  padding: 10px;
+  background-color: rgba(65, 65, 65);
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .lobby-join-button {
   cursor: pointer;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
-  left: 0;
-  bottom: -40px;
-  width: 540px;
+  right: 0;
+  bottom: -41px;
+  width: 120px;
   height: 20px;
   padding: 20px;
   color: white;
-  transition: 0.2s;
   background-color: rgb(163, 51, 255);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 }
 
 .lobby-join-button:hover {
-  transition: 0.2s;
   background-color: rgb(89, 28, 142);
-}
-
-.lobby-description {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
 }
