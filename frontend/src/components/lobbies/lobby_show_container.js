@@ -6,7 +6,7 @@ import LobbyShow from './lobby_show';
 
 const mSTP = (state, ownProps) => {
     return {
-        lobby: Object.values(state.entities.lobbies)[0],
+        lobby: Object.values(state.entities.lobbies)[Object.values(state.entities.lobbies).length - 1],
         currentUser: state.session.user.id,
         history: ownProps.history,
         gameId: ownProps.match.params.gameId

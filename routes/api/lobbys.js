@@ -8,6 +8,7 @@ const validateLobbyInput = require('../../validation/lobbys')
 
 
 router.get("/", (req, res) => {
+
     Lobby.find().populate({
                             path: 'players',
                             model: 'User' 
@@ -33,13 +34,14 @@ router.get("/:lobby_id", async(req, res) => {
 
 
 router.post("/", passport.authenticate('jwt', { session: false }), async(req, res) => {
+
       const { errors, isValid } = validateLobbyInput(req.body);
   
       if (!isValid) {
         return res.status(400).json({errors});
       }
 
-    
+    //  if(req.body.game === "0") return res.json(req.body)
     const newLobby = new Lobby({
         game: req.body.game,
         name: req.body.name,        
@@ -48,66 +50,80 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         playerCount: req.body.playerCount,
         players: [req.body.owner]
     })
-
-    const game = await Game.findById(req.body.game);
+    Game.findById(req.body.game).then(game => {
+        newLobby.save()
+        .then(lobby =>{
+                game.lobbies.push(newLobby);
+                game.save()
+                res.json(lobby)
+            })
+            .catch(err => res.json(err.respose.data));
+    })
     
-    newLobby.save()
-    .then(lobby =>{
-            game.lobbies.push(newLobby);
-            game.save()
-            res.json(lobby)
-        })
-        .catch(err => res.json(err));
 })
 
 router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(req, res) => {
+
     const { errors, isValid } = validateLobbyInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    
-    await Lobby.updateOne({_id: req.params.lobbyId}, req.body);
-    
-    const lobby = await Lobby.findById(req.params.lobbyId);
-    res.json(lobby)
+    try{
+
+        await Lobby.updateOne({_id: req.params.lobbyId}, req.body);
+        
+        const lobby = await Lobby.findById(req.params.lobbyId);
+        res.json(lobby)
+    } catch {
+        res.json({error: "could not update"})
+    }
 })
 
 router.put("/:lobbyId/add", async (req, res) => {
-    const lobby = await Lobby.findById(req.params.lobbyId);
+    try {
 
-    const user = await User.findById(req.body.playerId)
-
-    if(!user) return res.json({nouser: "User does not exist!"})
-
-    if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
-
-    if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
-
-    lobby.players.push(req.body.playerId)
-
-    lobby.save()
-
-    res.json(lobby)
+        const lobby = await Lobby.findById(req.params.lobbyId);
+    
+        const user = await User.findById(req.body.playerId)
+    
+        if(!user) return res.json({nouser: "User does not exist!"})
+    
+        if(lobby.players.includes(user._id)) return res.json({exists: "User is in lobby already!"})
+    
+        if(lobby.players.length >= lobby.playerCount) return res.json({full: "Lobby is full!"})
+    
+        lobby.players.push(req.body.playerId)
+    
+        lobby.save()
+    
+        res.json(lobby)
+    } catch {
+    }
 })
 
 router.put("/:lobbyId/remove", async(req, res) => {
-    const lobby = await Lobby.findById(req.params.lobbyId);
-    const user = await User.findById(req.body.playerId)
-
-    const index = lobby.players.indexOf(user._id)
-    if(index === -1) return res.json({notfound: "User does not exist in lobby"})
-
-    lobby.players.splice(index, 1)
+    try {
+        const lobby = await Lobby.findById(req.params.lobbyId);
+        const user = await User.findById(req.body.playerId)
+        if(lobby === null) return res.json({noPlayers: "no players array"})
+        if(lobby.players.indexOf(user._id) === -1) return res.json({notfound: "User does not exist in lobby"})
     
-    lobby.save();
-    res.json(lobby)
+        lobby.players.splice(lobby.players.indexOf(user._id), 1)
+        
+        lobby.update();
+        res.json(lobby)
+    } catch {
+    }
 })
 
-router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
-    Lobby.deleteOne({_id: req.params.lobbyId})
-    .then(lobby => {
-        res.json(lobby)
-    })
+router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), async (req, res) => {
+    if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
+        try {
+            const lobby = await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
+        } catch(error) {
+            res.json(error.response.data);
+        }
+    }
 })
 
 module.exports = router;

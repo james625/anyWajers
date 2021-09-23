@@ -5,12 +5,16 @@ class LobbyItem extends React.Component {
   constructor(props) {
     super(props);
     this.lobby = this.props.lobby;
-    this.socket = io();
+  
     this.state = { active: false };
 
     this.handleJoin = this.handleJoin.bind(this);
     this.navToLobby = this.navToLobby.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
+  }
+
+  componentDidMount(){
+    this.socket = io();
   }
 
   navToLobby() {
@@ -24,6 +28,7 @@ class LobbyItem extends React.Component {
       playerId: this.props.currentUserId,
     });
     this.socket.emit('lobby', this.props.username);
+    this.socket.disconnect();
     this.navToLobby();
   }
 
