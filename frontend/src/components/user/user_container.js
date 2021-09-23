@@ -8,7 +8,7 @@ import User from "./user"
 
 const mSTP = (state, ownProps) => ({
     currentUser: state.session.user,
-    // history: ownProps.history
+    history: ownProps.history
 });
 
 const mDTP = (dispatch) => ({

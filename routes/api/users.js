@@ -93,16 +93,24 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 // newly added 
 
+router.get('/find', (req, res) => {
+  User.findById(req.body.userId).then((user) => {
+    res.json(user)
+  }).catch(() => {
+    res.status(404).json("couldn't find user")
+  })
+}) 
+
 router.put("/:userId", passport.authenticate('jwt', { session: false }), async(req, res) => {
     const { errors, isValid } = validateUserInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    console.log('1')
+    // console.log('1')
     await User.updateOne({_id: req.params.userId}, req.body);
-    console.log('2')
+    // console.log('2')
     const user = await User.findById(req.params.userId);
-    console.log('3')
+    // console.log('3')
     user.save()
     res.json(user)
 })
