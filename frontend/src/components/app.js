@@ -18,6 +18,7 @@ import GameShowContainer from './games/game_show_container';
 import MessagesContainer from './messages/messages_container';
 import LobbyShowContainer from './lobbies/lobby_show_container';
 import UserContainer from './user/user_container';
+import { ProtectedRoute } from '../util/route_util';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -31,13 +32,13 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={GamesIndexContainer} />
       <Route exact path="/games/:gameId" component={GameShowContainer} />
-      <Route
+      <ProtectedRoute
         exact
         path="/games/:gameId/:lobbyId"
         component={LobbyShowContainer}
       />
       <Route exact path="/messages" component={MessagesContainer} />
-      <Route exact path="/users/:userId" component={UserContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserContainer} />
     </Switch>
     <Footer />
   </div>
