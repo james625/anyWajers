@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-
+import { Link } from 'react-router-dom';
 // fix logout username/ email
 
 class AuthButtons extends React.Component {
@@ -27,6 +27,7 @@ class AuthButtons extends React.Component {
           <button className="username">
             {this.props.currentUser.username}
           </button>
+          <Link to={`/users/${this.props.currentUser.id}`}>profile</Link>
         </div>
       );
     };
