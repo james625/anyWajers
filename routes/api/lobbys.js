@@ -104,7 +104,7 @@ router.put("/:lobbyId/remove", async(req, res) => {
 })
 
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
-    Lobby.deleteOne({"_id": req.params.lobbyId})
+    Lobby.deleteOne({_id: req.params.lobbyId})
     .then(lobby => {
         res.json(lobby)
     })
