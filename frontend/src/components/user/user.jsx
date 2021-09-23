@@ -1,3 +1,4 @@
+import e from 'express';
 import React from 'react';
 
 class User extends React.Component {
@@ -14,7 +15,12 @@ class User extends React.Component {
     this.update = this.update.bind(this);
     this.onClick = this.onClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.props.fetchUser(this.props.currentUser)
+  // }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value })
@@ -41,6 +47,12 @@ class User extends React.Component {
     })
   }
 
+  // handleDelete() {
+  //   e.preventDefault()
+  //   this.props.deleteUser(this.props.currentUser.id)
+  //   this.props.history.push('/')
+  // }
+
   render() {
     debugger
     const edit = () => {
@@ -56,6 +68,7 @@ class User extends React.Component {
             onChange={this.update('bio')}/>
             <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </form>
+          {/* <button onClick={this.handleDelete}>Delete</button> */}
           
         </div>
       )
