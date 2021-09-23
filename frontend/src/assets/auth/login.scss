@@ -4,8 +4,17 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    235deg,
+    rgba(163, 51, 255, 0.2),
+    rgba(0, 181, 194, 0.2)
+  );
+
+  backdrop-filter: brightness(0.2) blur(2px);
   z-index: 4;
+}
+
+@keyframes popup {
 }
 
 .god-container {
@@ -18,6 +27,7 @@
   margin-left: -370px;
   margin-top: -250px;
   z-index: 4;
+  animation: popup 0.2s ease-in;
 }
 
 .login-container {
