@@ -6,6 +6,8 @@ import '../assets/browser.scss';
 import '../assets/auth/signup.scss';
 import '../assets/auth/login.scss';
 import '../assets/splash/splash.scss';
+import '../assets/game_show/game_show.scss';
+import '../assets/game_show/lobby_modal.scss';
 
 import NavBar from './nav_bar/nav_bar';
 import ModalContainer from './modal/modal_container';
@@ -23,7 +25,11 @@ const App = () => (
       <Route exact path="/" component={GamesIndexContainer} />
       {/* <Route exact path="/games" component={GamesIndexContainer} /> */}
       <Route exact path="/games/:gameId" component={GameShowContainer} />
-      <Route exact path="/games/:gameId/:lobbyId" component={LobbyShowContainer} />
+      <Route
+        exact
+        path="/games/:gameId/:lobbyId"
+        component={LobbyShowContainer}
+      />
       <Route exact path="/messages" component={MessagesContainer} />
     </Switch>
   </div>

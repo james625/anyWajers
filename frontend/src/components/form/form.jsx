@@ -73,7 +73,6 @@ class Form extends React.Component {
                   return <p className="errors">{error}</p>;
                 })}
               </div>
-              ;
             </div>
             <div className="login-container">
               <h1>Login to get started</h1>
