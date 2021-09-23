@@ -68,7 +68,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, email: user.email, username: user.username, bio: user.bio };
+        const payload = { id: user.id, email: user.email, username: user.username, bio: user.bio, favGame: user.favGame };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
@@ -94,18 +94,21 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 // newly added 
 
-router.put("/:userId", 
+router.get('/find', (req, res) => {
+  User.findById(req.body.userId).then((user) => {
+    res.json(user)
+  }).catch(() => {
+    res.status(404).json("couldn't find user")
+  })
+}) 
+
+router.put("/:userId", passport.authenticate('jwt', { session: false }), async(req, res) => {
   // passport.authenticate('jwt', { session: false }), 
-  async(req, res) => {
+  // async(req, res) => {
     const { errors, isValid } = validateUserInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
     }
-    // console.log('1')
-    // await User.updateOne({_id: req.params.userId}, req.body);
-    // console.log('2')
-    // const user = await User.findById(req.params.userId);
-    // console.log('3')
     const user = await User.findOneAndUpdate({_id: req.params.userId}, req.body)
     const newUser = await User.findById(req.params.userId);
     newUser.save()

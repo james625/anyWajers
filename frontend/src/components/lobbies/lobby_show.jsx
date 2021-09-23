@@ -59,7 +59,6 @@ class LobbyShow extends React.Component {
   }
 
   handleDeleteClick(e) {
-    console.log(this.props.lobby)
     e.preventDefault()
     this.props.deleteLobby(this.props.lobby.data._id)
     this.navToGame()
@@ -89,7 +88,8 @@ class LobbyShow extends React.Component {
           {lobby.data.players.map((player) => (
             <li key={player._id}>
               <p>{player.username}</p>
-              {/* <p>{player.rating}</p> */}
+              <p>{player.bio}</p>
+              <p>{player.favGame}</p>
             </li>
           ))}
         </ul>

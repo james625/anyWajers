@@ -1,5 +1,5 @@
 import * as UserApiUtil from '../util/user_api_util'
-import { receiveCurrentUser } from './session_actions';
+// import { receiveCurrentUser } from './session_actions';
 
 export const RECEIVE_USER = "RECEIVE_USER"
 export const REMOVE_USER = "REMOVE_USER"
@@ -25,6 +25,6 @@ export const editUser = (user) => dispatch => (
 )
 
 export const deleteUser = (userId) => dispatch => (
-    UserApiUtil.getUser(userId)
+    UserApiUtil.deleteUser(userId)
     .then(user => dispatch(removeUser(user)))
 )
