@@ -43,8 +43,6 @@ class LobbyEdit extends React.Component {
   }
 
   render() {
-    console.log(this.lobby)
-    console.log(this.state)
     return (
       <div>
         <form>

@@ -1,0 +1,62 @@
+.footer {
+  display: flex;
+  background-color: rgba(27, 27, 27, 0.5);
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  z-index: 2;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  border-top: 2px solid;
+  border-color: rgb(221, 221, 221);
+  letter-spacing: normal;
+  --angle: 0deg;
+  border-image: linear-gradient(
+      var(--angle),
+      rgb(0, 181, 194),
+      rgb(26, 68, 255),
+      rgb(163, 51, 255)
+    )
+    1;
+  animation: 6s rotate linear infinite;
+  font-size: 28px;
+}
+
+.footer p {
+  font-size: 14px;
+  padding-bottom: 4px;
+  color: rgb(158, 158, 158);
+}
+
+.footer div {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer-name {
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding-bottom: 2px;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.footer-icons * {
+  font-size: 20px;
+  text-decoration: none !important;
+  color: white !important;
+}

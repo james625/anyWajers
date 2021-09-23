@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-// fix logout username/ email
+// import { Link } from 'react-router-dom';
 
 class AuthButtons extends React.Component {
   constructor(props) {
@@ -10,6 +9,7 @@ class AuthButtons extends React.Component {
       open: false,
     };
     this.onClick = this.onClick.bind(this);
+    this.navToUser = this.navToUser.bind(this);
   }
 
   onClick(e) {
@@ -17,17 +17,24 @@ class AuthButtons extends React.Component {
     this.props.logout();
   }
 
+  navToUser(e) {
+    e.preventDefault();
+    this.props.history.push(`/users/${this.props.currentUser.id}`);
+  }
+
   render() {
     const signedIn = () => {
       return (
         <div>
+          <button className="username" onClick={this.navToUser}>
+            {this.props.user
+              ? this.props.user.data.username
+              : this.props.currentUser.username}
+          </button>
           <button className="nav-auth-button" onClick={this.onClick}>
             Logout
           </button>
-          <button className="username">
-            {this.props.currentUser.username}
-          </button>
-          <Link to={`/users/${this.props.currentUser.id}`}>profile</Link>
+          {/* <Link to={`/users/${this.props.currentUser.id}`}>profile</Link> */}
         </div>
       );
     };

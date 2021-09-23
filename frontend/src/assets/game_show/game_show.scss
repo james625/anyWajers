@@ -1,8 +1,7 @@
 .game-show-container {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
-  left: 0%;
+  height: auto;
   background-color: rgb(27, 27, 27);
 }
 
@@ -29,7 +28,6 @@
   height: 100%;
   left: 0;
   top: 0;
-  overflow: scroll;
 }
 
 .game-show-banner {
