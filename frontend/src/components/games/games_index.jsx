@@ -24,7 +24,6 @@ class GamesIndex extends React.Component {
 
   render() {
     const { games } = this.props;
-
     return (
       <div className="index-content-container">
         <div className="splash-content-container">
@@ -54,26 +53,26 @@ class GamesIndex extends React.Component {
           <div className="game-list-container">
             <ul className="game-list">
               {games.map((game) => (
-                <GameItem game={game} key={game.name} />
+                <GameItem game={game} key={game.description} />
               ))}
             </ul>
           </div>
           <div className="game-box-container">
-            <img className="game-box-item" src={amongus} alt=""></img>
-            <img className="game-box-item" src={apexlegends} alt=""></img>
-            <img className="game-box-item" src={csgo} alt=""></img>
-            <img className="game-box-item" src={warzone} alt=""></img>
-            <img className="game-box-item" src={dbd} alt=""></img>
-            <img className="game-box-item" src={fortnite} alt=""></img>
-            <img className="game-box-item" src={league} alt=""></img>
-            <img className="game-box-item" src={minecraft} alt=""></img>
-            <img className="game-box-item" src={overwatch} alt=""></img>
-            <img className="game-box-item" src={pubg} alt=""></img>
-            <img className="game-box-item" src={siege} alt=""></img>
-            <img className="game-box-item" src={roblox} alt=""></img>
-            <img className="game-box-item" src={rocketleague} alt=""></img>
-            <img className="game-box-item" src={sea} alt=""></img>
-            <img className="game-box-item" src={valorant} alt=""></img>
+            <img className="game-box-item" src={amongus} alt="Among Us"></img>
+            <img className="game-box-item" src={apexlegends} alt="Apex Legends"></img>
+            <img className="game-box-item" src={csgo} alt="CSGo"></img>
+            <img className="game-box-item" src={warzone} alt="Warzone"></img>
+            <img className="game-box-item" src={dbd} alt="DBD"></img>
+            <img className="game-box-item" src={fortnite} alt="Fortnite"></img>
+            <img className="game-box-item" src={league} alt="League"></img>
+            <img className="game-box-item" src={minecraft} alt="Minecraft"></img>
+            <img className="game-box-item" src={overwatch} alt="Overwatch"></img>
+            <img className="game-box-item" src={pubg} alt="Pubg"></img>
+            <img className="game-box-item" src={siege} alt="Siege"></img>
+            <img className="game-box-item" src={roblox} alt="Roblox"></img>
+            <img className="game-box-item" src={rocketleague} alt="RocketLeague"></img>
+            <img className="game-box-item" src={sea} alt="Sea"></img>
+            <img className="game-box-item" src={valorant} alt="Valorant"></img>
           </div>
         </div>
       </div>
