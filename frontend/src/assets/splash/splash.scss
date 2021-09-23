@@ -34,6 +34,7 @@ video {
   transition: 0.2s;
   color: white;
   font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 300;
   padding: 10px 20px;
   margin-right: 30px;
@@ -186,23 +187,6 @@ mark {
   }
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255);
-  border: 3px solid rgb(27, 27, 27);
-}
-
 .splash-image {
   position: relative;
   height: 700px;
@@ -220,7 +204,7 @@ mark {
 }
 
 .index-content {
-  padding-top: 40px;
+  padding-top: 20px;
   background-color: rgb(27, 27, 27);
   position: relative;
   display: flex;
