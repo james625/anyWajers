@@ -8,6 +8,8 @@ const validateLobbyInput = require('../../validation/lobbys')
 
 
 router.get("/", (req, res) => {
+    console.log("inside get / route");
+
     Lobby.find().populate({
                             path: 'players',
                             model: 'User' 
@@ -17,6 +19,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/:lobby_id", async(req, res) => {
+    console.log("inside single lobby route");
 
     try { 
         const lobby = await Lobby.findById(req.params.lobby_id).populate({
@@ -33,6 +36,8 @@ router.get("/:lobby_id", async(req, res) => {
 
 
 router.post("/", passport.authenticate('jwt', { session: false }), async(req, res) => {
+    console.log("inside lobby post route");
+
       const { errors, isValid } = validateLobbyInput(req.body);
   
       if (!isValid) {
@@ -61,6 +66,8 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
 })
 
 router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(req, res) => {
+    console.log("inside lobby edit route");
+
     const { errors, isValid } = validateLobbyInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
@@ -73,6 +80,8 @@ router.put("/:lobbyId", passport.authenticate('jwt', { session: false }), async(
 })
 
 router.put("/:lobbyId/add", async (req, res) => {
+    console.log("inside lobby player route");
+
     const lobby = await Lobby.findById(req.params.lobbyId);
 
     const user = await User.findById(req.body.playerId)
@@ -91,6 +100,8 @@ router.put("/:lobbyId/add", async (req, res) => {
 })
 
 router.put("/:lobbyId/remove", async(req, res) => {
+    console.log("inside lobby remove player route");
+
     const lobby = await Lobby.findById(req.params.lobbyId);
     const user = await User.findById(req.body.playerId)
 
@@ -104,10 +115,14 @@ router.put("/:lobbyId/remove", async(req, res) => {
 })
 
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), (req, res) => {
-    Lobby.deleteOne({"_id": req.params.lobbyId})
-    .then(lobby => {
-        res.json(lobby)
-    })
+    console.log("inside delete route");
+    if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
+        console.log("inside if statement");
+        Lobby.deleteOne({"_id": req.params.lobbyId})
+        .then(lobby => {
+            res.json(lobby)
+        })
+    }
 })
 
 module.exports = router;

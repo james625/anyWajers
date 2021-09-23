@@ -65,7 +65,7 @@ class GamesIndex extends React.Component {
             <img className="game-box-item" src={warzone} alt=""></img>
             <img className="game-box-item" src={dbd} alt=""></img>
             <img className="game-box-item" src={fortnite} alt=""></img>
-            <img className="game-box-item" src={league}></img>
+            <img className="game-box-item" src={league} alt=""></img>
             <img className="game-box-item" src={minecraft} alt=""></img>
             <img className="game-box-item" src={overwatch} alt=""></img>
             <img className="game-box-item" src={pubg} alt=""></img>
