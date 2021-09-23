@@ -39,30 +39,32 @@ class GameShow extends React.Component {
     }
 
     return (
-      <div className="game-show-container">
+      <div className="game-show-god-container">
         <div className="game-show-art"></div>
-        <div className="game-show-content">
-          <div className="game-show-banner">
-            <h1 className="game-show-title">{game.data.name}</h1>
-            <p className="game-show-description">{game.data.description}</p>
-          </div>
+        <div className="game-show-container">
+          <div className="game-show-content">
+            <div className="game-show-banner">
+              <h1 className="game-show-title">{game.data.name}</h1>
+              <p className="game-show-description">{game.data.description}</p>
+            </div>
 
-          <div className="game-show-list-container">
-            <ul className="game-show-list">
-              <button
-                className="lobby-create"
-                onClick={() => this.props.openModal('create')}
-              >
-                Create Lobby
-              </button>
-              {game.data.lobbies.map((lobby) => {
-                if(lobby.players.length < lobby.playerCount){
-                  return <LobbyItemContainer lobby={lobby} key={lobby._id} />
-                } else {
-                  return null;
-                }
-              })}
-            </ul>
+            <div className="game-show-list-container">
+              <ul className="game-show-list">
+                <button
+                  className="lobby-create"
+                  onClick={() => this.props.openModal('create')}
+                >
+                  Create Lobby
+                </button>
+                {game.data.lobbies.map((lobby) => {
+                  if (lobby.players.length < lobby.playerCount) {
+                    return <LobbyItemContainer lobby={lobby} key={lobby._id} />;
+                  } else {
+                    return null;
+                  }
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

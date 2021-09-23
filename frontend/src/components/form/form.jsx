@@ -8,17 +8,18 @@ class Form extends React.Component {
       password: '',
       password2: '',
       username: '',
-      errors: false
+      errors: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.input = this.input.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     if (prevProps.currentUser !== this.props.currentUser) {
-      this.props.closeModal()
+      this.props.closeModal();
     }
   }
 
@@ -27,21 +28,27 @@ class Form extends React.Component {
       this.setState({
         [field]: e.currentTarget.value,
       });
-    }
+    };
   }
-  
-  handleSignup(e){
+
+  handleSignup(e) {
     e.preventDefault();
     this.props.closeModal();
     this.props.openModal('signup');
   }
 
+  handleLogin(e) {
+    e.preventDefault();
+    this.props.closeModal();
+    this.props.openModal('login');
+  }
+
   handleDemo(e) {
     e.preventDefault();
     this.props.login({
-      email: "james@gmail.com",
-      password: "password"
-    })
+      email: 'james@gmail.com',
+      password: 'password',
+    });
   }
 
   handleSubmit(field) {
@@ -65,7 +72,7 @@ class Form extends React.Component {
           password2: this.state.password2,
         };
         this.props.signup(user);
-        
+
         this.setState({
           email: '',
           username: '',
@@ -111,10 +118,13 @@ class Form extends React.Component {
                 />
                 <span className="placeholder-two">Password</span>
                 <p className="login-redirect-text">
-                  Don't have an account? <sign-up onClick={this.handleSignup}>Sign up</sign-up>
+                  Don't have an account?{' '}
+                  <sign-up onClick={this.handleSignup}>Sign up</sign-up>
                 </p>
                 <button className="auth-button">Login</button>
-                <p className="auth-button" onClick={this.handleDemo}>Demo</p>
+                <p className="demo-auth-button" onClick={this.handleDemo}>
+                  DEMO
+                </p>
               </div>
             </div>
           </div>
@@ -167,7 +177,14 @@ class Form extends React.Component {
                   placeholder=" "
                 />
                 <span className="placeholder-four">Confirm Password</span>
+                <p className="login-redirect-text">
+                  Already signed up?{' '}
+                  <sign-up onClick={this.handleLogin}>Login</sign-up>
+                </p>
                 <button className="auth-button">Sign up</button>
+                <p className="demo-auth-button" onClick={this.handleDemo}>
+                  DEMO
+                </p>
               </div>
             </div>
           </div>

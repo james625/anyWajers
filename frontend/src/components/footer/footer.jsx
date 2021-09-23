@@ -59,7 +59,7 @@ class Footer extends React.Component {
         </div>
 
         <div>
-          <div className="footer-name">Joseph</div>
+          <div className="footer-name">Joe</div>
           <p>frontend engineer</p>
           <div className="footer-icons">
             <a
@@ -82,7 +82,7 @@ class Footer extends React.Component {
           </div>
         </div>
         <div>
-          <div className="footer-name">Wajahat</div>
+          <div className="footer-name">Waj</div>
           <p>backend engineer</p>
           <div className="footer-icons">
             <a

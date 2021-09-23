@@ -48,12 +48,6 @@ class AuthButtons extends React.Component {
           >
             Login
           </button>
-          <button
-            className="nav-auth-button"
-            onClick={() => this.props.openModal('signup')}
-          >
-            Sign up
-          </button>
         </div>
       );
     };

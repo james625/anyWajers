@@ -1,0 +1,38 @@
+.messages-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -30%;
+  margin-top: -20%;
+  width: 60%;
+  height: 70%;
+  background-color: rgb(38, 38, 38);
+  border: 1px solid white;
+  --angle: 0deg;
+  border-image: linear-gradient(
+      var(--angle),
+      rgb(0, 181, 194),
+      rgb(26, 68, 255),
+      rgb(163, 51, 255)
+    )
+    1;
+  animation: 6s rotate linear infinite;
+}
+
+.messages-ul {
+  overflow: hidden;
+  width: 100%;
+  height: 96%;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.message-submit {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.message {
+  padding: 20px;
+}
