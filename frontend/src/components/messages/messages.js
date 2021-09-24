@@ -6,6 +6,7 @@ class Messages extends React.Component {
     super(props);
     this.state = { input: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.socket = null
   }
 
   componentDidMount() {
