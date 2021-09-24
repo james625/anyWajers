@@ -1,106 +1,103 @@
 import React from 'react';
 import { io } from 'socket.io-client';
-import MessageContainer from "../messages/messages_container";
+import MessageContainer from '../messages/messages_container';
 
 class LobbyShow extends React.Component {
   constructor(props) {
-    super(props)
-    this.lobby = this.props.lobby
-    this.handleDeleteClick = this.handleDeleteClick.bind(this)
-    this.navToGame = this.navToGame.bind(this)
-    this.handleLeave = this.handleLeave.bind(this)
+    super(props);
+    this.lobby = this.props.lobby;
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.navToGame = this.navToGame.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
   }
-  
+
   componentDidMount() {
-    this.props.fetchLobby(this.props.match.params.lobbyId)
+    this.props.fetchLobby(this.props.match.params.lobbyId);
     this.socket = io();
-    this.socket.on('receive-user', user => {
-      this.props.fetchLobby(this.props.match.params.lobbyId)
-    })
-    this.socket.on('receive-lobby', lobby => {
+    this.socket.on('receive-user', (user) => {
+      this.props.fetchLobby(this.props.match.params.lobbyId);
+    });
+    this.socket.on('receive-lobby', (lobby) => {
       this.navToGame();
-    })
+    });
   }
 
   // componentDidUpdate(prevProps){
   //   if(prevProps.lobby !== this.props. )
   // }
 
-  componentWillUnmount(){
-    const lobby ={
+  componentWillUnmount() {
+    const lobby = {
       id: this.props.match.params.lobbyId,
-      playerId: this.props.currentUser
+      playerId: this.props.currentUser,
+    };
+    if (this.props.currentUser === this.props.lobby.data.owner) {
+      this.props.deleteLobby(this.props.match.params.lobbyId);
     }
-    if(this.props.currentUser === this.props.lobby.data.owner){
-      this.props.deleteLobby(this.props.match.params.lobbyId)
-    }
-    this.props.removePlayer(lobby)
+    this.props.removePlayer(lobby);
 
-    this.socket.disconnect()
+    this.socket.disconnect();
   }
 
   navToGame() {
-
-    const url = `/games/${this.props.gameId}`
+    const url = `/games/${this.props.gameId}`;
     this.props.history.push(url);
   }
 
-  handleLeave(e){
-    e.preventDefault()
-    if(this.props.currentUser === this.props.lobby.data.owner){
-      this.props.deleteLobby(this.props.match.params.lobbyId)
-      this.socket.emit('delete-lobby', "lobby-deleted")
+  handleLeave(e) {
+    e.preventDefault();
+    if (this.props.currentUser === this.props.lobby.data.owner) {
+      this.props.deleteLobby(this.props.match.params.lobbyId);
+      this.socket.emit('delete-lobby', 'lobby-deleted');
       this.navToGame();
-    }else {
-      const lobby ={
+    } else {
+      const lobby = {
         id: this.props.lobby.data._id,
-        playerId: this.props.currentUser
-      }
-      this.props.removePlayer(lobby)
+        playerId: this.props.currentUser,
+      };
+      this.props.removePlayer(lobby);
       this.navToGame();
     }
   }
 
   handleDeleteClick(e) {
-    e.preventDefault()
-    this.props.deleteLobby(this.props.lobby.data._id)
-    this.navToGame()
+    e.preventDefault();
+    this.props.deleteLobby(this.props.lobby.data._id);
+    this.navToGame();
   }
 
   render() {
-    const { lobby } = this.props
+    const { lobby } = this.props;
 
     if (lobby === undefined || lobby.data.players === undefined) {
-      return null
+      return null;
     }
 
     return (
       <div>
-        <h1>{lobby.data.name}</h1>
-        {lobby.data.owner === this.props.currentUser ? 
+        <p className="lobby-title">{lobby.data.name}</p>
+        {lobby.data.owner === this.props.currentUser ? (
           <div>
             <button onClick={() => this.props.openModal('edit')}>Edit</button>
             <button onClick={this.handleDeleteClick}>delete</button>
           </div>
-         : null }
-         <button onClick={this.handleLeave}>Leave Lobby</button>
-        <br />
-        <p>{lobby.data.description}</p>
+        ) : null}
+        <button className="lobby-leave-button" onClick={this.handleLeave}>
+          Leave
+        </button>
 
-        <ul>
+        <ul className="chat-player-list">
           {lobby.data.players.map((player) => (
-            <li key={player._id}>
+            <li className="chat-player-list-item" key={player._id}>
               <p>{player.username}</p>
-              <p>{player.bio}</p>
-              <p>{player.favGame}</p>
             </li>
           ))}
         </ul>
 
         <MessageContainer />
       </div>
-    )
+    );
   }
 }
 
-export default LobbyShow
+export default LobbyShow;

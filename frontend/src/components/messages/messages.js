@@ -5,6 +5,7 @@ class Messages extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: '' };
+    this.socket = null;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -48,37 +49,46 @@ class Messages extends React.Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <input
+            className="lobby-chat-box"
             type="text"
             value={this.state.input}
             onChange={this.handleChange()}
           ></input>
-          <button>Submit</button>
+          <button className="message-submit">Submit</button>
         </form>
       );
     }
     return (
-      <div className="messages-container">
-        <ul className="messages-ul">
-          {this.props.messages.map((message) => {
-            return (
-              <li className="message" key={message._id}>
-                <div>{message.author.username}</div>
-                <div>{message.body}</div>
-              </li>
-            );
-          })}
-        </ul>
-        <form>
-          <input
-            type="text"
-            value={this.state.input}
-            onChange={this.handleChange()}
-          ></input>
-          <button
-            className="message-submit"
-            onClick={this.handleSubmit}
-          ></button>
-        </form>
+      <div className="messages-god-container">
+        <div className="messages-container">
+          <ul className="messages-ul">
+            {this.props.messages
+              .map((message) => {
+                return (
+                  <li className="message" key={message._id}>
+                    <div className="author-username">
+                      {message.author.username}:
+                    </div>
+                    <div>{message.body}</div>
+                  </li>
+                );
+              })
+              .reverse()}
+          </ul>
+          <form className="">
+            <input
+              className="lobby-chat-box"
+              type="text"
+              value={this.state.input}
+              onChange={this.handleChange()}
+              placeholder="say something nice..."
+            ></input>
+            <button
+              className="message-submit"
+              onClick={this.handleSubmit}
+            ></button>
+          </form>
+        </div>
       </div>
     );
   }
