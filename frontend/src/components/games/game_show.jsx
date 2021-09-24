@@ -12,13 +12,13 @@ class GameShow extends React.Component {
     this.handleRefresh = this.handleRefresh.bind(this)
   }
 
-  // componentDidMount() {
+  componentDidMount() {
   //   this.socket = io();
   //   this.socket.on('receive-lobby', (lobby) => {
   //     this.props.fetchGame(this.props.match.params.gameId);
   //   });
-  //   this.props.fetchGame(this.props.match.params.gameId);
-  // }
+    this.props.fetchGame(this.props.match.params.gameId);
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.lobbies !== this.props.lobbies) {
