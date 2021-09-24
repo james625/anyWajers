@@ -1,0 +1,140 @@
+.user-show,
+.user-form {
+  height: fit-content;
+  // background-color: cadetblue;
+  letter-spacing: normal;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  // display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 8%;
+  font-size: larger;
+}
+
+@keyframes popup {
+}
+
+.user-icon {
+  font-size: 150px;
+  color: rgb(163, 51, 255);
+}
+
+.icon-box div {
+  border-radius: 5px;
+//   background-color: rgb(41, 41, 41);
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 180px;
+  padding-bottom: 10px;
+  background: linear-gradient(
+    235deg,
+    rgba(163, 51, 255, 0.2),
+    rgba(0, 181, 194, 0.2)
+  );
+
+  backdrop-filter: brightness(0.2) blur(2px);
+}
+
+.icon-box {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info,
+.user-content {
+  padding-top: 30px;
+  border-top: 2px solid white;
+  margin-top: 40px;
+  height: fit-content;
+  width: 35%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user-info div,
+.user-content div {
+  line-height: 20px;
+  font-size: medium;
+  color: rgb(128, 128, 128);
+  padding-bottom: 10px;
+}
+
+.user-info div p,
+.user-form form input {
+  background-color: rgb(41, 41, 41);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 400px;
+  padding-left: 10px;
+  line-height: 40px;
+  font-size: large;
+  color: white;
+  border: 1px solid rgb(41, 41, 41);
+}
+
+.user-show button,
+.user-form button {
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 120px;
+  height: 20px;
+  padding: 20px;
+  color: white;
+  background-color: rgb(163, 51, 255);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.user-show button:hover,
+.user-form button:hover {
+  background-color: rgb(89, 28, 142);
+}
+
+#delete-user {
+    background-color: rgb(128, 28, 28);
+}
+
+#delete-user:hover {
+    background-color: rgb(75, 16, 16);
+}
+
+.user-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-form form input {
+  border: 1px solid rgb(41, 41, 41);
+}
+
+.user-form input:focus {
+    outline:none;
+      border: 1px solid rgb(27, 27, 27);
+    --angle: 0deg;
+
+    border-image: linear-gradient(
+        var(--angle),
+        rgb(0, 181, 194),
+        rgb(26, 68, 255),
+        rgb(163, 51, 255)
+      )
+      1;
+
+    animation: 3s rotate linear infinite;
+}
+
+.edit-button {
+  display: flex;
+  justify-content: center;
+}

@@ -17,7 +17,7 @@ video {
 }
 
 .header-content-container {
-  background-color: transparent;
+  background-color: rgb(27, 27, 27);
   position: relative;
   top: 0;
   left: 0;
@@ -64,6 +64,10 @@ video {
 .nav-auth-button:hover {
   transition: 0.2s;
   background-color: rgb(163, 51, 255);
+}
+
+.username:hover {
+  cursor: pointer;
 }
 
 .home-button {
