@@ -1,5 +1,6 @@
 import React from 'react';
 import { io } from 'socket.io-client';
+import { Link } from 'react-router-dom';
 
 class LobbyItem extends React.Component {
   constructor(props) {
@@ -22,7 +23,8 @@ class LobbyItem extends React.Component {
     this.props.history.push(url);
   }
 
-  handleJoin() {
+  handleJoin(e) {
+    e.preventDefault();
     this.props.addPlayer({
       id: this.props.lobby._id,
       playerId: this.props.currentUserId,
@@ -65,9 +67,11 @@ class LobbyItem extends React.Component {
                 })}
               </ul>
             </div>
-            <button className="lobby-join-button" onClick={this.handleJoin}>
-              JOIN
-            </button>
+            <Link to={`/games/${this.lobby.game}/${this.lobby._id}`}>
+              <button className="lobby-join-button" onClick={this.handleJoin}>
+                JOIN
+              </button>
+            </Link>
           </div>
         ) : (
           <div></div>
