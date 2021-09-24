@@ -1,3 +1,12 @@
+.messages-god-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1057%26quot%3b)' fill='none'%3e%3cpath d='M308.843210233755 583.1771135461618L403.1119439718774 873.3064434423384 693.2412738680539 779.0377097042159 598.9725401299315 488.90837980803934z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1520.0821976651876 599.9108802392235L1509.9434133259504 793.3704100636046 1703.4029431503316 803.5091944028418 1713.5417274895688 610.0496645784606z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M238.09192573470798 915.9195695005326L4.19835455365731 821.4204326891461-90.3007822577292 1055.3140038701968 143.59278892332148 1149.8131406815833z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1708.4914140076562 444.0796132421515L1849.0530542167712 293.3457084521493 1698.319149426769 152.78406824303443 1557.757509217654 303.5179730330366z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M671.6594010262146 932.1495712198107L847.8130994426206 698.3857179270357 614.0492461498454 522.2320195106297 437.89554773343957 755.9958728034047z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1057.07041755216 475.60804582380763L1358.8616149046927 591.45483257772 1474.7084016586052 289.66363522518736 1172.9172043060726 173.8168484712749z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M867.2081528257372 770.2942196796048L739.3189116639078 983.1376597586149 952.1623517429178 1111.0269009204444 1080.0515929047474 898.1834608414342z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M104.5641949331828 897.1554296564524L284.66380865825937 746.03391020457 133.54228920637695 565.9342964794934-46.557324518699616 717.0558159313758z' fill='rgba(163%2c 51%2c 255%2c 0.79)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1057'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+
 .messages-container {
   position: absolute;
   left: 50%;
@@ -6,8 +15,9 @@
   margin-top: -20%;
   width: 60%;
   height: 70%;
-  background-color: rgb(38, 38, 38);
-  border: 1px solid white;
+  background-color: rgba(27, 27, 27, 0.8);
+  backdrop-filter: brightness(1) blur(5px);
+  border: 2px solid white;
   --angle: 0deg;
   border-image: linear-gradient(
       var(--angle),
@@ -17,14 +27,18 @@
     )
     1;
   animation: 6s rotate linear infinite;
+  overflow: hidden;
 }
 
 .messages-ul {
-  overflow: hidden;
+  overflow: scroll;
   width: 100%;
-  height: 96%;
+  height: calc(100% - 30px);
   display: flex;
   flex-direction: column-reverse;
+
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .message-submit {
@@ -34,5 +48,86 @@
 }
 
 .message {
-  padding: 20px;
+  display: flex;
+  padding: 18px;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid rgb(53, 53, 53);
+}
+
+.lobby-chat-box {
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  padding-left: 18px;
+  background-color: rgb(26, 26, 26);
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.author-username {
+  color: rgb(187, 187, 187);
+}
+
+.lobby-chat-box::placeholder {
+  color: rgb(163, 51, 255);
+}
+
+.lobby-chat-box:focus {
+  outline: none !important;
+}
+.lobby-leave-button {
+  cursor: pointer;
+  color: white;
+  padding: 12px;
+  width: 120px;
+  position: fixed;
+  top: 82%;
+  left: 74%;
+  background-color: rgba(114, 0, 0, 0.6);
+  backdrop-filter: brightness(1) blur(5px);
+  border: none;
+  z-index: 3;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.lobby-leave-button:hover {
+  background-color: rgba(218, 0, 0, 0.6);
+  backdrop-filter: brightness(1) blur(5px);
+}
+
+.chat-player-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18%;
+  height: 70%;
+  margin-left: -49%;
+  margin-top: -20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  gap: 20px;
+  z-index: 3;
+}
+
+.chat-player-list-item {
+  font-size: 34px;
+  text-align: right;
+  font-weight: 300;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.lobby-title {
+  font-size: 42px;
+  font-weight: 300;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
