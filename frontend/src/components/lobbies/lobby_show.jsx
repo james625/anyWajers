@@ -17,9 +17,9 @@ class LobbyShow extends React.Component {
     this.socket.on('receive-user', user => {
       this.props.fetchLobby(this.props.match.params.lobbyId)
     })
-    this.socket.on('receive-lobby', lobby => {
-      this.navToGame();
-    })
+    // this.socket.on('receive-lobby', lobby => {
+    //   this.navToGame();
+    // })
   }
 
   // componentDidUpdate(prevProps){
@@ -49,7 +49,7 @@ class LobbyShow extends React.Component {
     e.preventDefault()
     if(this.props.currentUser === this.props.lobby.data.owner){
       this.props.deleteLobby(this.props.match.params.lobbyId)
-      this.socket.emit('delete-lobby', "lobby-deleted")
+      // this.socket.emit('delete-lobby', "lobby-deleted")
       this.navToGame();
     }else {
       const lobby ={
@@ -73,6 +73,8 @@ class LobbyShow extends React.Component {
     if (lobby === undefined || lobby.data.players === undefined) {
       return null
     }
+
+    if (!this.props.lobby.data) return null
 
     return (
       <div>
