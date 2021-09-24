@@ -12,7 +12,11 @@ class LobbyShow extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchLobby(this.props.match.params.lobbyId)
+    if (!this.props.lobby) {
+      this.navToGame()
+    } else {
+      this.props.fetchLobby(this.props.match.params.lobbyId)
+    }
     this.socket = io();
     this.socket.on('receive-user', user => {
       this.props.fetchLobby(this.props.match.params.lobbyId)
@@ -31,11 +35,12 @@ class LobbyShow extends React.Component {
       id: this.props.match.params.lobbyId,
       playerId: this.props.currentUser
     }
-    if(this.props.currentUser === this.props.lobby.data.owner){
-      this.props.deleteLobby(this.props.match.params.lobbyId)
+    if (this.props.lobby) {
+      if(this.props.currentUser === this.props.lobby.data.owner){
+        this.props.deleteLobby(this.props.match.params.lobbyId)
+      }
+      this.props.removePlayer(lobby)
     }
-    this.props.removePlayer(lobby)
-
     this.socket.disconnect()
   }
 
