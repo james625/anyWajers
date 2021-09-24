@@ -43,9 +43,9 @@ io.on('connection', socket => {
     io.emit('receive-user', user)
   })
 
-  socket.on('delete-lobby', lobby => {
-    io.emit('receive-lobby', lobby)
-  })
+  // socket.on('delete-lobby', lobby => {
+  //   io.emit('receive-lobby', lobby)
+  // })
 })
 
 io.on("connection", socket => {
@@ -54,11 +54,11 @@ io.on("connection", socket => {
   })
 })
 
-io.on("connection", socket => {
-  socket.on('lobby-created', lobby => {
-    io.emit('receive-lobby', lobby)
-  })
-})
+// io.on("connection", socket => {
+//   socket.on('lobby-created', lobby => {
+//     io.emit('receive-lobby', lobby)
+//   })
+// })
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`Server is running on port ${port}`));
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {io} from 'socket.io-client';
+// import {io} from 'socket.io-client';
 
 class LobbyForm extends React.Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class LobbyForm extends React.Component {
     this.navToLobby = this.navToLobby.bind(this);
   }
 
-  componentDidMount(){
-     this.socket = io();
-  }
+  // componentDidMount(){
+  //    this.socket = io();
+  // }
   // componentDidUpdate(prevProps){
   //     if(prevProps.lobby !== this.props.lobby){
   //         this.navToLobby(this.props.lobby.data._id)
@@ -45,13 +45,13 @@ class LobbyForm extends React.Component {
         players: this.state.players,
       }
       const lob = await this.props.createLobby(lobby)
-      this.socket.emit('lobby-created', "lobby has been made")
-      this.socket.disconnect()
+      // this.socket.emit('lobby-created', "lobby has been made")
+      // this.socket.disconnect()
       this.props.closeModal()
       this.navToLobby(lob.lobby.data._id)
    
     } catch (error){
-        console.log(error);
+      console.log(error);
     }
 
   }
