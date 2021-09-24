@@ -68,39 +68,59 @@ class User extends React.Component {
     const edit = () => {
       return (
         <div className="user-form">
+          <div className="game-show-art"></div>
           <div className="icon-box">
-            <FontAwesomeIcon
-              icon={['fas', 'user-astronaut']}
-              className="user-icon"
-            />
+            <div>
+              <FontAwesomeIcon
+                icon={['fas', 'user-astronaut']}
+                className="user-icon"
+              />
+            </div>
           </div>
-          <h2 className="user-email">{this.state.email}</h2>
-          <form action="">
-            Username
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-            />
-            <br />
-            Bio
-            <input
-              type="text"
-              value={this.state.bio}
-              onChange={this.update('bio')}
-            />
-            <br />
-            Favorite Games
-            <input
-              type="text"
-              value={this.state.favGame}
-              onChange={this.update('favGame')}
-            />
-            <br />
-            <input type="submit" value="Submit" onClick={this.handleSubmit} />
-          </form>
-          <br />
-          <button onClick={this.handleDelete}>Delete</button>
+          <div className="user-content">
+            <div>
+              <form action="">
+                Username
+                <br />
+                <input
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.update('username')}
+                />
+                <br />
+                <br />
+                Bio
+                <br />
+                <input
+                  type="text"
+                  value={this.state.bio}
+                  onChange={this.update('bio')}
+                />
+                <br />
+                <br />
+                Favorite Games
+                <br />
+                <input
+                  type="text"
+                  value={this.state.favGame}
+                  onChange={this.update('favGame')}
+                />
+                <br />
+                <br />
+                <div className='user-form-buttons'>
+                  <button
+                    type="submit"
+                    value="Submit"
+                    onClick={this.handleSubmit}
+                  >
+                    SUBMIT
+                  </button>
+                  <br />
+                  <button id='delete-user' onClick={this.handleDelete}>DELETE</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       )
     }
@@ -108,20 +128,31 @@ class User extends React.Component {
     const show = () => {
       return (
         <div className="user-show">
+          <div className="game-show-art"></div>
           <div className="icon-box">
-            <FontAwesomeIcon
-              icon={['fas', 'user-astronaut']}
-              className="user-icon"
-            />
+            <div>
+              <FontAwesomeIcon
+                icon={['fas', 'user-astronaut']}
+                className="user-icon"
+              />
+            </div>
           </div>
           <div className="user-info">
             <div>
-              <h2 className="user-email">{this.props.user.data.email}</h2>
-              <p className="user-username">{this.props.user.data.username}</p>
-              <p className="user-bio">{this.props.user.data.bio}</p>
-              <p className="user-fav">{this.props.user.data.favGame}</p>
-              <button onClick={this.onClick}>Edit</button>
+              Email
+              <p>{this.props.user.data.email}</p>
+              <br />
+              Username
+              <p>{this.props.user.data.username}</p>
+              <br />
+              Bio
+              <p>{this.props.user.data.bio}</p>
+              <br />
+              Favorite Games
+              <p>{this.props.user.data.favGame}</p>
             </div>
+            <br />
+            <button onClick={this.onClick}>EDIT</button>
           </div>
         </div>
       )
