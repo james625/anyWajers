@@ -59,7 +59,6 @@ class LobbyShow extends React.Component {
         id: this.props.lobby.data._id,
         playerId: this.props.currentUser,
       };
-      debugger
       this.props.removePlayer(lobby);
       this.navToGame();
     }

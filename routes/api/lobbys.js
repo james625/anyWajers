@@ -123,7 +123,6 @@ router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), asy
             const lobby = await Lobby.findById(req.params.lobbyId);
             const game = await Game.findById(lobby.game);
             game.lobbies.splice(game.lobbies.indexOf(req.params.lobbyId, 1))
-            console.log(game.lobbies);
             await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
         } catch(error) {
             res.json(error.response.data);
