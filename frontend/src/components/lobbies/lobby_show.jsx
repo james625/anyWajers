@@ -53,13 +53,13 @@ class LobbyShow extends React.Component {
     e.preventDefault();
     if (this.props.currentUser === this.props.lobby.data.owner) {
       this.props.deleteLobby(this.props.match.params.lobbyId);
-      // this.socket.emit('delete-lobby', "lobby-deleted")
       this.navToGame();
     } else {
       const lobby = {
         id: this.props.lobby.data._id,
         playerId: this.props.currentUser,
       };
+      debugger
       this.props.removePlayer(lobby);
       this.navToGame();
     }
