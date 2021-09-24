@@ -107,7 +107,7 @@ class User extends React.Component {
                 />
                 <br />
                 <br />
-                <div className='user-form-buttons'>
+                <div className="user-form-buttons">
                   <button
                     type="submit"
                     value="Submit"
@@ -116,7 +116,9 @@ class User extends React.Component {
                     SUBMIT
                   </button>
                   <br />
-                  <button id='delete-user' onClick={this.handleDelete}>DELETE</button>
+                  <button id="delete-user" onClick={this.handleDelete}>
+                    DELETE
+                  </button>
                 </div>
               </form>
             </div>
@@ -150,9 +152,11 @@ class User extends React.Component {
               <br />
               Favorite Games
               <p>{this.props.user.data.favGame}</p>
+              <br />
+              <div className="edit-button">
+                <button onClick={this.onClick}>EDIT</button>
+              </div>
             </div>
-            <br />
-            <button onClick={this.onClick}>EDIT</button>
           </div>
         </div>
       )
