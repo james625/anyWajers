@@ -1,28 +1,30 @@
-import React from 'react';
-import LobbyItemContainer from '../lobbies/lobby_item_container';
-import { withRouter } from 'react-router';
+import React from 'react'
+import LobbyItemContainer from '../lobbies/lobby_item_container'
+import { withRouter } from 'react-router'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // import { io } from 'socket.io-client';
 // import LobbyCreateContainer from '../lobbies/lobby_create_container'
 
 // link to lobby create container
 
 class GameShow extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.handleRefresh = this.handleRefresh.bind(this)
   }
 
   componentDidMount() {
-  //   this.socket = io();
-  //   this.socket.on('receive-lobby', (lobby) => {
-  //     this.props.fetchGame(this.props.match.params.gameId);
-  //   });
-    this.props.fetchGame(this.props.match.params.gameId);
+    //   this.socket = io();
+    //   this.socket.on('receive-lobby', (lobby) => {
+    //     this.props.fetchGame(this.props.match.params.gameId);
+    //   });
+    this.props.fetchGame(this.props.match.params.gameId)
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.lobbies !== this.props.lobbies) {
-      this.props.fetchGame(this.props.match.params.gameId);
+      this.props.fetchGame(this.props.match.params.gameId)
     }
   }
 
@@ -31,15 +33,15 @@ class GameShow extends React.Component {
   // }
 
   handleRefresh(e) {
-    e.preventDefault();
-    this.props.fetchGame(this.props.match.params.gameId);
+    e.preventDefault()
+    this.props.fetchGame(this.props.match.params.gameId)
   }
 
   render() {
-    const { game } = this.props;
+    const { game } = this.props
 
     if (game === undefined || game.data.name === undefined) {
-      return null;
+      return null
     }
 
     return (
@@ -52,21 +54,25 @@ class GameShow extends React.Component {
               <p className="game-show-description">{game.data.description}</p>
             </div>
 
-            <button onClick={this.handleRefresh}>Refresh</button>
-
             <div className="game-show-list-container">
-              <ul className="game-show-list">
+              <div className='show-buttons-top'>
                 <button
                   className="lobby-create"
                   onClick={() => this.props.openModal('create')}
                 >
                   Create Lobby
                 </button>
+                <button className="lobby-refresh" onClick={this.handleRefresh}>
+                  <FontAwesomeIcon className='redo' icon={['fas', 'redo']} />
+                </button>
+              </div>
+              <br />
+              <ul className="game-show-list">
                 {game.data.lobbies.map((lobby) => {
                   if (lobby.players.length < lobby.playerCount) {
-                    return <LobbyItemContainer lobby={lobby} key={lobby._id} />;
+                    return <LobbyItemContainer lobby={lobby} key={lobby._id} />
                   } else {
-                    return null;
+                    return null
                   }
                 })}
               </ul>
@@ -74,8 +80,8 @@ class GameShow extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default withRouter(GameShow);
+export default withRouter(GameShow)

@@ -21,9 +21,9 @@ import UserContainer from './user/user_container';
 import { ProtectedRoute } from '../util/route_util';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
+import { faUserAstronaut, faRedo } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faUserAstronaut);
+library.add(fab, faUserAstronaut, faRedo);
 
 const App = () => (
   <div>
