@@ -8,6 +8,7 @@ import '../assets/splash/splash.scss';
 import '../assets/game_show/game_show.scss';
 import '../assets/game_show/lobby_modal.scss';
 import '../assets/footer/footer.scss';
+import '../assets/user/user.scss';
 import '../assets/messages/messages.scss';
 
 import NavBar from './nav_bar/nav_bar';
@@ -20,8 +21,9 @@ import UserContainer from './user/user_container';
 import { ProtectedRoute } from '../util/route_util';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab);
+library.add(fab, faUserAstronaut);
 
 const App = () => (
   <div>
@@ -29,7 +31,7 @@ const App = () => (
     <NavBar />
     <Switch>
       <Route exact path="/" component={GamesIndexContainer} />
-      <Route exact path="/games/:gameId" component={GameShowContainer} />
+      <ProtectedRoute exact path="/games/:gameId" component={GameShowContainer} />
       <ProtectedRoute
         exact
         path="/games/:gameId/:lobbyId"

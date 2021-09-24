@@ -17,6 +17,7 @@ import rocketleague from './game_images/rocketleague.png';
 import sea from './game_images/sea.png';
 import valorant from './game_images/valorant.png';
 import Footer from '../footer/footer';
+import { Link } from 'react-router-dom';
 
 class GamesIndex extends React.Component {
   componentDidMount() {
@@ -59,37 +60,37 @@ class GamesIndex extends React.Component {
             </ul>
           </div>
           <div className="game-box-container">
-            <img className="game-box-item" src={amongus} alt="Among Us"></img>
-            <img
+            <Link to={`/games/614d1d4b7572363c1124a86a`}><img className="game-box-item" src={amongus} alt="Among Us"></img></Link>
+            <Link to={`/games/614d2d987572363c1124a875`}><img
               className="game-box-item"
               src={apexlegends}
               alt="Apex Legends"
-            ></img>
-            <img className="game-box-item" src={csgo} alt="CSGo"></img>
-            <img className="game-box-item" src={warzone} alt="Warzone"></img>
-            <img className="game-box-item" src={dbd} alt="DBD"></img>
-            <img className="game-box-item" src={fortnite} alt="Fortnite"></img>
-            <img className="game-box-item" src={league} alt="League"></img>
-            <img
+            ></img></Link>
+            <Link to={`/games/614a867525334f20ab40d544`}><img className="game-box-item" src={csgo} alt="CSGo"></img></Link>
+            <Link to={`/games/614a7aaf25334f20ab40d543`}><img className="game-box-item" src={warzone} alt="Warzone"></img></Link>
+            <Link to={`/games/614d1ddf7572363c1124a86d`}><img className="game-box-item" src={dbd} alt="DBD"></img></Link>
+            <Link to={`/games/614a872a25334f20ab40d546`}><img className="game-box-item" src={fortnite} alt="Fortnite"></img></Link>
+            <Link to={`/games/6148eac6bea214a16d1484a6`}><img className="game-box-item" src={league} alt="League"></img></Link>
+            <Link to={`/games/614d1e857572363c1124a86e`}><img
               className="game-box-item"
               src={minecraft}
               alt="Minecraft"
-            ></img>
-            <img
+            ></img></Link>
+            <Link to={`/games/614d24087572363c1124a86f`}><img
               className="game-box-item"
               src={overwatch}
               alt="Overwatch"
-            ></img>
-            <img className="game-box-item" src={pubg} alt="Pubg"></img>
-            <img className="game-box-item" src={siege} alt="Siege"></img>
-            <img className="game-box-item" src={roblox} alt="Roblox"></img>
-            <img
+            ></img></Link>
+            <Link to={`/games/614d24637572363c1124a870`}><img className="game-box-item" src={pubg} alt="Pubg"></img></Link>
+            <Link to={`/games/614d24d37572363c1124a871`}><img className="game-box-item" src={siege} alt="Siege"></img></Link>
+            <Link to={`/games/614d25587572363c1124a872`}><img className="game-box-item" src={roblox} alt="Roblox"></img></Link>
+            <Link to={`/games/614d29017572363c1124a873`}><img
               className="game-box-item"
               src={rocketleague}
               alt="RocketLeague"
-            ></img>
-            <img className="game-box-item" src={sea} alt="Sea"></img>
-            <img className="game-box-item" src={valorant} alt="Valorant"></img>
+            ></img></Link>
+            <Link to={`/games/614d29577572363c1124a874`}><img className="game-box-item" src={sea} alt="Sea"></img></Link>
+            <Link to={`/games/614a86bd25334f20ab40d545`}><img className="game-box-item" src={valorant} alt="Valorant"></img></Link>
           </div>
         </div>
         <Footer />
