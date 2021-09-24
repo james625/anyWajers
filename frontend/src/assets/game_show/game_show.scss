@@ -81,7 +81,8 @@
   margin-top: 20px;
 }
 
-.lobby-create:hover, .lobby-refresh:hover {
+.lobby-create:hover,
+.lobby-refresh:hover {
   transition: 0.2s;
   background-color: rgb(89, 28, 142);
 }
@@ -199,21 +200,28 @@
   margin-top: 20px;
 }
 
-.show-buttons-top  {
+.show-buttons-top {
   display: flex;
   justify-content: space-around;
   width: 72%;
 }
 
 .lobby-refresh:hover .redo {
-  animation-name: rotateRefresh; 
-    animation-duration: 1s; 
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  animation-name: rotateRefresh;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
-
 @keyframes rotateRefresh {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.what-buttons {
+  opacity: 0;
 }

@@ -7,7 +7,7 @@ class Messages extends React.Component {
     this.state = { input: '' };
     this.socket = null;
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.socket = null
+    this.socket = null;
   }
 
   componentDidMount() {
@@ -48,15 +48,19 @@ class Messages extends React.Component {
   render() {
     if (this.props.messages.length === 0) {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <input
-            className="lobby-chat-box"
-            type="text"
-            value={this.state.input}
-            onChange={this.handleChange()}
-          ></input>
-          <button className="message-submit">Submit</button>
-        </form>
+        <div className="messages-god-container">
+          <div className="messages-container">
+            <form onSubmit={this.handleSubmit}>
+              <input
+                className="lobby-chat-box"
+                type="text"
+                value={this.state.input}
+                onChange={this.handleChange()}
+              ></input>
+              <button className="message-submit">Submit</button>
+            </form>
+          </div>
+        </div>
       );
     }
     return (

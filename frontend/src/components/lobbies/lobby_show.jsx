@@ -85,8 +85,16 @@ class LobbyShow extends React.Component {
         <p className="lobby-title">{lobby.data.name}</p>
         {lobby.data.owner === this.props.currentUser ? (
           <div>
-            <button onClick={() => this.props.openModal('edit')}>Edit</button>
-            <button onClick={this.handleDeleteClick}>delete</button>
+            <button
+              className="what-buttons"
+              onClick={() => this.props.openModal('edit')}
+            >
+              Edit
+            </button>
+
+            <button className="what-buttons" onClick={this.handleDeleteClick}>
+              delete
+            </button>
           </div>
         ) : null}
         <button className="lobby-leave-button" onClick={this.handleLeave}>
