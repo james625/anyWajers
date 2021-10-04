@@ -11,7 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class GameShow extends React.Component {
   constructor(props) {
     super(props)
-    this.handleRefresh = this.handleRefresh.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,23 @@ class GameShow extends React.Component {
   // componentWillUnmount() {
   //   this.socket.disconnect();
   // }
+
+  // user() {
+
+  // }
+
+  // noUser() {
+
+  // }
+  handleCreate() {
+    // console.log(!!this.props.currentUser)
+    if (this.props.currentUser !== undefined &&
+      this.props.currentUser.id !== undefined) {
+      this.props.openModal('create')
+    } else {
+      this.props.openModal('login')
+    }
+  }
 
   handleRefresh(e) {
     e.preventDefault()
@@ -58,7 +76,7 @@ class GameShow extends React.Component {
               <div className='show-buttons-top'>
                 <button
                   className="lobby-create"
-                  onClick={() => this.props.openModal('create')}
+                  onClick={this.handleCreate}
                 >
                   Create Lobby
                 </button>
