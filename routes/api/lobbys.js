@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Game = require('../../models/Game');
 const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
 const validateLobbyInput = require('../../validation/lobbys')
@@ -119,7 +120,10 @@ router.put("/:lobbyId/remove", async(req, res) => {
 router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), async (req, res) => {
     if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
         try {
-            const lobby = await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
+            const lobby = await Lobby.findById(req.params.lobbyId);
+            const game = await Game.findById(lobby.game);
+            game.lobbies.splice(game.lobbies.indexOf(req.params.lobbyId, 1))
+            await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
         } catch(error) {
             res.json(error.response.data);
         }

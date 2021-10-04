@@ -46,7 +46,7 @@ class Form extends React.Component {
   handleDemo(e) {
     e.preventDefault();
     this.props.login({
-      email: 'james@gmail.com',
+      email: 'demo@demo.com',
       password: 'password',
     });
   }
