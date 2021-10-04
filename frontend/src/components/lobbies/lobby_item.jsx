@@ -23,15 +23,19 @@ class LobbyItem extends React.Component {
     this.props.history.push(url);
   }
 
-  handleJoin(e) {
-    e.preventDefault();
-    this.props.addPlayer({
-      id: this.props.lobby._id,
-      playerId: this.props.currentUserId,
-    });
-    this.socket.emit('lobby', this.props.username);
-    this.socket.disconnect();
-    this.navToLobby();
+  handleJoin() {
+    if (this.props.currentUser !== undefined &&
+      this.props.currentUser.id !== undefined) {
+      this.props.addPlayer({
+        id: this.props.lobby._id,
+        playerId: this.props.currentUser.id,
+      });
+      this.socket.emit('lobby', this.props.currentUser.username);
+      this.socket.disconnect();
+      this.navToLobby();
+    } else {
+      this.props.openModal('login')
+    }
   }
 
   toggleMenu(e) {
