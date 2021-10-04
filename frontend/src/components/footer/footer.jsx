@@ -28,7 +28,7 @@ class Footer extends React.Component {
             >
               <FontAwesomeIcon icon={['fab', 'github']} />
             </a>
-            <a href={this.githubUrl} target="_blank" rel="noreferrer">
+            <a href='https://angel.co/u/james-chen-75' target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={['fab', 'angellist']} />
             </a>
           </div>
@@ -52,7 +52,7 @@ class Footer extends React.Component {
             >
               <FontAwesomeIcon icon={['fab', 'github']} />
             </a>
-            <a href={this.githubUrl} target="_blank" rel="noreferrer">
+            <a href='https://angel.co/u/carly-gradeff' target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={['fab', 'angellist']} />
             </a>
           </div>
@@ -63,7 +63,7 @@ class Footer extends React.Component {
           <p>frontend engineer</p>
           <div className="footer-icons">
             <a
-              href={'https://www.linkedin.com/in/joseph-felicidario/'}
+              href={'https://www.linkedin.com/in/joe-felicidario-3755151b7/</div>'}
               target="_blank"
               rel="noreferrer"
             >
@@ -76,7 +76,7 @@ class Footer extends React.Component {
             >
               <FontAwesomeIcon icon={['fab', 'github']} />
             </a>
-            <a href={this.githubUrl} target="_blank" rel="noreferrer">
+            <a href='https://angel.co/u/joseph-felicidario' target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={['fab', 'angellist']} />
             </a>
           </div>
@@ -99,7 +99,7 @@ class Footer extends React.Component {
             >
               <FontAwesomeIcon icon={['fab', 'github']} />
             </a>
-            <a href={this.githubUrl} target="_blank" rel="noreferrer">
+            <a href='https://angel.co/u/wajahat-shoukat' target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={['fab', 'angellist']} />
             </a>
           </div>
