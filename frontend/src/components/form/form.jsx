@@ -34,12 +34,14 @@ class Form extends React.Component {
   handleSignup(e) {
     e.preventDefault();
     this.props.closeModal();
+    this.props.clearErrors();
     this.props.openModal('signup');
   }
 
   handleLogin(e) {
     e.preventDefault();
     this.props.closeModal();
+    this.props.clearErrors();
     this.props.openModal('login');
   }
 

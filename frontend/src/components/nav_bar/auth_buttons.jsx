@@ -10,6 +10,7 @@ class AuthButtons extends React.Component {
     };
     this.onClick = this.onClick.bind(this);
     this.navToUser = this.navToUser.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   onClick(e) {
@@ -20,6 +21,12 @@ class AuthButtons extends React.Component {
   navToUser(e) {
     e.preventDefault();
     this.props.history.push(`/users/${this.props.currentUser.id}`);
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+    this.props.clearErrors();
+    this.props.openModal('login');
   }
 
   render() {
@@ -44,7 +51,7 @@ class AuthButtons extends React.Component {
         <div>
           <button
             className="nav-auth-button"
-            onClick={() => this.props.openModal('login')}
+            onClick={this.handleLogin}
           >
             Login
           </button>

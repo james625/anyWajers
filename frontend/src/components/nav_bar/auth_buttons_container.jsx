@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { logout } from "../../actions/session_actions";
+import { clearErrors, logout } from "../../actions/session_actions";
 import { openModal } from '../../actions/modal_actions';
 import AuthButtons from "./auth_buttons"
 import { withRouter } from "react-router"; 
@@ -14,6 +14,7 @@ const mSTP = (state, ownProps) => ({
 const mDTP = (dispatch) => ({
     logout: () => dispatch(logout()),
     openModal: modal => dispatch(openModal(modal)),
+    clearErrors: () => dispatch(clearErrors())
 });
 
 export default withRouter(connect(mSTP, mDTP)(AuthButtons))
