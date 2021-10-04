@@ -3,7 +3,7 @@
 Have you ever found yourself wanting to play a team game with no one to play with? That's where any Wajers? comes in.
 Select your game. Create a lobby. Build your team.
 
-## Live Link (any Wajers?)[https://anywajers.herokuapp.com/#/]
+## Live Link [any Wajers?](https://anywajers.herokuapp.com/#/)
 
 ## Overview
 
