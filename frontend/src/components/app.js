@@ -31,13 +31,13 @@ const App = () => (
     <NavBar />
     <Switch>
       <Route exact path="/" component={GamesIndexContainer} />
-      <ProtectedRoute exact path="/games/:gameId" component={GameShowContainer} />
+      <Route exact path="/games/:gameId" component={GameShowContainer} />
       <ProtectedRoute
         exact
         path="/games/:gameId/:lobbyId"
         component={LobbyShowContainer}
       />
-      <Route exact path="/messages" component={MessagesContainer} />
+      <ProtectedRoute exact path="/messages" component={MessagesContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserContainer} />
     </Switch>
   </div>

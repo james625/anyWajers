@@ -5,9 +5,11 @@ import { deleteLobby } from '../../actions/lobby_actions';
 import GameShow from './game_show';
 
 const mSTP = (state, ownProps) => {
+    // console.log(state)
     return {
         game: state.entities.games[ownProps.match.params.gameId],
-        lobbies: state.entities.lobbies
+        lobbies: state.entities.lobbies,
+        currentUser: state.session.user
     }
 }
 
