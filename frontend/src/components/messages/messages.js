@@ -56,6 +56,7 @@ class Messages extends React.Component {
                 type="text"
                 value={this.state.input}
                 onChange={this.handleChange()}
+                placeholder="say something nice..."
               ></input>
               <button className="message-submit">Submit</button>
             </form>
