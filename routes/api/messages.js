@@ -15,9 +15,7 @@ router.get('/lobby/:lobby_id', (req, res) => {
 });
 
 
-router.post('/lobby/:lobby_id', 
-    // passport.authenticate('jwt', { session: false }), 
-    (req, res) => {
+router.post('/lobby/:lobby_id', (req, res) => {
     const { errors, isValid } = validateMessageInput(req.body);
 
     if (!isValid) {

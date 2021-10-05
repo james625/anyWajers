@@ -42,7 +42,6 @@ router.post("/", passport.authenticate('jwt', { session: false }), async(req, re
         return res.status(400).json({errors});
       }
 
-    //  if(req.body.game === "0") return res.json(req.body)
     const newLobby = new Lobby({
         game: req.body.game,
         name: req.body.name,        
@@ -104,15 +103,12 @@ router.put("/:lobbyId/add", async (req, res) => {
 
 router.put("/:lobbyId/remove", async(req, res) => {
     try {
-        const lobby = await Lobby.findById(req.params.lobbyId);
-        const user = await User.findById(req.body.playerId)
-        if(lobby === null) return res.json({noPlayers: "no players array"})
-        if(lobby.players.indexOf(user._id) === -1) return res.json({notfound: "User does not exist in lobby"})
-    
-        lobby.players.splice(lobby.players.indexOf(user._id), 1)
+        await Lobby.findOneAndUpdate(
+            {"_id": req.params.lobbyId},
+            {$pull: {"players": req.body.playerId}}
+        )
         
-        lobby.update();
-        res.json(lobby)
+        res.json({success: "Player Removed"})
     } catch {
     }
 })
@@ -121,11 +117,13 @@ router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), asy
     if(mongoose.Types.ObjectId.isValid(req.params.lobbyId)){
         try {
             const lobby = await Lobby.findById(req.params.lobbyId);
-            const game = await Game.findById(lobby.game);
-            game.lobbies.splice(game.lobbies.indexOf(req.params.lobbyId, 1))
+            await Game.findOneAndUpdate(
+                {"_id": lobby.game},
+                {$pull: { "lobbies": req.params.lobbyId}}
+            )
             await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
         } catch(error) {
-            res.json(error.response.data);
+            res.json(error);
         }
     }
 })

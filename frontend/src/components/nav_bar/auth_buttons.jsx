@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-// import { Link } from 'react-router-dom';
 
 class AuthButtons extends React.Component {
   constructor(props) {

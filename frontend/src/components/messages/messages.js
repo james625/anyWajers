@@ -29,7 +29,7 @@ class Messages extends React.Component {
   }
 
   componentWillUnmount() {
-    this.socket.disconnect();
+    // this.socket.disconnect();
   }
 
   handleSubmit(e) {

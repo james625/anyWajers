@@ -41,6 +41,12 @@ require('./config/passport')(passport);
 io.on('connection', socket => {
   socket.on('lobby', user => {
     io.emit('receive-user', user)
+    
+  })
+ 
+  socket.on('left-lobby', user => {
+    io.emit('receive-user', user)
+
   })
 
   // socket.on('delete-lobby', lobby => {

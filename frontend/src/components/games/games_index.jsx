@@ -26,6 +26,7 @@ class GamesIndex extends React.Component {
 
   render() {
     const { games } = this.props;
+    if(!games) return null;
     return (
       <div className="index-content-container">
         <div className="splash-content-container">
@@ -54,9 +55,13 @@ class GamesIndex extends React.Component {
         <div className="index-content">
           <div className="game-list-container">
             <ul className="game-list">
-              {games.map((game) => (
-                <GameItem game={game} key={game.description} />
-              ))}
+              {games.map((game) => {
+                if(game._id){
+                return  <li key={game._id.toString()}>
+                          <GameItem game={game} />
+                        </li>
+                }
+              })}
             </ul>
           </div>
           <div className="game-box-container">
