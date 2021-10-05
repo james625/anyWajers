@@ -63,7 +63,7 @@ class LobbyShow extends React.Component {
 
   render() {
     const { lobby } = this.props;
-
+    if(!lobby) return null;
     if (lobby === undefined || lobby.data.players === undefined) {
       return null;
     }
@@ -89,11 +89,15 @@ class LobbyShow extends React.Component {
         </button>
 
         <ul className="chat-player-list">
-          {lobby.data.players.map((player) => (
-            <li className="chat-player-list-item" key={player._id.toString()}>
-              <p>{player.username}</p>
-            </li>
-          ))}
+          {lobby.data.players.map((player) => {
+            if(!player._id){
+              return null;
+            } else {
+                return  <li className="chat-player-list-item" key={player._id.toString()}>
+                      <p>{player.username}</p>
+                    </li>
+            }
+          })}
         </ul>
 
         <MessageContainer />

@@ -60,6 +60,8 @@ class GamesIndex extends React.Component {
                 return  <li key={game._id.toString()}>
                           <GameItem game={game} />
                         </li>
+                } else {
+                  return null;
                 }
               })}
             </ul>
