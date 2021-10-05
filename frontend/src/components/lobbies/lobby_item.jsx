@@ -14,17 +14,18 @@ class LobbyItem extends React.Component {
   }
 
   componentDidMount(){
+    this.props.fetchLobby(this.props.lobby._id)
     this.socket = io();
   }
 
   navToLobby() {
-    const url = `/games/${this.lobby.game}/${this.lobby._id}`;
+    const url = `/games/${this.props.lobby.game}/${this.props.lobby._id}`;
+
     this.props.history.push(url);
   }
 
   handleJoin() {
-    if (this.props.currentUser !== undefined &&
-      this.props.currentUser.id !== undefined) {
+    if (this.props.currentUser !== undefined && this.props.currentUser.id !== undefined) {
       this.props.addPlayer({
         id: this.props.lobby._id,
         playerId: this.props.currentUser.id,
@@ -48,7 +49,7 @@ class LobbyItem extends React.Component {
         <li className="game-show-list-item" onClick={this.toggleMenu}>
           <p>{this.lobby.name}</p>
           <p>
-            {this.lobby.players.length}/{this.lobby.playerCount}
+            {this.props.lobby.players.length}/{this.lobby.playerCount}
           </p>
         </li>
         {this.state.active ? (
@@ -56,7 +57,7 @@ class LobbyItem extends React.Component {
             <p className="lobby-description">{this.lobby.description}</p>
             <div className="game-show-user-list-container">
               <ul className="game-show-user-list">
-                {this.lobby.players.map((player) => {
+                {this.props.lobby.players.map((player) => {
                   return (
                     <li
                       key={player._id}

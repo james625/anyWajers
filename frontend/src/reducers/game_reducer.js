@@ -10,7 +10,6 @@ const GamesReducer = (oldState = {}, action) => {
         case RECEIVE_GAME:
             nextState[action.game.data._id] = action.game;
             return nextState;
-            // return Object.assign({}, oldState, {[action.games.id]})
         default:
             return oldState;
     }

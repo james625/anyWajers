@@ -4,9 +4,8 @@ import { withRouter } from 'react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // import { io } from 'socket.io-client';
-// import LobbyCreateContainer from '../lobbies/lobby_create_container'
 
-// link to lobby create container
+
 
 class GameShow extends React.Component {
   constructor(props) {
@@ -29,19 +28,9 @@ class GameShow extends React.Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.socket.disconnect();
-  // }
 
-  // user() {
 
-  // }
-
-  // noUser() {
-
-  // }
   handleCreate() {
-    // console.log(!!this.props.currentUser)
     if (this.props.currentUser !== undefined &&
       this.props.currentUser.id !== undefined) {
       this.props.openModal('create')

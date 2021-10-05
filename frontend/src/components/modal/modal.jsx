@@ -17,7 +17,6 @@ class Modal extends React.Component {
   handleCloseModal(e) {
     e.preventDefault();
     this.props.closeModal();
-    // this.props.clearErrors();
   }
 
   render() {

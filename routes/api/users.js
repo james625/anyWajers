@@ -103,8 +103,7 @@ router.get('/find', (req, res) => {
 }) 
 
 router.put("/:userId", passport.authenticate('jwt', { session: false }), async(req, res) => {
-  // passport.authenticate('jwt', { session: false }), 
-  // async(req, res) => {
+
     const { errors, isValid } = validateUserInput(req.body);
     if (!isValid) {
         return res.status(400).json({errors});
