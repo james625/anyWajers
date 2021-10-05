@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 class LobbyItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state= {
+      refresh: ""
+    }
     this.lobby = this.props.lobby;
   
     this.state = { active: false };
@@ -21,8 +24,10 @@ class LobbyItem extends React.Component {
 
   navToLobby() {
     const url = `/games/${this.props.lobby.game}/${this.props.lobby._id}`;
-
     this.props.history.push(url);
+    this.setState({
+      refresh: ""
+    })
   }
 
   handleJoin() {
@@ -72,7 +77,7 @@ class LobbyItem extends React.Component {
                 })}
               </ul>
             </div>
-            <Link to={`/games/${this.lobby.game}/${this.lobby._id}`}>
+            <Link to={`/games/${this.lobby.game}/${this.lobby._id}`} replace>
               <button className="lobby-join-button" onClick={this.handleJoin}>
                 JOIN
               </button>
