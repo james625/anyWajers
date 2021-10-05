@@ -20,7 +20,7 @@ class NavBar extends React.Component {
           type="text"
           placeholder="Find your game ..."
         ></input>
-        <Link to="/">
+        <Link to="/" replace>
           <div className="home-button"></div>
         </Link>
         <AuthButtonContainer />

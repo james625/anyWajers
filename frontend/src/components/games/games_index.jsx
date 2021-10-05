@@ -67,37 +67,37 @@ class GamesIndex extends React.Component {
             </ul>
           </div>
           <div className="game-box-container">
-            <Link to={`/games/614d1d4b7572363c1124a86a`}><img className="game-box-item" src={amongus} alt="Among Us"></img></Link>
-            <Link to={`/games/614d2d987572363c1124a875`}><img
+            <Link to={`/games/614d1d4b7572363c1124a86a`} replace><img className="game-box-item" src={amongus} alt="Among Us"></img></Link>
+            <Link to={`/games/614d2d987572363c1124a875`} replace><img
               className="game-box-item"
               src={apexlegends}
               alt="Apex Legends"
             ></img></Link>
-            <Link to={`/games/614a867525334f20ab40d544`}><img className="game-box-item" src={csgo} alt="CSGo"></img></Link>
-            <Link to={`/games/614a7aaf25334f20ab40d543`}><img className="game-box-item" src={warzone} alt="Warzone"></img></Link>
-            <Link to={`/games/614d1ddf7572363c1124a86d`}><img className="game-box-item" src={dbd} alt="DBD"></img></Link>
-            <Link to={`/games/614a872a25334f20ab40d546`}><img className="game-box-item" src={fortnite} alt="Fortnite"></img></Link>
-            <Link to={`/games/6148eac6bea214a16d1484a6`}><img className="game-box-item" src={league} alt="League"></img></Link>
-            <Link to={`/games/614d1e857572363c1124a86e`}><img
+            <Link to={`/games/614a867525334f20ab40d544`} replace><img className="game-box-item" src={csgo} alt="CSGo"></img></Link>
+            <Link to={`/games/614a7aaf25334f20ab40d543`} replace><img className="game-box-item" src={warzone} alt="Warzone"></img></Link>
+            <Link to={`/games/614d1ddf7572363c1124a86d`} replace><img className="game-box-item" src={dbd} alt="DBD"></img></Link>
+            <Link to={`/games/614a872a25334f20ab40d546`} replace><img className="game-box-item" src={fortnite} alt="Fortnite"></img></Link>
+            <Link to={`/games/6148eac6bea214a16d1484a6`} replace><img className="game-box-item" src={league} alt="League"></img></Link>
+            <Link to={`/games/614d1e857572363c1124a86e`} replace><img
               className="game-box-item"
               src={minecraft}
               alt="Minecraft"
             ></img></Link>
-            <Link to={`/games/614d24087572363c1124a86f`}><img
+            <Link to={`/games/614d24087572363c1124a86f`} replace><img
               className="game-box-item"
               src={overwatch}
               alt="Overwatch"
             ></img></Link>
-            <Link to={`/games/614d24637572363c1124a870`}><img className="game-box-item" src={pubg} alt="Pubg"></img></Link>
-            <Link to={`/games/614d24d37572363c1124a871`}><img className="game-box-item" src={siege} alt="Siege"></img></Link>
-            <Link to={`/games/614d25587572363c1124a872`}><img className="game-box-item" src={roblox} alt="Roblox"></img></Link>
-            <Link to={`/games/614d29017572363c1124a873`}><img
+            <Link to={`/games/614d24637572363c1124a870`} replace><img className="game-box-item" src={pubg} alt="Pubg"></img></Link>
+            <Link to={`/games/614d24d37572363c1124a871`} replace><img className="game-box-item" src={siege} alt="Siege"></img></Link>
+            <Link to={`/games/614d25587572363c1124a872`} replace><img className="game-box-item" src={roblox} alt="Roblox"></img></Link>
+            <Link to={`/games/614d29017572363c1124a873`} replace><img
               className="game-box-item"
               src={rocketleague}
               alt="RocketLeague"
             ></img></Link>
-            <Link to={`/games/614d29577572363c1124a874`}><img className="game-box-item" src={sea} alt="Sea"></img></Link>
-            <Link to={`/games/614a86bd25334f20ab40d545`}><img className="game-box-item" src={valorant} alt="Valorant"></img></Link>
+            <Link to={`/games/614d29577572363c1124a874`} replace><img className="game-box-item" src={sea} alt="Sea"></img></Link>
+            <Link to={`/games/614a86bd25334f20ab40d545`} replace><img className="game-box-item" src={valorant} alt="Valorant"></img></Link>
           </div>
         </div>
         <Footer />

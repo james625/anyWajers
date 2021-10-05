@@ -104,12 +104,13 @@ router.put("/:lobbyId/add", async (req, res) => {
 
 router.put("/:lobbyId/remove", async(req, res) => {
     try {
+        const lobby = Lobby.findById(req.params.lobbyId)
         await Lobby.findOneAndUpdate(
             {"_id": req.params.lobbyId},
             {$pull: {"players": req.body.playerId}}
         )
         
-        res.json({success: "Player Removed"})
+        res.json(lobby)
     } catch {
     }
 })
