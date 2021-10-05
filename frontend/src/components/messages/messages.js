@@ -15,10 +15,8 @@ class Messages extends React.Component {
     this.props.fetchLobbyMessages(this.props.lobbyId);
     this.socket.on('receive-message', (message) => {
       this.props.fetchLobbyMessages(this.props.lobbyId);
-      this.setState({
-        input: '',
-      });
     });
+   
   }
 
   handleChange() {
@@ -43,6 +41,9 @@ class Messages extends React.Component {
     this.props.createLobbyMessage(text);
 
     this.socket.emit('body', text);
+    this.setState({
+      input: '',
+    });
   }
 
   render() {
@@ -64,12 +65,13 @@ class Messages extends React.Component {
         </div>
       );
     }
+    debugger
     return (
       <div className="messages-god-container">
         <div className="messages-container">
           <ul className="messages-ul">
-            {this.props.messages
-              .map((message) => {
+            {this.props.messages.map((message) => {
+              if(message.lobby === this.props.lobbyId){
                 return (
                   <li className="message" key={message._id}>
                     <div className="author-username">
@@ -78,8 +80,8 @@ class Messages extends React.Component {
                     <div>{message.body}</div>
                   </li>
                 );
-              })
-              .reverse()}
+              }
+            }).reverse()}
           </ul>
           <form className="">
             <input
