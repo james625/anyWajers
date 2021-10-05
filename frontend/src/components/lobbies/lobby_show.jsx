@@ -46,7 +46,7 @@ class LobbyShow extends React.Component {
       }
       this.props.removePlayer(lobby);
     }
-    this.socket.disconnect();
+    // this.socket.disconnect();
   }
 
   navToGame() {
@@ -90,7 +90,7 @@ class LobbyShow extends React.Component {
 
         <ul className="chat-player-list">
           {lobby.data.players.map((player) => (
-            <li className="chat-player-list-item" key={player._id}>
+            <li className="chat-player-list-item" key={player._id.toString()}>
               <p>{player.username}</p>
             </li>
           ))}

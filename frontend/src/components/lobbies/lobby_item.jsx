@@ -32,7 +32,7 @@ class LobbyItem extends React.Component {
         playerId: this.props.currentUser.id,
       });
       this.socket.emit('lobby', this.props.currentUser.username);
-      this.socket.disconnect();
+      // this.socket.disconnect();
       this.navToLobby();
     } else {
       this.props.openModal('login')

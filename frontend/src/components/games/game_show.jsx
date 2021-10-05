@@ -76,7 +76,10 @@ class GameShow extends React.Component {
               <br />
               <ul className="game-show-list">
                 {game.data.lobbies.map((lobby) => {
-                  if (lobby.players.length < lobby.playerCount) {
+                  if(lobby.players.length === 0){
+                    this.props.deleteLobby(lobby.id)
+                    return null
+                  } else if (lobby.players.length < lobby.playerCount) {
                     return <LobbyItemContainer lobby={lobby} key={lobby._id} />
                   } else {
                     return null
