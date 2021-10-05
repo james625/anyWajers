@@ -65,7 +65,6 @@ class Messages extends React.Component {
         </div>
       );
     }
-    debugger
     return (
       <div className="messages-god-container">
         <div className="messages-container">

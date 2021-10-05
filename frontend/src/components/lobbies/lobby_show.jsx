@@ -63,7 +63,6 @@ class LobbyShow extends React.Component {
 
   render() {
     const { lobby } = this.props;
-    debugger
     if(!lobby) return null;
     if (lobby === undefined || lobby.data.players === undefined) {
       return null;
