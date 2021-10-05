@@ -5,6 +5,7 @@ const passport = require('passport');
 const Game = require('../../models/Game');
 const Lobby = require('../../models/Lobby');
 const User = require('../../models/User');
+const Message = require('../../models/Message')
 const validateLobbyInput = require('../../validation/lobbys')
 
 
@@ -120,6 +121,9 @@ router.delete("/:lobbyId", passport.authenticate('jwt', { session: false }), asy
             await Game.findOneAndUpdate(
                 {"_id": lobby.game},
                 {$pull: { "lobbies": req.params.lobbyId}}
+            )
+            await Message.deleteMany(
+                {"lobby": req.params.lobbyId}
             )
             await Lobby.findOneAndDelete({"_id": req.params.lobbyId})
         } catch(error) {
