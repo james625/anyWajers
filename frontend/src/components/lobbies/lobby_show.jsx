@@ -27,7 +27,6 @@ class LobbyShow extends React.Component {
   componentDidUpdate(prevProps, prevState){
 
     this.socket.once('receive-user', (user) => {
-      debugger
       this.props.fetchLobby(this.props.match.params.lobbyId);
     });
     
