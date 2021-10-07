@@ -72,7 +72,6 @@ class User extends React.Component {
   }
 
   render() {
-    debugger
     const edit = () => {
       return (
         <div className="user-form">
