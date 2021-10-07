@@ -5,32 +5,31 @@ import MessageContainer from '../messages/messages_container';
 class LobbyShow extends React.Component {
   constructor(props) {
     super(props);
+  
     this.lobby = this.props.lobby;
     this.navToGame = this.navToGame.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
   }
 
-  componentDidMount() {
-    if (!this.props.lobby) {
-      this.navToGame();
-    } else {
-      this.props.fetchLobby(this.props.match.params.lobbyId);
-    }
+  async componentDidMount() {
     this.socket = io();
     this.socket.on('receive-user', (user) => {
       this.props.fetchLobby(this.props.match.params.lobbyId);
     });
-    // this.socket.on('receive-lobby', lobby => {
-    //   this.navToGame();
-    // })
+    const lob = await this.props.fetchLobby(this.props.match.params.lobbyId);
+    if (!lob.lobby.data) {
+      this.navToGame();
+    } else {
+      this.props.fetchLobby(this.props.match.params.lobbyId);
+    }
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.lobby.data.players !== this.props.lobby.data.player){
-      this.socket.once('receive-user', (user) => {
-        this.props.fetchLobby(this.props.match.params.lobbyId);
-      });
-    }
+
+    this.socket.once('receive-user', (user) => {
+      this.props.fetchLobby(this.props.match.params.lobbyId);
+    });
+    
   }
 
  
@@ -45,8 +44,7 @@ class LobbyShow extends React.Component {
         this.props.deleteLobby(this.props.match.params.lobbyId);
       }
       this.props.removePlayer(lobby);
-    }
-    // this.socket.disconnect();
+    } 
   }
 
   navToGame() {
