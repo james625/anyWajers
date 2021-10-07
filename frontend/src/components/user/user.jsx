@@ -10,15 +10,22 @@ class User extends React.Component {
     this.props.user
       ? (this.favGame = this.props.user.data.favGame)
       : (this.favGame = '')
-    this.state = {
-      email: this.props.user
-        ? this.props.user.data.email
-        : this.props.currentUser.email,
-      username: this.props.user
-        ? this.props.user.data.username
-        : this.props.currentUser.username,
-      bio: this.bio,
-      favGame: this.favGame,
+    // this.state = {
+    //   email: this.props.user
+    //     ? this.props.user.data.email
+    //     : this.props.currentUser.email,
+    //   username: this.props.user
+    //     ? this.props.user.data.username
+    //     : this.props.currentUser.username,
+    //   bio: this.bio,
+    //   favGame: this.favGame,
+    //   edit: false,
+    // }
+    this.state = { 
+      email: this.props.currentUser.email, 
+      username: this.props.currentUser.username,
+      bio: this.props.currentUser.bio,
+      favGame: this.props.currentUser.favGame,
       edit: false,
     }
     this.update = this.update.bind(this)
@@ -65,6 +72,7 @@ class User extends React.Component {
   }
 
   render() {
+    debugger
     const edit = () => {
       return (
         <div className="user-form">
