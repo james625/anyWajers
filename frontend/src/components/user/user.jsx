@@ -149,16 +149,28 @@ class User extends React.Component {
           <div className="user-info">
             <div>
               Email
-              <p>{this.props.user.data.email}</p>
+              <p>
+                {/* {this.props.user.data.email} */}
+                {this.state.email}
+              </p>
               <br />
               Username
-              <p>{this.props.user.data.username}</p>
+              <p>
+                {/* {this.props.user.data.username} */}
+                {this.state.username}
+              </p>
               <br />
               Bio
-              <p>{this.props.user.data.bio}</p>
+              <p>
+                {/* {this.props.user.data.bio} */}
+                {this.state.bio}
+              </p>
               <br />
               Favorite Games
-              <p>{this.props.user.data.favGame}</p>
+              <p>
+                {/* {this.props.user.data.favGame} */}
+                {this.state.favGame}
+              </p>
               <br />
               <div className="edit-button">
                 <button onClick={this.onClick}>EDIT</button>

@@ -5,11 +5,14 @@ import AuthButtons from "./auth_buttons"
 import { withRouter } from "react-router"; 
 
 
-const mSTP = (state, ownProps) => ({
-    currentUser: state.session.user,
-    user: Object.values(state.entities.users)[0],
-    history: ownProps.history
-});
+const mSTP = (state, ownProps) => {
+    debugger
+    return {
+        currentUser: state.session.user,
+        user: Object.values(state.entities.users)[0],
+        history: ownProps.history
+    }
+};
 
 const mDTP = (dispatch) => ({
     logout: () => dispatch(logout()),

@@ -33,9 +33,10 @@ class AuthButtons extends React.Component {
       return (
         <div>
           <button className="username" onClick={this.navToUser}>
-            {this.props.user
+            {/* {this.props.user
               ? this.props.user.data.username
-              : this.props.currentUser.username}
+              : this.props.currentUser.username} */}
+            {this.props.currentUser.username}
           </button>
           <button className="nav-auth-button" onClick={this.onClick}>
             Logout
