@@ -9,6 +9,8 @@ Select your game. Create a lobby. Build your team.
 
 any Wajers? is a website where gamers can go to create and join teams to play games. Users will be able to create their own teams for a specific game via lobbies and will be able to chat with their teammates. Users can also view past ratings and reviews for their teammates and will be able to leave ratings and review of their own.
 
+![login_demo](./frontend/public/login_demo.gif)
+
 ## Technologies & Languages
 + MongoDB
 + Mongoose
