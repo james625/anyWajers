@@ -11,6 +11,8 @@ any Wajers? is a website where gamers can go to create and join teams to play ga
 
 ![login_demo](./frontend/public/login_demo.gif)
 
+![login_demo](./frontend/public/lobby_demo.gif)
+
 ## Technologies & Languages
 + MongoDB
 + Mongoose

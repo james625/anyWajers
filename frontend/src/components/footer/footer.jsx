@@ -63,7 +63,7 @@ class Footer extends React.Component {
           <p>frontend engineer</p>
           <div className="footer-icons">
             <a
-              href={'https://www.linkedin.com/in/joe-felicidario-3755151b7/</div>'}
+              href={'https://www.linkedin.com/in/joe-felicidario-3755151b7/'}
               target="_blank"
               rel="noreferrer"
             >
