@@ -36,7 +36,7 @@ Users can login and create an account, logged in users can view their profile pa
 
 In a game's show page, users can view a list of all of the open lobbies for a game. On each game show page, logged in users have the ability to create a new lobby for that game or join an existing lobby. 
 
-##Code
+## Code
 
 In order to clear up database space, we were able to delete all of the messages that were tied to a particular lobby when the lobby was deleted. This was achieved using the db.collection.deleteMany() method.
 
