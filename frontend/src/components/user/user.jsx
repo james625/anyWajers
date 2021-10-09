@@ -5,29 +5,27 @@ class User extends React.Component {
   constructor(props) {
     super(props)
     this.bio = ''
-    this.props.user ? (this.bio = this.props.user.data.bio) : (this.bio = '')
+    this.props.user ? (this.bio = this.props.user.data.bio) : (this.bio = this.props.currentUser.bio)
     this.favGame = ''
-    this.props.user
-      ? (this.favGame = this.props.user.data.favGame)
-      : (this.favGame = '')
-    // this.state = {
-    //   email: this.props.user
-    //     ? this.props.user.data.email
-    //     : this.props.currentUser.email,
-    //   username: this.props.user
-    //     ? this.props.user.data.username
-    //     : this.props.currentUser.username,
-    //   bio: this.bio,
-    //   favGame: this.favGame,
-    //   edit: false,
-    // }
-    this.state = { 
-      email: this.props.currentUser.email, 
-      username: this.props.currentUser.username,
-      bio: this.props.currentUser.bio,
-      favGame: this.props.currentUser.favGame,
+    this.props.user ? (this.favGame = this.props.user.data.favGame) : (this.favGame = this.props.currentUser.favGame)
+    this.state = {
+      email: this.props.user
+        ? this.props.user.data.email
+        : this.props.currentUser.email,
+      username: this.props.user
+        ? this.props.user.data.username
+        : this.props.currentUser.username,
+      bio: this.bio,
+      favGame: this.favGame,
       edit: false,
     }
+    // this.state = { 
+    //   email: this.props.currentUser.email, 
+    //   username: this.props.currentUser.username,
+    //   bio: this.props.currentUser.bio,
+    //   favGame: this.props.currentUser.favGame,
+    //   edit: false,
+    // }
     this.update = this.update.bind(this)
     this.onClick = this.onClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,6 +34,12 @@ class User extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.currentUser.id)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.user !== this.props.user) {
+      this.setState({ bio: this.props.user.data.bio, favGame: this.props.user.data.favGame })
+    }
   }
 
   update(field) {
@@ -150,26 +154,26 @@ class User extends React.Component {
             <div>
               Email
               <p>
-                {/* {this.props.user.data.email} */}
-                {this.state.email}
+                {this.props.user.data.email}
+                {/* {this.state.email} */}
               </p>
               <br />
               Username
               <p>
-                {/* {this.props.user.data.username} */}
-                {this.state.username}
+                {this.props.user.data.username}
+                {/* {this.state.username} */}
               </p>
               <br />
               Bio
               <p>
-                {/* {this.props.user.data.bio} */}
-                {this.state.bio}
+                {this.props.user.data.bio}
+                {/* {this.state.bio} */}
               </p>
               <br />
               Favorite Games
               <p>
-                {/* {this.props.user.data.favGame} */}
-                {this.state.favGame}
+                {this.props.user.data.favGame}
+                {/* {this.state.favGame} */}
               </p>
               <br />
               <div className="edit-button">

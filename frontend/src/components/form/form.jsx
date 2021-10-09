@@ -20,6 +20,7 @@ class Form extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.props.closeModal();
+      this.props.fetchUser(this.props.currentUser.id)
     }
   }
 

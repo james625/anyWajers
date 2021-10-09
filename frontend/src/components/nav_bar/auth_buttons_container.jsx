@@ -6,7 +6,6 @@ import { withRouter } from "react-router";
 
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
         currentUser: state.session.user,
         user: Object.values(state.entities.users)[0],
